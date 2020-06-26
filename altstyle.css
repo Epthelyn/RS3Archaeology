@@ -1,0 +1,160 @@
+*{
+    box-sizing: border-box;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+table.archTable {
+    border-collapse: collapse;
+    width: 100%;
+    color:  #D2D6DC;
+}
+
+.archInput{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: calc(50% - 30px);
+    height: 100%;
+    overflow-y: scroll;
+    background-color: #252F3F;
+}
+
+.archOutput{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: calc(50% - 30px);
+    height: 100%;
+    overflow-y: scroll;
+    padding: 5px;
+    background-color: #252F3F;
+    color:  #D2D6DC;
+}
+
+.centreSection{
+    position: absolute;
+    left: calc(50% - 30px);
+    top: 0px;
+    width: 60px;
+    height: 100%;
+    text-align: center;
+    background-color: #EEE;
+    padding-top: 10px;
+    border-right: 1px solid #555;
+    border-left: 1px solid #555;
+    background-color: #161E2E;
+}
+
+.archInput::-webkit-scrollbar {
+    display: none;
+}
+
+.archOutput::-webkit-scrollbar {
+    display: none;
+}
+
+
+th, td {
+    text-align: left;
+    padding: 3px;
+    height: 40px;
+    line-height: 40px;
+}
+
+tr{
+    border-bottom: 1px solid rgb(71, 81, 94);
+}
+
+tr:nth-child(odd){
+    background-color: #252F3F;
+}
+tr:nth-child(even){
+    background-color: #252F3F;
+    /*background-color: rgb(27, 41, 66);*/
+}
+
+tr.active{
+    background-color: rgb(40, 63, 37);
+}
+
+.rowIcon{
+    width: 20px;
+    height: 20px;
+}
+
+.artCountInput{
+    background-color: #374151;
+    color:  #D2D6DC;
+    border: 1px solid #4B5563;
+    border-radius: 2px;
+    font-size: 16px;
+    text-align: center;
+    width: 30px;
+}
+
+.artMod{
+    background-color: #057A55;
+    border: 0px solid #4B5563;
+    border-radius: 2px;
+    color: #D2D6DC;
+    width: 20px;
+    height: 20px;
+}
+/*
+tr.Zaros:nth-child(odd){
+    background-color: rgb(249, 228, 253);
+}
+tr.Zaros:nth-child(even){
+    background-color: rgb(245, 199, 255);
+}
+
+tr.Zamorak:nth-child(odd){
+    background-color: rgb(253, 228, 228);
+}
+tr.Zamorak:nth-child(even){
+    background-color: rgb(255, 199, 199);
+}
+
+tr.Saradomin:nth-child(odd){
+    background-color: rgb(230, 228, 253);
+}
+tr.Saradomin:nth-child(even){
+    background-color: rgb(210, 211, 255);
+}
+
+tr.Armadyl:nth-child(odd){
+    background-color: rgb(253, 242, 228);
+}
+tr.Armadyl:nth-child(even){
+    background-color: rgb(255, 231, 199);
+}
+*/
+
+
+th {
+    background-color: #161E2E;
+    color: #D2D6DC;
+}
+
+.siteFilterIcon{
+    width: 30px;
+    height: 30px;
+}
+
+.siteFilterIcon.inactive{
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+.matImg{
+    width: 20px;
+    height: 20px;
+}

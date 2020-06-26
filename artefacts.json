@@ -1,0 +1,251 @@
+[
+    {"name": "Venator dagger", "xp": 305.1, "site": "Zaros", "level": 5, "chronotes": 206, "materials": [
+        {"name": "Third Age iron", "quantity": 16},
+        {"name": "Zarosian insignia", "quantity": 12}
+    ]},
+    {"name": "Venator light crossbow", "xp": 305.1, "site": "Zaros", "level": 5, "chronotes": 206, "materials": [
+        {"name": "Third Age iron", "quantity": 12},
+        {"name": "Zarosian insignia", "quantity": 16}
+    ]},
+    {"name": "Legionary gladius", "xp": 430.8, "site": "Zaros", "level": 12, "chronotes": 220, "materials": [
+        {"name": "Third Age iron", "quantity": 10},
+        {"name": "Zarosian insignia", "quantity": 6},
+        {"name": "Imperial steel", "quantity": 12}
+    ]},
+    {"name": "Legionary square shield", "xp": 430.8, "site": "Zaros", "level": 12, "chronotes": 220, "materials": [
+        {"name": "Third Age iron", "quantity": 8},
+        {"name": "Zarosian insignia", "quantity": 8},
+        {"name": "Imperial steel", "quantity": 12}
+    ]},
+    {"name": "Primis Elementis standard", "xp": 430.8, "site": "Zaros", "level": 12, "chronotes": 220, "materials": [
+        {"name": "Samite silk", "quantity": 16},
+        {"name": "Third Age iron", "quantity": 12}
+    ]},
+    {"name": "Zaros effigy", "xp": 520.5, "site": "Zaros", "level": 17, "chronotes": 244, "materials": [
+        {"name": "Samite silk", "quantity": 8},
+        {"name": "White oak", "quantity": 10},
+        {"name": "Zarosian insignia", "quantity": 12}
+    ]},
+    {"name": "Zarosian training dummy", "xp": 520.5, "site": "Zaros", "level": 17, "chronotes": 244, "materials": [
+        {"name": "Third Age iron", "quantity": 16},
+        {"name": "White oak", "quantity": 14}
+    ]},
+    {"name": "Hookah pipe", "xp": 574.4, "site": "Zamorak", "level": 20, "chronotes": 250, "materials": [
+        {"name": "Third Age iron", "quantity": 10},
+        {"name": "Goldrune", "quantity": 12},
+        {"name": "Orthenglass", "quantity": 8}
+    ]},
+    {"name": "Opulent wine goblet", "xp": 574.4, "site": "Zamorak", "level": 20, "chronotes": 250, "materials": [
+        {"name": "Third Age iron", "quantity": 14},
+        {"name": "Goldrune", "quantity": 16}
+    ]},
+    {"name": "Crest of Dagon", "xp": 646.2, "site": "Zamorak", "level": 24, "chronotes": 272, "materials": [
+        {"name": "Goldrune", "quantity": 14},
+        {"name": "Orthenglass", "quantity": 18}
+    ]},
+    {"name": "'Disorder' painting", "xp": 646.2, "site": "Zamorak", "level": 24, "chronotes": 272, "materials": [
+        {"name": "Samite silk", "quantity": 6},
+        {"name": "White oak", "quantity": 6},
+        {"name": "Vellum", "quantity": 6},
+        {"name": "Cadmium red", "quantity": 14}
+    ]},
+    {"name": "Legatus Maximum figurine", "xp": 664.1, "site": "Zamorak", "level": 25, "chronotes": 274, "materials": [
+        {"name": "Goldrune", "quantity": 8},
+        {"name": "Zarosian insignia", "quantity": 14},
+        {"name": "Ancient vis", "quantity": 10}
+    ]},
+    {"name": "'Solem in Umbra' painting", "xp": 664.1, "site": "Zamorak", "level": 25, "chronotes": 274, "materials": [
+        {"name": "Samite silk", "quantity": 8},
+        {"name": "White oak", "quantity": 10},
+        {"name": "Tyrian purple", "quantity": 14}
+    ]},
+    {"name": "Imp mask", "xp": 735.9, "site": "Zamorak", "level": 29, "chronotes": 282, "materials": [
+        {"name": "Leather scraps", "quantity": 10},
+        {"name": "Chaotic brimstone", "quantity": 10},
+        {"name": "Demonhide", "quantity": 12}
+    ]},
+    {"name": "Lesser demon mask", "xp": 735.9, "site": "Zamorak", "level": 29, "chronotes": 282, "materials": [
+        {"name": "Leather scraps", "quantity": 6},
+        {"name": "Chaotic brimstone", "quantity": 8},
+        {"name": "Demonhide", "quantity": 12},
+        {"name": "Cadmium red", "quantity": 6}
+    ]},
+    {"name": "Greater demon mask", "xp": 735.9, "site": "Zamorak", "level": 29, "chronotes": 282, "materials": [
+        {"name": "Leather scraps", "quantity": 6},
+        {"name": "Chaotic brimstone", "quantity": 8},
+        {"name": "Demonhide", "quantity": 12},
+        {"name": "Third Age iron", "quantity": 6}
+    ]},
+    {"name": "Order of Dis robes", "xp": 861.5, "site": "Zamorak", "level": 36, "chronotes": 352, "materials": [
+        {"name": "Samite silk", "quantity": 16},
+        {"name": "Cadmium red", "quantity": 10},
+        {"name": "Eye of Dagon", "quantity": 14}
+    ]},
+    {"name": "Ritual dagger", "xp": 861.5, "site": "Zamorak", "level": 36, "chronotes": 352, "materials": [
+        {"name": "Goldrune", "quantity": 16},
+        {"name": "Hellfire metal", "quantity": 24},
+        {"name": "Ruby", "quantity": 1}
+    ]},
+    {"name": "'Frying Pan'", "xp": 1073.3, "site": "Saradomin", "level": 42, "chronotes": 392, "materials": [
+        {"name": "Third Age iron", "quantity": 20},
+        {"name": "White marble", "quantity": 24}
+    ]},
+    {"name": "Hallowed lantern", "xp": 1073.3, "site": "Saradomin", "level": 42, "chronotes": 392, "materials": [
+        {"name": "Third Age iron", "quantity": 20},
+        {"name": "Keramos", "quantity": 24},
+        {"name": "White candle", "quantity": 1}
+    ]},
+    {"name": "Branding iron", "xp": 1283.3, "site": "Zamorak", "level": 45, "chronotes": 412, "materials": [
+        {"name": "Third Age iron", "quantity": 14},
+        {"name": "Eye of Dagon", "quantity": 12},
+        {"name": "Hellfire metal", "quantity": 20}
+    ]},
+    {"name": "Manacles", "xp": 1283.3, "site": "Zamorak", "level": 45, "chronotes": 412, "materials": [
+        {"name": "Third Age iron", "quantity": 14},
+        {"name": "Chaotic brimstone", "quantity": 18},
+        {"name": "Eye of Dagon", "quantity": 14}
+    ]},
+    {"name": "Ancient timepiece", "xp": 1423.3, "site": "Zaros", "level": 47, "chronotes": 416, "materials": [
+        {"name": "Goldrune", "quantity": 12},
+        {"name": "Imperial steel", "quantity": 16},
+        {"name": "Ancient vis", "quantity": 18}
+    ]},
+    {"name": "Legatus pendant", "xp": 1423.3, "site": "Zaros", "level": 47, "chronotes": 415, "materials": [
+        {"name": "Third Age iron", "quantity": 16},
+        {"name": "Goldrune", "quantity": 18},
+        {"name": "Ancient vis", "quantity": 12},
+        {"name": "Dragonstone", "quantity": 1}
+    ]},
+    {"name": "Ceremonial unicorn ornament", "xp": 1493.3, "site": "Saradomin", "level": 48, "chronotes": 418, "materials": [
+        {"name": "Keramos", "quantity": 26},
+        {"name": "Cobalt blue", "quantity": 20}
+    ]},
+    {"name": "Ceremonial unicorn saddle", "xp": 1493.3, "site": "Saradomin", "level": 48, "chronotes": 418, "materials": [
+        {"name": "Leather scraps", "quantity": 24},
+        {"name": "Cobalt blue", "quantity": 22}
+    ]},
+    {"name": "Everlight harp", "xp": 1703.3, "site": "Saradomin", "level": 51, "chronotes": 466, "materials": [
+        {"name": "Everlight silvthril", "quantity": 30},
+        {"name": "White oak", "quantity": 22}
+    ]},
+    {"name": "Everlight trumpet", "xp": 1703.3, "site": "Saradomin", "level": 51, "chronotes": 466, "materials": [
+        {"name": "Everlight silvthril", "quantity": 28},
+        {"name": "Goldrune", "quantity": 24}
+    ]},
+    {"name": "Everlight violin", "xp": 1703.3, "site": "Saradomin", "level": 51, "chronotes": 466, "materials": [
+        {"name": "Star of Saradomin", "quantity": 16},
+        {"name": "White oak", "quantity": 20},
+        {"name": "Samite silk", "quantity": 16}
+    ]},
+    {"name": "Folded-arm figurine (male)", "xp": 2053.3, "site": "Saradomin", "level": 56, "chronotes": 490, "materials": [
+        {"name": "White marble", "quantity": 30},
+        {"name": "Goldrune", "quantity": 24}
+    ]},
+    {"name": "Folded-arm figurine (female)", "xp": 2053.3, "site": "Saradomin", "level": 56, "chronotes": 490, "materials": [
+        {"name": "White marble", "quantity": 30},
+        {"name": "Goldrune", "quantity": 24}
+    ]},
+    {"name": "Pontifix signet ring", "xp": 2193.3, "site": "Zaros", "level": 58, "chronotes": 508, "materials": [
+        {"name": "Third Age iron", "quantity": 16},
+        {"name": "Goldrune", "quantity": 18},
+        {"name": "Ancient vis", "quantity": 22},
+        {"name": "Dragonstone", "quantity": 1}
+    ]},
+    {"name": "'Incite Fear' spell scroll", "xp": 2193.3, "site": "Zaros", "level": 58, "chronotes": 508, "materials": [
+        {"name": "Vellum", "quantity": 20},
+        {"name": "Ancient vis", "quantity": 18},
+        {"name": "Blood of Orcus", "quantity": 18}
+    ]},
+    {"name": "Dominion discus", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
+        {"name": "Keramos", "quantity": 34},
+        {"name": "Star of Saradomin", "quantity": 28}
+    ]},
+    {"name": "Dominion javelin", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
+        {"name": "Keramos", "quantity": 32},
+        {"name": "Third Age iron", "quantity": 30}
+    ]},
+    {"name": "Dominion pelte shield", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
+        {"name": "Star of Saradomin", "quantity": 34},
+        {"name": "Samite silk", "quantity": 28}
+    ]},
+    {"name": "Lust metal sculpture", "xp": 3500, "site": "Zamorak", "level": 65, "chronotes": 578, "materials": [
+        {"name": "Third Age iron", "quantity": 16},
+        {"name": "Eye of Dagon", "quantity": 24},
+        {"name": "Goldrune", "quantity": 24},
+        {"name": "Ruby", "quantity": 1}
+    ]},
+    {"name": "'The Lake of Fire' painting", "xp": 3500, "site": "Zamorak", "level": 65, "chronotes": 578, "materials": [
+        {"name": "Samite silk", "quantity": 10},
+        {"name": "White oak", "quantity": 10},
+        {"name": "Vellum", "quantity": 10},
+        {"name": "Cadmium red", "quantity": 34}
+    ]},
+    {"name": "Chaos star", "xp": 4200, "site": "Zamorak", "level": 68, "chronotes": 584, "materials": [
+        {"name": "Chaotic brimstone", "quantity": 28},
+        {"name": "Hellfire metal", "quantity": 36}
+    ]},
+    {"name": "Spiked dog collar", "xp": 4200, "site": "Zamorak", "level": 68, "chronotes": 584, "materials": [
+        {"name": "Third Age iron", "quantity": 24},
+        {"name": "Leather scraps", "quantity": 24},
+        {"name": "Chaotic brimstone", "quantity": 16}
+    ]},
+    {"name": "Bronze Dominion medal", "xp": 4433.3, "site": "Saradomin", "level": 69, "chronotes": 572, "materials": [
+        {"name": "Everlight silvthril", "quantity": 36},
+        {"name": "Star of Saradomin", "quantity": 26},
+        {"name": "Bronze bar", "quantity": 1}
+    ]},
+    {"name": "Silver Dominion medal", "xp": 4433.3, "site": "Saradomin", "level": 69, "chronotes": 572, "materials": [
+        {"name": "Everlight silvthril", "quantity": 36},
+        {"name": "Star of Saradomin", "quantity": 26},
+        {"name": "Silver bar", "quantity": 1}
+    ]},
+    {"name": "Dominion torch", "xp": 4433.3, "site": "Saradomin", "level": 69, "chronotes": 572, "materials": [
+        {"name": "Goldrune", "quantity": 12},
+        {"name": "Orthenglass", "quantity": 12},
+        {"name": "Everlight silvthril", "quantity": 20},
+        {"name": "Star of Saradomin", "quantity": 18}
+    ]},
+    {"name": "Ikovian gerege", "xp": 4666.7, "site": "Armadyl", "level": 70, "chronotes": 602, "materials": [
+        {"name": "Third Age iron", "quantity": 36},
+        {"name": "Wings of War", "quantity": 30}
+    ]},
+    {"name": "Toy glider", "xp": 4666.7, "site": "Armadyl", "level": 70, "chronotes": 602, "materials": [
+        {"name": "Stormguard steel", "quantity": 36},
+        {"name": "White oak", "quantity": 30}
+    ]},
+    {"name": "Toy war golem", "xp": 4666.7, "site": "Armadyl", "level":70, "chronotes": 602, "materials": [
+        {"name": "Third Age iron", "quantity": 36},
+        {"name": "White oak", "quantity": 30},
+        {"name": "Clockwork", "quantity": 1}
+    ]},
+    {"name": "Decorative vase", "xp": 5133.3, "site": "Saradomin", "level": 72, "chronotes": 606, "materials": [
+        {"name": "White marble", "quantity": 36},
+        {"name": "Cobalt blue", "quantity": 30}
+    ]},
+    {"name": "Patera bowl", "xp": 5133.3, "site": "Saradomin", "level": 72, "chronotes": 606, "materials": [
+        {"name": "Keramos", "quantity": 36},
+        {"name": "Goldrune", "quantity": 30},
+        {"name": "Sapphire", "quantity": 1}
+    ]},
+    {"name": "Kantharos cup", "xp": 5133.3, "site": "Saradomin", "level": 72, "chronotes": 606, "materials": [
+        {"name": "Everlight silvthril", "quantity": 30},
+        {"name": "Orthenglass", "quantity": 36},
+        {"name": "Sapphire", "quantity": 1}
+    ]},
+    {"name": "Ceremonial mace", "xp": 5600, "site": "Zaros", "level": 74, "chronotes": 624, "materials": [
+        {"name": "Imperial steel", "quantity": 20},
+        {"name": "Third Age iron", "quantity": 20},
+        {"name": "Goldrune", "quantity": 28}
+    ]},
+    {"name": "'Consensus ad Idem' painting", "xp": 5600, "site": "Zaros", "level": 74, "chronotes": 624, "materials": [
+        {"name": "White oak", "quantity": 10},
+        {"name": "Samite silk", "quantity": 10},
+        {"name": "Tyrian purple", "quantity": 50}
+    ]},
+    {"name": "Pontifex Maximus figurine", "xp": 5600, "site": "Zaros", "level": 74, "chronotes": 624, "materials": [
+        {"name": "Ancient vis", "quantity": 16},
+        {"name": "Goldrune", "quantity": 28},
+        {"name": "Zarosian insignia", "quantity": 24},
+        {"name": "Dragonstone", "quantity": 1}
+    ]}
+]
