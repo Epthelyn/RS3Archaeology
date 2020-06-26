@@ -206,10 +206,13 @@ function calcTotals(){
     }
     console.log(totals);
 
-    let output = "<b>Total Experience: " + (~~totals.xp) + " from " + totals.count + " artefacts.</b> <br>";
+    let output = `<b>Total Experience: ${~~totals.xp} from ${totals.count} artefact${totals.count>1?"s":""}.</b> <br>`;
     output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
     output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
     output += "<br><b>Materials Required</b>:<br>";
+    if(!totals.materials.length){
+        output += "No artefacts selected.";
+    }
     for(let i=0; i<totals.materials.length; i++){
         output += materialImage(totals.materials[i].name) + "&nbsp;" + totals.materials[i].name + ": " + totals.materials[i].quantity + "<br>";
     }
