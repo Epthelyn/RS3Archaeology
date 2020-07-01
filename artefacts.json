@@ -657,16 +657,16 @@
         {"name": "Zarosian insignia", "quantity": 30},
         {"name": "Death rune", "quantity": 100}
     ]},
-    {"name": "Kal-i-kra chieftian crown", "xp": 383333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
+    {"name": "Kal-i-kra chieftian crown", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
         {"name": "Yu'biusk clay", "quantity": 36},
         {"name": "Animal furs", "quantity": 48}
     ]},
-    {"name": "Kal-i-kra mace", "xp": 383333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
+    {"name": "Kal-i-kra mace", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
         {"name": "Vulcanised rubber", "quantity": 42},
         {"name": "Third Age iron", "quantity": 44},
         {"name": "Fossilised bone", "quantity": 40}
     ]},
-    {"name": "Kal-i-kra warhorn", "xp": 383333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
+    {"name": "Kal-i-kra warhorn", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
         {"name": "Vulcanised rubber", "quantity": 44},
         {"name": "Animal furs", "quantity": 40},
         {"name": "Fossilised bone", "quantity": 42}
