@@ -1,6 +1,8 @@
 # RS3Archaeology
 Artefact restoration calculator for Runescape 3
 
+https://epthelyn.github.io/RS3Archaeology/
+
 # How to use
 Input the number of damaged artefacts available in the list on the left. This can be done by entering the numbers manually or by using the +/- buttons to increment/decrement the number available.
 If any of the checkboxes from the artefact rows are checked, the calculator will only consider artefacts which have been checked.
