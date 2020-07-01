@@ -22,7 +22,7 @@ let archCalc = function(){
             async: false,
             success: function(data){
                 collectionData = data;
-                console.log(collectionData);
+                //console.log(collectionData);
             },
             error: function(err){
                 console.log(err);
@@ -35,7 +35,7 @@ let archCalc = function(){
             async: false,
             success: function(data){
                 artifactData = data;
-                console.log(artifactData);
+                //console.log(artifactData);
                 generateTable();
             },
             error: function(err){
@@ -191,7 +191,7 @@ let archCalc = function(){
             }
         }
 
-        console.log("Checks enabled: " + checksEnabled);
+        //console.log("Checks enabled: " + checksEnabled);
 
         let artifactsAvailable = [];
 
@@ -226,8 +226,8 @@ let archCalc = function(){
                 
             }
         }
-        console.log(totals);
-        console.log(artifactsAvailable);
+        //console.log(totals);
+        //console.log(artifactsAvailable);
 
         let collectionsPossible = [];
         for(let i=0; i<collectionData.length; i++){
@@ -241,7 +241,7 @@ let archCalc = function(){
             }
         }
 
-        console.log(collectionsPossible);
+        //console.log(collectionsPossible);
         collectionsPossible = collectionsPossible.sort((a,b) => b.requirementsCheck.complete - a.requirementsCheck.complete);
 
         let output = `<b>Total Experience: ${~~totals.xp} from ${totals.count} artefact${totals.count>1?"s":""}.</b> <br>`;
