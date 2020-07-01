@@ -1,4 +1,5 @@
 let artifactData = [];
+let collectionData = [];
 
 let totals = {
     xp: 0,
@@ -15,16 +16,27 @@ let sitesActive = {
 
 $(document).ready(function(){
     $.ajax({
+        url: 'collections.json',
+        dataType: 'JSON',
+        async: false,
+        success: function(data){
+            collectionData = data;
+            console.log(collectionData);
+        }
+    });
+
+    $.ajax({
         url: 'artefacts.json',
         dataType: 'JSON',
+        async: false,
         success: function(data){
             artifactData = data;
             console.log(artifactData);
             generateTable();
-
-
         }
     });
+
+
 
     $('.siteFilterIcon').on('click', function(){
         let iconType = $(this).attr('site');
@@ -174,6 +186,8 @@ function calcTotals(){
 
     console.log("Checks enabled: " + checksEnabled);
 
+    let artifactsAvailable = [];
+
     for(let i=0; i<artifactData.length; i++){
         let artQuantity = parseInt($(`#art${i}`).val());
         if(isNaN(artQuantity) || artQuantity == 0) continue;
@@ -183,6 +197,7 @@ function calcTotals(){
         if(checksEnabled && !$(`#artcheck${i}`).is(':checked')) continue;
         if(!sitesActive[artifactData[i].site]) continue;
         totals.count += artQuantity;
+        artifactsAvailable.push(artifactData[i].name);
         totals.chronotes+=artifactData[i].chronotes*artQuantity;
         let artXP = artifactData[i].xp;
         totals.xp += artXP*artQuantity;
@@ -205,16 +220,44 @@ function calcTotals(){
         }
     }
     console.log(totals);
+    console.log(artifactsAvailable);
+
+    let collectionsPossible = [];
+    for(let i=0; i<collectionData.length; i++){
+        let p = checkCollectionRequirements(collectionData[i],artifactsAvailable);
+        if(p.count > 0){
+            collectionsPossible.push({
+                index: i,
+                collection: collectionData[i].name,
+                requirementsCheck: p
+            });
+        }
+    }
+
+    console.log(collectionsPossible);
+    collectionsPossible = collectionsPossible.sort((a,b) => b.requirementsCheck.complete - a.requirementsCheck.complete);
 
     let output = `<b>Total Experience: ${~~totals.xp} from ${totals.count} artefact${totals.count>1?"s":""}.</b> <br>`;
     output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
     output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
     output += "<br><b>Materials Required</b>:<br>";
     if(!totals.materials.length){
-        output += "No artefacts selected.";
+        output += "No artefacts selected.<br>";
     }
     for(let i=0; i<totals.materials.length; i++){
         output += materialImage(totals.materials[i].name) + "&nbsp;" + totals.materials[i].name + ": " + totals.materials[i].quantity + "<br>";
+    }
+
+    output += "<br><b>Collections</b>:<br>";
+    if(!collectionsPossible.length){
+        output += "No collections possible.<br>";
+    }
+    for(let i=0; i<collectionsPossible.length; i++){
+        let c = collectionData[collectionsPossible[i].index];
+        let p = collectionsPossible[i];
+        
+        let spanOpacity = p.requirementsCheck.complete?"100%":"50%";
+        output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
     }
 
     $('#output').html(output);
@@ -222,4 +265,19 @@ function calcTotals(){
     saveData = JSON.stringify(saveData);
     localStorage.setItem("rs3archcalcData", saveData);
 
+}
+
+function checkCollectionRequirements(collection, available){
+    let count = 0;
+    let missing = [];
+    for(let i=0; i<collection.artefacts.length; i++){
+        if(available.includes(collection.artefacts[i])) count++;
+        else missing.push(collection.artefacts[i]);
+    }
+
+    return {
+        complete: count==collection.artefacts.length,
+        count: count,
+        missing: missing
+    }
 }
