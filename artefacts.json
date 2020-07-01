@@ -145,7 +145,7 @@
         {"name": "White marble", "quantity": 30},
         {"name": "Goldrune", "quantity": 24}
     ]},
-    {"name": "Pontifix signet ring", "xp": 2193.3, "site": "Zaros", "level": 58, "chronotes": 508, "materials": [
+    {"name": "Pontifex signet ring", "xp": 2193.3, "site": "Zaros", "level": 58, "chronotes": 508, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Goldrune", "quantity": 18},
         {"name": "Ancient vis", "quantity": 22},
