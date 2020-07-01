@@ -49,12 +49,12 @@
         {"name": "Vellum", "quantity": 6},
         {"name": "Cadmium red", "quantity": 14}
     ]},
-    {"name": "Legatus Maximum figurine", "xp": 664.1, "site": "Zamorak", "level": 25, "chronotes": 274, "materials": [
+    {"name": "Legatus Maximus figurine", "xp": 664.1, "site": "Zaros", "level": 25, "chronotes": 274, "materials": [
         {"name": "Goldrune", "quantity": 8},
         {"name": "Zarosian insignia", "quantity": 14},
         {"name": "Ancient vis", "quantity": 10}
     ]},
-    {"name": "'Solem in Umbra' painting", "xp": 664.1, "site": "Zamorak", "level": 25, "chronotes": 274, "materials": [
+    {"name": "'Solem in Umbra' painting", "xp": 664.1, "site": "Zaros", "level": 25, "chronotes": 274, "materials": [
         {"name": "Samite silk", "quantity": 8},
         {"name": "White oak", "quantity": 10},
         {"name": "Tyrian purple", "quantity": 14}
