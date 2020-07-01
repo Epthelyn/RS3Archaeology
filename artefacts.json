@@ -330,7 +330,7 @@
     {"name": "Pontifex mitre", "xp": 7388.9, "site": "Zaros", "level": 81, "chronotes": 666, "materials": [
         {"name": "Samite silk", "quantity": 32},
         {"name": "Ancient vis", "quantity": 20},
-        {"name": "Zarosian Insignia", "quantity": 20}
+        {"name": "Zarosian insignia", "quantity": 20}
     ]},
     {"name": "Thorobshuun battle standard", "xp": 8166.7, "site": "Bandos", "level": 83, "chronotes": 684, "materials": [
         {"name": "Mark of Kyzaj", "quantity": 16},
