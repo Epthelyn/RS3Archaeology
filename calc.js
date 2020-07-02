@@ -15,6 +15,8 @@ let archCalc = function(){
         Bandos: true
     }
 
+    let searchFilter = null;
+
     $(document).ready(function(){
         $.ajax({
             url: 'collections.json',
@@ -57,57 +59,62 @@ let archCalc = function(){
 
             generateTable();
         });
+
+        $('.searchInput').on('input', function(){
+            searchFilter = $(this).val();
+
+            generateTable();
+        });
     });
 
     function generateTable(){
-        let table = `<table class="archTable">`;
-        table += `<tr>
-            <th>Artefact</th>
-            <th>Level</th>
-            <th>Experience</th>
-            <th>Chronotes</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>`;
+        let table = `<div class="archTable">`;
+        // table += `<div class="row headRow">
+        //     <div class="cell nameCell">Artefact</div>
+        //     <div class="cell numberCell">Level</div>
+        //     <div class="cell bigNumberCell">Experience</div>
+        //     <div class="cell bigNumberCell">Chronotes</div>
+        //     <div class="cell numberCell"></div>
+        // </div>`;
 
         for(let i=0; i<artifactData.length; i++){
             let rowClass = artifactData[i].site;
             //if($(`#art${i}`).val() > 0) rowClass += " active";
-            if(!sitesActive[artifactData[i].site])
-                table += `<tr id="artRow${i}" style="display: none;" class="${rowClass}">`;
+            if(!sitesActive[artifactData[i].site] || !inSearch(artifactData[i]))
+                table += `<div class="row" id="artRow${i}" style="display: none;" class="${rowClass}">`;
             else
-                table += `<tr id="artRow${i}" class="${rowClass}">`;
-                table += `<td>
+                table += `<div class="row" tr id="artRow${i}" class="${rowClass}">`;
+                table += `<div class="cell nameCell">
                     ${godImage(artifactData[i].site)}&nbsp;
                     ${artifactData[i].name}
-                </td>`;
-                table += `<td>
+                </div>`;
+                table += `<div class="cell numberCell">
                     ${artifactData[i].level}
-                </td>`;
-                    table += `<td>
+                </div>`;
+                    table += `<div class="cell bigNumberCell">
                     ${artifactData[i].xp}
-                </td>`;
-                table += `<td>
+                </div>`;
+                table += `<div class="cell bigNumberCell">
                     ${artifactData[i].chronotes}
-                </td>`;
-                table += `<td style="text-align: center;">
-                    <input type="text" value=0 class="artCountInput" target=${i} id="art${i}">
-                </td>`;
-                table += `<td>
+                </div>`;
+                table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${i} class="artMod" action="minus" id="artminus${i}">
-                </td>`;
-                table += `<td>
                     <input type="button" value="+" artTarget=${i} class="artMod" action="plus" id="artplus${i}">
-                </td>`;
-                table += `<td>
                     <input type="checkbox" class="artCheck" id="artcheck${i}">
-                </td>`;
-            table += "</tr>";
+                </div>`;
+                table += `<div class="cell numberCell right" style="text-align: center;">
+                    <input type="text" value=0 class="artCountInput" target=${i} id="art${i}">
+                </div>`;
+                // table += `<div class="cell">
+                //     <input type="button" value="+" artTarget=${i} class="artMod" action="plus" id="artplus${i}">
+                // </div>`;
+                // table += `<div class="cell">
+                //     <input type="checkbox" class="artCheck" id="artcheck${i}">
+                // </div>`;
+            table += "</div>";
         }
 
-        table += "</table>";
+        table += "</div>";
 
         $('#table').html(table);
 
@@ -198,6 +205,7 @@ let archCalc = function(){
         for(let i=0; i<artifactData.length; i++){
             let artQuantity = parseInt($(`#art${i}`).val());
             if(isNaN(artQuantity) || artQuantity == 0) continue;
+            if(!inSearch(artifactData[i])) continue;
             
 
             saveData.push({i: i, n: artQuantity});
@@ -287,5 +295,14 @@ let archCalc = function(){
             count: count,
             missing: missing
         }
+    }
+
+    function inSearch(art){
+        if(!searchFilter || !searchFilter.length) return true;
+        let s = searchFilter.toLowerCase();
+        if(art.name.toLowerCase().includes(s)) return true;
+        if(!isNaN(parseInt(searchFilter)) && art.level == parseInt(searchFilter)) return true;
+
+        return false;
     }
 }();
