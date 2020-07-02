@@ -132,7 +132,7 @@ tr:nth-child(even){
     /*background-color: rgb(27, 41, 66);*/
 }
 
-tr.active{
+active{
     background-color: rgb(40, 63, 37);
 }
 
