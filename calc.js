@@ -98,9 +98,16 @@ let archCalc = function(){
                     ${artifactData[i].chronotes}
                 </div>`;
                 table += `<div class="cell numberCell right">
+                    <input type="button" value="-" artTarget=${i} class="artOwnedMod" action="minus" id="artownedminus${i}">
+                    <input type="button" value="+" artTarget=${i} class="artOwnedMod" action="plus" id="artownedplus${i}">
+                    <input type="checkbox" class="artCheck" id="artcheck${i}">
+                </div>`;
+                table += `<div class="cell numberCell right" style="text-align: center;">
+                    <input type="text" value=0 class="artOwnedCountInput" target=${i} id="artowned${i}">
+                </div>`;
+                table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${i} class="artMod" action="minus" id="artminus${i}">
                     <input type="button" value="+" artTarget=${i} class="artMod" action="plus" id="artplus${i}">
-                    <input type="checkbox" class="artCheck" id="artcheck${i}">
                 </div>`;
                 table += `<div class="cell numberCell right" style="text-align: center;">
                     <input type="text" value=0 class="artCountInput" target=${i} id="art${i}">
@@ -119,6 +126,16 @@ let archCalc = function(){
         $('#table').html(table);
 
         $('.artCountInput').on('change', function(){
+            let tar = $(this).attr('target');
+            let val = parseInt($(this).val());
+            if(!isNaN(val)){
+                if(val == 0) $(`#artRow${tar}`).removeClass('part-active');
+                else $(`#artRow${tar}`).addClass('part-active');
+            }
+            calcTotals();
+        });
+
+        $('.artOwnedCountInput').on('change', function(){
             let tar = $(this).attr('target');
             let val = parseInt($(this).val());
             if(!isNaN(val)){
@@ -146,6 +163,33 @@ let archCalc = function(){
 
             if(currentValue < 0){
                 currentValue = 0;
+                $(`#artRow${target}`).removeClass('part-active');
+            }
+            else if(currentValue == 0){
+                $(`#artRow${target}`).removeClass('part-active');
+            }
+            else if(currentValue == 1 && action == "plus"){
+                $(`#artRow${target}`).addClass('part-active');
+            }
+
+            $(`#art${target}`).val(currentValue);
+            calcTotals();
+        });
+
+        $('.artOwnedMod').on('click', function(){
+            let action = $(this).attr('action');
+            let target = $(this).attr('artTarget');
+
+            let currentValue = parseInt($(`#artowned${target}`).val());
+            if(isNaN(currentValue)) currentValue = 0;
+
+            switch(action){
+                case "plus": currentValue++; break;
+                case "minus": currentValue--; 
+            }
+
+            if(currentValue < 0){
+                currentValue = 0;
                 $(`#artRow${target}`).removeClass('active');
             }
             else if(currentValue == 0){
@@ -155,7 +199,7 @@ let archCalc = function(){
                 $(`#artRow${target}`).addClass('active');
             }
 
-            $(`#art${target}`).val(currentValue);
+            $(`#artowned${target}`).val(currentValue);
             calcTotals();
         });
 
@@ -163,8 +207,12 @@ let archCalc = function(){
         if(saveData){
             saveData = $.parseJSON(saveData);
             for(let i=0; i<saveData.length; i++){
-                $(`#art${saveData[i].i}`).val(saveData[i].n);
+                $(`#art${saveData[i].i}`).val(saveData[i].n||0);
+                $(`#artowned${saveData[i].i}`).val(saveData[i].nR||0);
                 if(saveData[i].n > 0){
+                    $(`#artRow${saveData[i].i}`).addClass('part-active');
+                }
+                if(saveData[i].nR > 0){
                     $(`#artRow${saveData[i].i}`).addClass('active');
                 }
             }
@@ -185,6 +233,8 @@ let archCalc = function(){
             xp: 0,
             count: 0,
             chronotes: 0,
+            chronotesRestored: 0,
+            chronotesDamaged: 0,
             materials: []
         };
 
@@ -201,37 +251,48 @@ let archCalc = function(){
         //console.log("Checks enabled: " + checksEnabled);
 
         let artifactsAvailable = [];
+        let restoredArtifactsAvailable = [];
 
         for(let i=0; i<artifactData.length; i++){
             let artQuantity = parseInt($(`#art${i}`).val());
-            if(isNaN(artQuantity) || artQuantity == 0) continue;
+            let artOwnedQuantity = parseInt($(`#artowned${i}`).val());
+            if((isNaN(artQuantity) || artQuantity == 0) && (isNaN(artOwnedQuantity) || artOwnedQuantity == 0))  continue;
+            saveData.push({i: i, n: artQuantity, nR: artOwnedQuantity});
             if(!inSearch(artifactData[i])) continue;
             
 
-            saveData.push({i: i, n: artQuantity});
+
             if(checksEnabled && !$(`#artcheck${i}`).is(':checked')) continue;
             if(!sitesActive[artifactData[i].site]) continue;
-            totals.count += artQuantity;
-            artifactsAvailable.push(artifactData[i].name);
-            totals.chronotes+=artifactData[i].chronotes*artQuantity;
-            let artXP = artifactData[i].xp;
-            totals.xp += artXP*artQuantity;
 
-            let artMats = artifactData[i].materials;
-            for(let j=0; j<artMats.length; j++){
-                let mat = totals.materials.filter(m => m.name == artMats[j].name);
-                if(!mat.length){
-                    totals.materials.push({
-                        name: artMats[j].name,
-                        quantity: artMats[j].quantity*artQuantity
-                    });
-                }
-                else{
-                    let matIndex = totals.materials.indexOf(mat[0]);
-                    totals.materials[matIndex].quantity += artMats[j].quantity*artQuantity;
-                }
+            totals.chronotes+=artifactData[i].chronotes*(artQuantity+artOwnedQuantity);
 
-                
+            if(artQuantity > 0){
+                totals.count += artQuantity;
+                artifactsAvailable.push(artifactData[i].name);
+                totals.chronotesDamaged+=artifactData[i].chronotes*artQuantity;
+                let artXP = artifactData[i].xp;
+                totals.xp += artXP*artQuantity;
+
+                let artMats = artifactData[i].materials;
+                for(let j=0; j<artMats.length; j++){
+                    let mat = totals.materials.filter(m => m.name == artMats[j].name);
+                    if(!mat.length){
+                        totals.materials.push({
+                            name: artMats[j].name,
+                            quantity: artMats[j].quantity*artQuantity
+                        });
+                    }
+                    else{
+                        let matIndex = totals.materials.indexOf(mat[0]);
+                        totals.materials[matIndex].quantity += artMats[j].quantity*artQuantity;
+                    }
+                }
+            }
+
+            if(artOwnedQuantity > 0){
+                restoredArtifactsAvailable.push(artifactData[i].name);
+                totals.chronotesRestored+=artifactData[i].chronotes*artOwnedQuantity;
             }
         }
         //console.log(totals);
@@ -239,7 +300,7 @@ let archCalc = function(){
 
         let collectionsPossible = [];
         for(let i=0; i<collectionData.length; i++){
-            let p = checkCollectionRequirements(collectionData[i],artifactsAvailable);
+            let p = checkCollectionRequirements(collectionData[i],artifactsAvailable,restoredArtifactsAvailable);
             if(p.count > 0){
                 collectionsPossible.push({
                     index: i,
@@ -249,12 +310,16 @@ let archCalc = function(){
             }
         }
 
-        //console.log(collectionsPossible);
+        console.log(collectionsPossible);
         collectionsPossible = collectionsPossible.sort((a,b) => b.requirementsCheck.complete - a.requirementsCheck.complete);
+        let completedCollections = collectionsPossible.filter(c => c.requirementsCheck.complete);
+        let restoredCollections = collectionsPossible.filter(c => c.requirementsCheck.countOnlyRestored > 0);
+        let completedRestoredCollections = collectionsPossible.filter(c => c.requirementsCheck.completeByRestored);
 
-        let output = `<b>Total Experience: ${~~totals.xp} from ${totals.count} artefact${totals.count>1?"s":""}.</b> <br>`;
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
+
+        let output = `<b>Total Experience: ${~~totals.xp}</b> from <b>${totals.count}</b> artefact${totals.count>1||totals.count==0?"s":""}. <br>`;
+        // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
+        // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
         output += "<br><b>Materials Required</b>:<br>";
         if(!totals.materials.length){
             output += "No artefacts selected.<br>";
@@ -262,17 +327,67 @@ let archCalc = function(){
         for(let i=0; i<totals.materials.length; i++){
             output += materialImage(totals.materials[i].name) + "&nbsp;" + totals.materials[i].name + ": " + totals.materials[i].quantity + "<br>";
         }
+        output += "<br><hr>";
+        output += "<b><u>Including Damaged Artefacts</u></b><br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br><br>";
+        output += "<b>Completed Collections</b>:<br>";
+        if(!completedCollections.length){
+            output += "No completed collections.<br>";
+        }
 
-        output += "<br><b>Collections</b>:<br>";
+        for(let i=0; i<collectionsPossible.length; i++){
+            let p = collectionsPossible[i];
+            if(!p.requirementsCheck.complete) continue;
+            let c = collectionData[collectionsPossible[i].index];
+
+            let spanOpacity = "100%";
+            output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
+
+        }
+
+        output += "<br><b>Incomplete Collections</b>:<br>";
         if(!collectionsPossible.length){
-            output += "No collections possible.<br>";
+            output += "No incomplete collections.<br>";
         }
         for(let i=0; i<collectionsPossible.length; i++){
-            let c = collectionData[collectionsPossible[i].index];
             let p = collectionsPossible[i];
-            
+            if(p.requirementsCheck.complete) continue;
+            let c = collectionData[collectionsPossible[i].index];
+         
             let spanOpacity = p.requirementsCheck.complete?"100%":"50%";
             output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
+        }
+        output += "<br><hr>";
+        output += "<b><u>Excluding Damaged Artefacts</u></b><br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotesRestored + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotesRestored*0.4)) + "<br><br>";
+        output += "<b>Restored Collections</b>:<br>";
+        if(!completedRestoredCollections.length){
+            output += "No restored collections.<br>";
+        }
+
+        for(let i=0; i<restoredCollections.length; i++){
+            let p = restoredCollections[i];
+            if(!p.requirementsCheck.complete) continue;
+            let c = collectionData[restoredCollections[i].index];
+
+            let spanOpacity = "100%";
+            output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.countOnlyRestored}/${c.artefacts.length}</span><br>`;
+
+        }
+
+        output += "<br><b>Partially Restored Collections</b>:<br>";
+        if(!restoredCollections.length){
+            output += "No partially restored collections.<br>";
+        }
+        for(let i=0; i<restoredCollections.length; i++){
+            let p = restoredCollections[i];
+            if(p.requirementsCheck.complete) continue;
+            let c = collectionData[restoredCollections[i].index];
+         
+            let spanOpacity = p.requirementsCheck.complete?"100%":"50%";
+            output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.countOnlyRestored}/${c.artefacts.length}</span><br>`;
         }
 
         $('#output').html(output);
@@ -282,17 +397,27 @@ let archCalc = function(){
 
     }
 
-    function checkCollectionRequirements(collection, available){
+    function checkCollectionRequirements(collection, damaged, restored){
         let count = 0;
+        let countOnlyDamaged = 0;
+        let countOnlyRestored = 0;
         let missing = [];
         for(let i=0; i<collection.artefacts.length; i++){
-            if(available.includes(collection.artefacts[i])) count++;
+            if(damaged.includes(collection.artefacts[i]) || restored.includes(collection.artefacts[i])){
+                count++;
+                if(damaged.includes(collection.artefacts[i])) countOnlyDamaged++;
+                if(restored.includes(collection.artefacts[i])) countOnlyRestored++;
+            }
             else missing.push(collection.artefacts[i]);
         }
 
         return {
             complete: count==collection.artefacts.length,
+            completeByDamaged: countOnlyDamaged==collection.artefacts.length,
+            completeByRestored: countOnlyRestored==collection.artefacts.length,
             count: count,
+            countOnlyDamaged: countOnlyDamaged,
+            countOnlyRestored: countOnlyRestored,
             missing: missing
         }
     }

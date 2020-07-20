@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+table.archTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.archInput{
+    position: absolute;
+    left: 0px;
+    top: 60px;
+    width: calc(60% - 30px);
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.archOutput{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: calc(40% - 30px);
+    height: 100%;
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+.centreSection{
+    position: absolute;
+    left: calc(50% - 30px);
+    top: 0px;
+    width: 60px;
+    height: 100%;
+    text-align: center;
+    background-color: #EEE;
+    padding-top: 10px;
+    border-right: 1px solid #555;
+    border-left: 1px solid #555;
+}
+
+.archInput::-webkit-scrollbar {
+    display: none;
+}
+
+.archOutput::-webkit-scrollbar {
+    display: none;
+}
+
+
+th, td {
+    text-align: left;
+    padding: 3px;
+}
+
+
+tr:nth-child(odd){
+    background-color: #FFF;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+
+.rowIcon{
+    width: 20px;
+    height: 20px;
+}
+
+tr.Zaros:nth-child(odd){
+    background-color: rgb(249, 228, 253);
+}
+tr.Zaros:nth-child(even){
+    background-color: rgb(245, 199, 255);
+}
+
+tr.Zamorak:nth-child(odd){
+    background-color: rgb(253, 228, 228);
+}
+tr.Zamorak:nth-child(even){
+    background-color: rgb(255, 199, 199);
+}
+
+tr.Saradomin:nth-child(odd){
+    background-color: rgb(230, 228, 253);
+}
+tr.Saradomin:nth-child(even){
+    background-color: rgb(210, 211, 255);
+}
+
+tr.Armadyl:nth-child(odd){
+    background-color: rgb(253, 242, 228);
+}
+tr.Armadyl:nth-child(even){
+    background-color: rgb(255, 231, 199);
+}
+
+
+th {
+    background-color: white;
+    color: rgb(48,48,48);
+}
+
+.siteFilterIcon{
+    width: 30px;
+    height: 30px;
+}
+
+.siteFilterIcon.inactive{
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+.matImg{
+    width: 20px;
+    height: 20px;
+}

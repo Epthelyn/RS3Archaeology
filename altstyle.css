@@ -44,16 +44,16 @@
 }
 
 .cell.nameCell{
-    width: 40%;
+    width: 35%;
     padding-left: 5px;
 }
 
 .cell.numberCell{
-    width: 10%;
+    width: 8%;
 }
 
 .cell.bigNumberCell{
-    width: 15%;
+    width: 12%;
 }
 
 .cell.veryBigNumberCell{
@@ -73,7 +73,7 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    width: calc(50% - 30px);
+    width: calc(60% - 30px);
     height: 100%;
     overflow-y: hidden;
     background-color: #252F3F;
@@ -83,7 +83,7 @@
     position: absolute;
     right: 0px;
     top: 0px;
-    width: calc(50% - 30px);
+    width: calc(40% - 30px);
     height: 100%;
     overflow-y: scroll;
     padding: 5px;
@@ -93,7 +93,7 @@
 
 .centreSection{
     position: absolute;
-    left: calc(50% - 30px);
+    left: calc(60% - 30px);
     top: 0px;
     width: 60px;
     height: 100%;
@@ -132,8 +132,12 @@ tr:nth-child(even){
     /*background-color: rgb(27, 41, 66);*/
 }
 
-active{
-    background-color: rgb(40, 63, 37);
+.part-active{
+    background-color: rgb(63, 63, 37);
+}
+
+.active{
+    background-color: rgb(40, 63, 37) !important;
 }
 
 .rowIcon{
@@ -151,7 +155,26 @@ active{
     width: 30px;
 }
 
+.artOwnedCountInput{
+    background-color: #374151;
+    color:  #D2D6DC;
+    border: 1px solid #4B5563;
+    border-radius: 2px;
+    font-size: 16px;
+    text-align: center;
+    width: 30px;
+}
+
 .artMod{
+    background-color: rgb(122, 114, 5);
+    border: 0px solid #4B5563;
+    border-radius: 2px;
+    color: #D2D6DC;
+    width: 20px;
+    height: 20px;
+}
+
+.artOwnedMod{
     background-color: #057A55;
     border: 0px solid #4B5563;
     border-radius: 2px;
