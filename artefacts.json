@@ -530,12 +530,7 @@
         {"name": "Wings of War", "quantity": 36},
         {"name": "White oak", "quantity": 30}
     ]},
-    {"name": "Nightguard shield", "xp": 23333.3, "site": "Bandos", "level": 104, "chronotes": 894, "materials": [
-        {"name": "Warforged bronze", "quantity": 44},
-        {"name": "Third Age iron", "quantity": 34},
-        {"name": "Eye of Dagon", "quantity": 20}
-    ]},
-    {"name": "Nightguard shield", "xp": 23333.3, "site": "Bandos", "level": 104, "chronotes": 894, "materials": [
+    {"name": "Huzamogaarb chaos crown", "xp": 23333.3, "site": "Bandos", "level": 104, "chronotes": 894, "materials": [
         {"name": "Warforged bronze", "quantity": 44},
         {"name": "Third Age iron", "quantity": 34},
         {"name": "Eye of Dagon", "quantity": 20}
