@@ -15,6 +15,19 @@ let archCalc = function(){
         Bandos: true
     }
 
+    let collectorsActive = {
+        "Art Critic Jacques": false,
+        "Chief Tess": false,
+        "General Bentnose": false,
+        "General Wartface": false,
+        "Isaura": false,
+        "Lowse": false,
+        "Sir Atcha": false,
+        "Soran": false,
+        "Velucia": false,
+        "Wise Old Man": false
+    }
+
     let searchFilter = null;
 
     $(document).ready(function(){
@@ -24,7 +37,7 @@ let archCalc = function(){
             async: false,
             success: function(data){
                 collectionData = data;
-                //console.log(collectionData);
+                console.log(collectionData);
             },
             error: function(err){
                 console.log(err);
@@ -37,7 +50,10 @@ let archCalc = function(){
             async: false,
             success: function(data){
                 artifactData = data;
-                //console.log(artifactData);
+                for(let i=0; i<artifactData.length; i++){
+                    artifactData[i].originalIndex = i;
+                }
+                console.log(artifactData);
                 generateTable();
             },
             error: function(err){
@@ -60,13 +76,54 @@ let archCalc = function(){
             generateTable();
         });
 
+        $('.collectorFilterIcon').on('click', function(){
+            let coll = $(this).attr('collector');
+
+            let enableSelf = !collectorsActive[coll];
+
+            $('.collectorFilterIcon').addClass('inactive');
+            for(k in collectorsActive){
+                collectorsActive[k] = false;
+            }
+
+            if(enableSelf){
+                $(this).removeClass('inactive');
+                collectorsActive[coll] = true;
+            }
+
+            generateTable();
+        });
+
         $('.searchInput').on('input', function(){
             searchFilter = $(this).val();
 
             generateTable();
         });
+
+        $('.clearBtn').on('click', function(){
+            if(!confirm("All artefact quantities will be reset.")) return;
+            $('.artCountInput').val(0);
+            $('.artOwnedCountInput').val(0);
+
+            calcTotals();
+            generateTable();
+        });
     });
 
+    function anythingInCollectionDisplayed(c){
+     
+        if(!c.artefacts) return false;
+        
+        for(let i=0; i<c.artefacts.length; i++){
+            let aIndex = artifactData.indexOf(artifactData.filter(a => a.name == c.artefacts[i])[0]);
+            //console.log(c.artefacts[i]);
+            //console.log(aIndex);
+            let displayed = !(!sitesActive[artifactData[aIndex].site] || !inSearch(artifactData[aIndex]) || forSelectedCollector(artifactData[aIndex]).collectionIndex == Infinity);
+            if(displayed) return true;
+        }
+
+        return false;
+    }
     function generateTable(){
         let table = `<div class="archTable">`;
         // table += `<div class="row headRow">
@@ -77,40 +134,71 @@ let archCalc = function(){
         //     <div class="cell numberCell"></div>
         // </div>`;
 
-        for(let i=0; i<artifactData.length; i++){
+        let tableData = JSON.parse(JSON.stringify(artifactData));
+        if(anyCollectorSelected){
+            //tableData = tableData.filter(t => forSelectedCollector(t));
+
+            tableData = tableData.sort((a,b) => forSelectedCollector(a).collectionIndex - forSelectedCollector(b).collectionIndex);
+        }
+
+       
+
+        for(let i=0; i<tableData.length; i++){
             let rowClass = artifactData[i].site;
+            let oi = tableData[i].originalIndex;
             //if($(`#art${i}`).val() > 0) rowClass += " active";
-            if(!sitesActive[artifactData[i].site] || !inSearch(artifactData[i]))
-                table += `<div class="row" id="artRow${i}" style="display: none;" class="${rowClass}">`;
+            let rowDisplayed = !(!sitesActive[artifactData[oi].site] || !inSearch(artifactData[oi]) || forSelectedCollector(artifactData[oi]).collectionIndex == Infinity);
+
+            if(true /*rowDisplayed*/){
+                if(anyCollectorSelected()){
+                    let newColl = null;
+                    if(i>0 && forSelectedCollector(tableData[i-1]).collectionIndex != forSelectedCollector(tableData[i]).collectionIndex){
+                        newColl = forSelectedCollector(tableData[i]).collectionIndex;
+                    }
+                    else if(i===0){
+                        newColl = forSelectedCollector(tableData[i]).collectionIndex;
+                    }
+
+                    if(newColl !== null && newColl !== Infinity){
+                        if(anythingInCollectionDisplayed(collectionData[newColl])){
+                            newColl = collectionData[newColl];
+                            table += `<div class="row subHeader">${newColl.name}</div>`;
+                        }
+                    }
+                }
+            }
+
+            if(!rowDisplayed)
+                table += `<div class="row" id="artRow${oi}" style="display: none;" class="${rowClass}">`;
             else
-                table += `<div class="row" tr id="artRow${i}" class="${rowClass}">`;
+                table += `<div class="row" tr id="artRow${oi}" class="${rowClass}">`;
                 table += `<div class="cell nameCell">
-                    ${godImage(artifactData[i].site)}&nbsp;
-                    ${artifactData[i].name}
+                    ${godImage(artifactData[oi].site)}&nbsp;
+                    ${artifactData[oi].name}
                 </div>`;
                 table += `<div class="cell numberCell">
-                    ${artifactData[i].level}
+                    ${artifactData[oi].level}
                 </div>`;
                     table += `<div class="cell bigNumberCell">
-                    ${artifactData[i].xp}
+                    ${artifactData[oi].xp}
                 </div>`;
                 table += `<div class="cell bigNumberCell">
-                    ${artifactData[i].chronotes}
+                    ${artifactData[oi].chronotes}
                 </div>`;
                 table += `<div class="cell numberCell right">
-                    <input type="button" value="-" artTarget=${i} class="artOwnedMod" action="minus" id="artownedminus${i}">
-                    <input type="button" value="+" artTarget=${i} class="artOwnedMod" action="plus" id="artownedplus${i}">
-                    <input type="checkbox" class="artCheck" id="artcheck${i}">
+                    <input type="button" value="-" artTarget=${oi} class="artOwnedMod" action="minus" id="artownedminus${oi}">
+                    <input type="button" value="+" artTarget=${oi} class="artOwnedMod" action="plus" id="artownedplus${oi}">
+                    <input type="checkbox" class="artCheck" id="artcheck${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right" style="text-align: center;">
-                    <input type="text" value=0 class="artOwnedCountInput" target=${i} id="artowned${i}">
+                    <input type="text" value=0 class="artOwnedCountInput" target=${oi} id="artowned${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right">
-                    <input type="button" value="-" artTarget=${i} class="artMod" action="minus" id="artminus${i}">
-                    <input type="button" value="+" artTarget=${i} class="artMod" action="plus" id="artplus${i}">
+                    <input type="button" value="-" artTarget=${oi} class="artMod" action="minus" id="artminus${oi}">
+                    <input type="button" value="+" artTarget=${oi} class="artMod" action="plus" id="artplus${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right" style="text-align: center;">
-                    <input type="text" value=0 class="artCountInput" target=${i} id="art${i}">
+                    <input type="text" value=0 class="artCountInput" target=${oi} id="art${oi}">
                 </div>`;
                 // table += `<div class="cell">
                 //     <input type="button" value="+" artTarget=${i} class="artMod" action="plus" id="artplus${i}">
@@ -220,6 +308,39 @@ let archCalc = function(){
         }
     }
 
+    function forSelectedCollector(art){
+        let sel;
+        for(k in collectorsActive){
+            if(collectorsActive[k]) sel = k;
+        }
+
+        if(!sel) return {collectionIndex: -1};
+
+        let aName = art.name;
+        let collectorCollections = collectionData.filter(c => c.collector == sel);
+        if(!collectorCollections.length) return {collectionIndex: Infinity};
+
+        for(let i=0; i<collectorCollections.length; i++){
+            for(let j=0; j<collectorCollections[i].artefacts.length; j++){
+                if(aName == collectorCollections[i].artefacts[j]){
+                    let dataColl = collectionData.filter(c => c.name == collectorCollections[i].name)[0];
+                    return {collectionIndex: collectionData.indexOf(dataColl)};
+
+                }
+            }
+        }
+
+        return {collectionIndex: Infinity};
+    }
+
+    function anyCollectorSelected(){
+        for(k in collectorsActive){
+            if(collectorsActive[k]) return true;
+        }
+
+        return false;
+    }
+
     function godImage(site){
         return `<img class="rowIcon" src="https://runescape.wiki/images/thumb/1/11/${site}_symbol.png/25px-${site}_symbol.png"></img>`;
     }
@@ -259,7 +380,7 @@ let archCalc = function(){
             if((isNaN(artQuantity) || artQuantity == 0) && (isNaN(artOwnedQuantity) || artOwnedQuantity == 0))  continue;
             saveData.push({i: i, n: artQuantity, nR: artOwnedQuantity});
             if(!inSearch(artifactData[i])) continue;
-            
+            if(forSelectedCollector(artifactData[i]).collectionIndex == Infinity) continue;
 
 
             if(checksEnabled && !$(`#artcheck${i}`).is(':checked')) continue;
@@ -310,7 +431,7 @@ let archCalc = function(){
             }
         }
 
-        console.log(collectionsPossible);
+   
         collectionsPossible = collectionsPossible.sort((a,b) => b.requirementsCheck.complete - a.requirementsCheck.complete);
         let completedCollections = collectionsPossible.filter(c => c.requirementsCheck.complete);
         let restoredCollections = collectionsPossible.filter(c => c.requirementsCheck.countOnlyRestored > 0);

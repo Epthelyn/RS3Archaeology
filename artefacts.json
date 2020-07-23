@@ -86,7 +86,7 @@
         {"name": "Hellfire metal", "quantity": 24},
         {"name": "Ruby", "quantity": 1}
     ]},
-    {"name": "'Frying Pan'", "xp": 1073.3, "site": "Saradomin", "level": 42, "chronotes": 392, "materials": [
+    {"name": "'Frying pan'", "xp": 1073.3, "site": "Saradomin", "level": 42, "chronotes": 392, "materials": [
         {"name": "Third Age iron", "quantity": 20},
         {"name": "White marble", "quantity": 24}
     ]},
@@ -168,7 +168,7 @@
         {"name": "Star of Saradomin", "quantity": 34},
         {"name": "Samite silk", "quantity": 28}
     ]},
-    {"name": "Lust metal sculpture", "xp": 3500, "site": "Zamorak", "level": 65, "chronotes": 578, "materials": [
+    {"name": "'Lust' metal sculpture", "xp": 3500, "site": "Zamorak", "level": 65, "chronotes": 578, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Eye of Dagon", "quantity": 24},
         {"name": "Goldrune", "quantity": 24},
@@ -259,7 +259,7 @@
         {"name": "White oak", "quantity": 20},
         {"name": "Leather scraps", "quantity": 16}
     ]},
-    {"name": "Morin Khuur", "xp": 6066.7, "site": "Armadyl", "level": 76, "chronotes": 628, "materials": [
+    {"name": "Morin khuur", "xp": 6066.7, "site": "Armadyl", "level": 76, "chronotes": 628, "materials": [
         {"name": "Armadylean yellow", "quantity": 16},
         {"name": "White oak", "quantity": 28}
     ]},
@@ -354,7 +354,7 @@
         {"name": "Third Age iron", "quantity": 30},
         {"name": "Goldrune", "quantity": 22}
     ]},
-    {"name": "Hawkeye len multi-vision scope", "xp": 8944.4, "site": "Armadyl", "level": 85, "chronotes": 688, "materials": [
+    {"name": "Hawkeye lens multi-vision scope", "xp": 8944.4, "site": "Armadyl", "level": 85, "chronotes": 688, "materials": [
         {"name": "Stormguard steel", "quantity": 40},
         {"name": "Orthenglass", "quantity": 34}
     ]},
@@ -561,6 +561,12 @@
         {"name": "Samite silk", "quantity": 16},
         {"name": "Vellum", "quantity": 16}
     ]},
+    {"name": "'Hallowed Be the Everlight' painting", "xp": 24500, "site": "Saradomin", "level": 105, "chronotes": 910, "materials": [
+        {"name": "Cobalt blue", "quantity": 52},
+        {"name": "White oak", "quantity": 16},
+        {"name": "Samite silk", "quantity": 16},
+        {"name": "Vellum", "quantity": 16}
+    ]},
     {"name": "'The Lord of Light' painting", "xp": 24500, "site": "Saradomin", "level": 105, "chronotes": 910, "materials": [
         {"name": "Cobalt blue", "quantity": 52},
         {"name": "White oak", "quantity": 16},
@@ -576,7 +582,7 @@
         {"name": "Blood of Orcus", "quantity": 36},
         {"name": "Imperial steel", "quantity": 48}
     ]},
-    {"name": "'Animate Dead' scroll", "xp": 27000, "site": "Zaros", "level": 107, "chronotes": 942, "materials": [
+    {"name": "'Animate Dead' spell scroll", "xp": 27000, "site": "Zaros", "level": 107, "chronotes": 942, "materials": [
         {"name": "Ancient vis", "quantity": 24},
         {"name": "Blood of Orcus", "quantity": 40},
         {"name": "Vellum", "quantity": 40}
@@ -614,7 +620,7 @@
         {"name": "Armadylean yellow", "quantity": 60},
         {"name": "Samite silk", "quantity": 54}
     ]},
-    {"name": "Night owl slight goggles", "xp": 32333.3, "site": "Armadyl", "level": 111, "chronotes": 1004, "materials": [
+    {"name": "Night owl flight goggles", "xp": 32333.3, "site": "Armadyl", "level": 111, "chronotes": 1004, "materials": [
         {"name": "Armadylean yellow", "quantity": 44},
         {"name": "Leather scraps", "quantity": 40},
         {"name": "Orthenglass", "quantity": 30}
@@ -629,7 +635,7 @@
         {"name": "Quintessence", "quantity": 34},
         {"name": "Wings of War", "quantity": 34}
     ]},
-    {"name": "Prototype godbow", "xp": 33666.7, "site": "Armadyl", "level": 112, "chronotes": 1050, "materials": [
+    {"name": "Prototype godsword", "xp": 33666.7, "site": "Armadyl", "level": 112, "chronotes": 1050, "materials": [
         {"name": "Aetherium alloy", "quantity": 50},
         {"name": "Quintessence", "quantity": 34},
         {"name": "Goldrune", "quantity": 34}
@@ -652,7 +658,7 @@
         {"name": "Zarosian insignia", "quantity": 30},
         {"name": "Death rune", "quantity": 100}
     ]},
-    {"name": "Kal-i-kra chieftian crown", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
+    {"name": "Kal-i-kra chieftain crown", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
         {"name": "Yu'biusk clay", "quantity": 36},
         {"name": "Animal furs", "quantity": 48}
     ]},
