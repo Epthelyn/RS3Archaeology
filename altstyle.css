@@ -199,6 +199,26 @@ tr:nth-child(even){
     width: 20px;
     height: 20px;
 }
+
+.matOwnedCountInput{
+    background-color: #374151;
+    color:  #D2D6DC;
+    border: 1px solid #4B5563;
+    border-radius: 2px;
+    font-size: 16px;
+    text-align: center;
+    width: 30px;
+}
+
+.matOwnedMod{
+    background-color: #057A55;
+    border: 0px solid #4B5563;
+    border-radius: 2px;
+    color: #D2D6DC;
+    width: 20px;
+    height: 20px;
+}
+
 /*
 tr.Zaros:nth-child(odd){
     background-color: rgb(249, 228, 253);

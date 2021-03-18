@@ -119,6 +119,16 @@ th {
     filter: grayscale(100%);
 }
 
+.collectorFilterIcon{
+    width: 30px;
+    height: 30px;
+}
+
+.collectorFilterIcon.inactive{
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
 .matImg{
     width: 20px;
     height: 20px;

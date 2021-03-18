@@ -1,0 +1,202 @@
+[
+    {
+       "name":"Third Age iron",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Zarosian insignia",
+       "type":"Zaros"
+    },
+    {
+       "name":"Imperial steel",
+       "type":"Zaros"
+    },
+    {
+       "name":"Samite silk",
+       "type":"Agnostic"
+    },
+    {
+       "name":"White oak",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Goldrune",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Orthenglass",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Vellum",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Cadmium red",
+       "type":"Zamorak"
+    },
+    {
+       "name":"Ancient vis",
+       "type":"Zaros"
+    },
+    {
+       "name":"Tyrian purple",
+       "type":"Zaros"
+    },
+    {
+       "name":"Leather scraps",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Chaotic brimstone",
+       "type":"Zamorak"
+    },
+    {
+       "name":"Demonhide",
+       "type":"Zamorak"
+    },
+    {
+       "name":"Eye of Dagon",
+       "type":"Zamorak"
+    },
+    {
+       "name":"Hellfire metal",
+       "type":"Zamorak"
+    },
+    {
+       "name":"Ruby",
+       "type":"Special"
+    },
+    {
+       "name":"White marble",
+       "type":"Saradomin"
+    },
+    {
+       "name":"Keramos",
+       "type":"Saradomin"
+    },
+    {
+       "name":"White candle",
+       "type":"Special"
+    },
+    {
+       "name":"Dragonstone",
+       "type":"Special"
+    },
+    {
+       "name":"Cobalt blue",
+       "type":"Saradomin"
+    },
+    {
+       "name":"Everlight silvthril",
+       "type":"Saradomin"
+    },
+    {
+       "name":"Star of Saradomin",
+       "type":"Saradomin"
+    },
+    {
+       "name":"Blood of Orcus",
+       "type":"Zaros"
+    },
+    {
+       "name":"Bronze bar",
+       "type":"Special"
+    },
+    {
+       "name":"Silver bar",
+       "type":"Special"
+    },
+    {
+       "name":"Wings of War",
+       "type":"Armadyl"
+    },
+    {
+       "name":"Stormguard steel",
+       "type":"Armadyl"
+    },
+    {
+       "name":"Clockwork",
+       "type":"Special"
+    },
+    {
+       "name":"Sapphire",
+       "type":"Special"
+    },
+    {
+       "name":"Armadylean yellow",
+       "type":"Armadyl"
+    },
+    {
+       "name":"Diamond",
+       "type":"Special"
+    },
+    {
+       "name":"Animal furs",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Vulcanised rubber",
+       "type":"Bandos"
+    },
+    {
+       "name":"Malachite green",
+       "type":"Bandos"
+    },
+    {
+       "name":"Mark of the Kyzaj",
+       "type":"Bandos"
+    },
+    {
+       "name":"Warforged bronze",
+       "type":"Bandos"
+    },
+    {
+       "name":"Phoenix feather",
+       "type":"Armadyl"
+    },
+    {
+       "name":"Fossilised bone",
+       "type":"Bandos"
+    },
+    {
+       "name":"Yu'biusk clay",
+       "type":"Bandos"
+    },
+    {
+       "name":"Weapon poison (3)",
+       "type":"Special"
+    },
+    {
+       "name":"Aetherium alloy",
+       "type":"Armadyl"
+    },
+    {
+       "name":"Rope",
+       "type":"Special"
+    },
+    {
+       "name":"Quintessence",
+       "type":"Armadyl"
+    },
+    {
+       "name":"Soapstone",
+       "type":"Agnostic"
+    },
+    {
+       "name":"Black mushroom ink",
+       "type":"Special"
+    },
+    {
+       "name":"Emerald",
+       "type":"Special"
+    },
+    {
+       "name":"Molten glass",
+       "type":"Special"
+    },
+    {
+       "name":"Death rune",
+       "type":"Special"
+    }
+ ]

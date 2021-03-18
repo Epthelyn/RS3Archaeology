@@ -1,6 +1,7 @@
 let archCalc = function(){
     let artifactData = [];
     let collectionData = [];
+    let materialData = [];
 
     let totals = {
         xp: 0,
@@ -12,7 +13,8 @@ let archCalc = function(){
         Zamorak: true,
         Saradomin: true,
         Armadyl: true,
-        Bandos: true
+        Bandos: true,
+        Dragonkin: true
     }
 
     let collectorsActive = {
@@ -25,10 +27,14 @@ let archCalc = function(){
         "Sir Atcha": false,
         "Soran": false,
         "Velucia": false,
-        "Wise Old Man": false
+        "Wise Old Man": false,
+        "Giles": false,
+        "Sharrigan": false
     }
 
     let searchFilter = null;
+
+    let listView = "ARTIFACTS";
 
     $(document).ready(function(){
         $.ajax({
@@ -38,6 +44,23 @@ let archCalc = function(){
             success: function(data){
                 collectionData = data;
                 console.log(collectionData);
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+
+        $.ajax({
+            url: 'materials.json',
+            dataType: 'JSON',
+            async: false,
+            success: function(data){
+                data = data.filter(d => d.type != "Special");
+                materialData = data;
+                console.log(materialData);
+                for(let i=0; i<materialData.length; i++){
+                    materialData[i].originalIndex = i;
+                }
             },
             error: function(err){
                 console.log(err);
@@ -60,6 +83,8 @@ let archCalc = function(){
                 console.log(err);
             }
         });
+
+        //console.log(JSON.stringify(getMaterialsDataFromArtifactData()));
 
 
 
@@ -134,6 +159,9 @@ let archCalc = function(){
         //     <div class="cell numberCell"></div>
         // </div>`;
 
+        $('#headrow_materials').css('display', listView=="MATERIALS"?"block":"none");
+        $('#headrow_artifacts').css('display', listView=="ARTIFACTS"?"block":"none");
+
         let tableData = JSON.parse(JSON.stringify(artifactData));
         if(anyCollectorSelected){
             //tableData = tableData.filter(t => forSelectedCollector(t));
@@ -141,13 +169,16 @@ let archCalc = function(){
             tableData = tableData.sort((a,b) => forSelectedCollector(a).collectionIndex - forSelectedCollector(b).collectionIndex);
         }
 
-       
+        let tableMaterialData = JSON.parse(JSON.stringify(materialData));
+        tableMaterialData = tableMaterialData.sort((a,b) => a.type.localeCompare(b.type));
+        console.log(tableMaterialData);
 
         for(let i=0; i<tableData.length; i++){
             let rowClass = artifactData[i].site;
             let oi = tableData[i].originalIndex;
             //if($(`#art${i}`).val() > 0) rowClass += " active";
             let rowDisplayed = !(!sitesActive[artifactData[oi].site] || !inSearch(artifactData[oi]) || forSelectedCollector(artifactData[oi]).collectionIndex == Infinity);
+            if(listView != "ARTIFACTS") rowDisplayed = false;
 
             if(true /*rowDisplayed*/){
                 if(anyCollectorSelected()){
@@ -171,7 +202,7 @@ let archCalc = function(){
             if(!rowDisplayed)
                 table += `<div class="row" id="artRow${oi}" style="display: none;" class="${rowClass}">`;
             else
-                table += `<div class="row" tr id="artRow${oi}" class="${rowClass}">`;
+                table += `<div class="row" id="artRow${oi}" class="${rowClass}">`;
                 table += `<div class="cell nameCell">
                     ${godImage(artifactData[oi].site)}&nbsp;
                     ${artifactData[oi].name}
@@ -188,8 +219,9 @@ let archCalc = function(){
                 table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${oi} class="artOwnedMod" action="minus" id="artownedminus${oi}">
                     <input type="button" value="+" artTarget=${oi} class="artOwnedMod" action="plus" id="artownedplus${oi}">
-                    <input type="checkbox" class="artCheck" id="artcheck${oi}">
+                    
                 </div>`;
+                //<input type="checkbox" class="artCheck" id="artcheck${oi}">
                 table += `<div class="cell numberCell right" style="text-align: center;">
                     <input type="text" value=0 class="artOwnedCountInput" target=${oi} id="artowned${oi}">
                 </div>`;
@@ -206,6 +238,43 @@ let archCalc = function(){
                 // table += `<div class="cell">
                 //     <input type="checkbox" class="artCheck" id="artcheck${i}">
                 // </div>`;
+            table += "</div>";
+        }
+
+        for(let i=0; i<tableMaterialData.length; i++){
+            let oi = tableMaterialData[i].originalIndex;
+            let rowDisplayed = listView=="MATERIALS";
+
+            let newMat = null;
+            if(i>0 && tableMaterialData[i-1].type != tableMaterialData[i].type){
+                newMat = tableMaterialData[i].type;
+            }
+            else if(i===0){
+                newMat = tableMaterialData[i].type;
+            }
+
+            if(newMat !== null && newMat !== Infinity){
+                if(rowDisplayed){
+                    table += `<div class="row subHeader">${newMat}</div>`;
+                }
+            }
+
+            if(!rowDisplayed)
+                table +=  `<div class="row" id="matRow${oi}" style="display: none;">`;
+            else
+                table +=  `<div class="row" id="matRow${oi}">`;
+
+            table += `
+                <div class="cell nameCell">${materialImage(tableMaterialData[i].name)}&nbsp;${tableMaterialData[i].name}</div>
+                <div class="cell numberCell">${tableMaterialData[i].type}</div>
+                <div class="cell numberCell right">
+                    <input type="button" value="-" matTarget=${oi} class="matOwnedMod" action="minus" id="matownedminus${oi}">
+                    <input type="button" value="+" matTarget=${oi} class="matOwnedMod" action="plus" id="matownedplus${oi}">
+                </div>
+                <div class="cell numberCell right">
+                    <input type="text" value=0 class="matOwnedCountInput" target=${oi} id="matowned${oi}">
+                </div>
+            `
             table += "</div>";
         }
 
@@ -348,6 +417,7 @@ let archCalc = function(){
     function materialImage(mat){
         return `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
     }
+    
 
     function calcTotals(){
         totals = {
@@ -550,5 +620,29 @@ let archCalc = function(){
         if(!isNaN(parseInt(searchFilter)) && art.level == parseInt(searchFilter)) return true;
 
         return false;
+    }
+
+    function getMaterialsDataFromArtifactData(){
+        let mats = [];
+        let matsRecorded = [];
+        for(let i=0; i<artifactData.length; i++){
+            let a = artifactData[i];
+            for(let j=0; j<a.materials.length; j++){
+                let m = a.materials[j].name;
+                if(!matsRecorded.includes(m)){
+                    mats.push({
+                        name: m,
+                        type: a.site
+                    });
+                    matsRecorded.push(m);
+                }
+                else{
+                    let c = mats.filter(x => x.name == m)[0];
+                    if(c.type != a.site) c.type = "Agnostic";
+                }
+            }
+        }
+
+        return mats;
     }
 }();
