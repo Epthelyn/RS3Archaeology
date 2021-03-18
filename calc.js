@@ -88,14 +88,26 @@ let archCalc = function(){
 
 
 
-        $('.siteFilterIcon').on('click', function(){
+        $('.siteFilterIcon').on('click', function(e){
             let iconType = $(this).attr('site');
-            sitesActive[iconType] = !sitesActive[iconType];
-            if(sitesActive[iconType]){
+            console.log(e);
+            if(e.shiftKey){
+                $('.siteFilterIcon').addClass('inactive');
+                for(k in sitesActive){
+                    sitesActive[k] = false;
+                }
+
+                sitesActive[iconType] = true;
                 $(this).removeClass('inactive');
             }
             else{
-                $(this).addClass('inactive');
+                sitesActive[iconType] = !sitesActive[iconType];
+                if(sitesActive[iconType]){
+                    $(this).removeClass('inactive');
+                }
+                else{
+                    $(this).addClass('inactive');
+                }
             }
 
             generateTable();
