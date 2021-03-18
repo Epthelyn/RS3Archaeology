@@ -925,5 +925,153 @@
             "'The Eudoxian Elements' tablet",
             "'Da Boss Man' sculpture"
         ]
+    },
+    {
+        "name": "Desperate for Artefacts",
+        "level": 90,
+        "reward": "Cosmic Pyramid",
+        "collector": "Giles",
+        "repeatableReward": {
+            "chronotes": 2108
+        },
+        "artefacts":[
+            "Ceremonial dragonkin device",
+            "Ceremonial dragonkin tablet"
+        ]
+    },
+    {
+        "name": "Dragonkin I",
+        "level": 99,
+        "reward": null,
+        "collector": "Sharrigan",
+        "repeatableReward": {
+            "chronotes": 5524,
+            "anachronia resource packs": 6
+        },
+        "artefacts":[
+            "Pasaha",
+            "Ritual bell",
+            "Kilaya",
+            "Vazara",
+            "Death mask",
+            "Dragonkin calendar",
+            "Dragonkin staff"
+        ]
+    },
+    {
+        "name": "Dragonkin II",
+        "level": 102,
+        "reward": null,
+        "collector": "Sharrigan",
+        "repeatableReward": {
+            "chronotes": 3444,
+            "rex skeleton fragments": 75
+        },
+        "artefacts":[
+            "Dragon scalpel",
+            "Protective goggles",
+            "Dragon burner",
+            "Orthenglass flask"
+        ]
+    },
+    {
+        "name": "Dragonkin III",
+        "level": 108,
+        "reward": "Kaladanda & 4652 chronotes",
+        "collector": "Sharrigan",
+        "repeatableReward": {
+            "chronotes": 4652
+        },
+        "artefacts":[
+            "Meditation pipe",
+            "Personal totem",
+            "Singing bowl",
+            "Lingam stone",
+            "Master control"
+        ]
+    },
+    {
+        "name": "Dragonkin IV",
+        "level": 120,
+        "reward": null,
+        "collector": "Sharrigan",
+        "repeatableReward": {
+            "chronotes": 6980,
+            "rex skeleton fragments": 150
+        },
+        "artefacts":[
+            "Xolo hard hat",
+            "Xolo pickaxe",
+            "Xolo shield",
+            "Xolo spear",
+            "Gold dish",
+            "'Raksha' idol"
+        ]
+    },
+    {
+        "name": "Museum - Dragonkin I",
+        "level": 99,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 6905
+        },
+        "artefacts":[
+            "Pasaha",
+            "Ritual bell",
+            "Kilaya",
+            "Vazara",
+            "Death mask",
+            "Dragonkin calendar",
+            "Dragonkin staff"
+        ]
+    },
+    {
+        "name": "Museum - Dragonkin II",
+        "level": 102,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 4305
+        },
+        "artefacts":[
+            "Dragon scalpel",
+            "Protective goggles",
+            "Dragon burner",
+            "Orthenglass flask"
+        ]
+    },
+    {
+        "name": "Museum - Dragonkin III",
+        "level": 108,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 5815
+        },
+        "artefacts":[
+            "Meditation pipe",
+            "Personal totem",
+            "Singing bowl",
+            "Lingam stone",
+            "Master control"
+        ]
+    },
+    {
+        "name": "Museum - Dragonkin IV",
+        "level": 120,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 8725
+        },
+        "artefacts":[
+            "Xolo hard hat",
+            "Xolo pickaxe",
+            "Xolo shield",
+            "Xolo spear",
+            "Gold dish",
+            "'Raksha' idol"
+        ]
     }
 ]
