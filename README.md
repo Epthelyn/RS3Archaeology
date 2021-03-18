@@ -6,7 +6,7 @@ https://epthelyn.github.io/RS3Archaeology/
 # How to use
 Input the number of damaged and/or restored artefacts available in the list on the left. This can be done by entering the numbers manually or by using the +/- buttons to increment/decrement the number available. The yellow buttons are for damaged artefacts, the green for restored.
 If any of the checkboxes from the artefact rows are checked, the calculator will only consider artefacts which have been checked.
-The icons in the central divider can be used to turn on and off the display and calculation of artefacts from each of the excavation sites. Greyscale icons are disabled, coloured icons enabled.
+The icons in the central divider can be used to turn on and off the display and calculation of artefacts from each of the excavation sites. Greyscale icons are disabled, coloured icons enabled. Shift-clicking an item will select only that item and deselect all others.
 
 The output will appear on the right hand side of the page.
 The top section will display how much experience will be gained from restoring the artefacts, how many artefacts have been entered, and how many of each material is required to restore all damage artefacts.
