@@ -218,6 +218,9 @@
         {"name": "White oak", "quantity": 30},
         {"name": "Clockwork", "quantity": 1}
     ]},
+    {"name": "Ceremonial dragonkin device", "xp": 4666.7, "site": "Dragonkin", "level": 70, "chronotes": 602, "materials": [
+        {"name": "Orthenglass", "quantity": 50}
+    ]},
     {"name": "Decorative vase", "xp": 5133.3, "site": "Saradomin", "level": 72, "chronotes": 606, "materials": [
         {"name": "White marble", "quantity": 36},
         {"name": "Cobalt blue", "quantity": 30}
@@ -398,6 +401,17 @@
         {"name": "Third Age iron", "quantity": 20},
         {"name": "Hellfire metal", "quantity": 38}
     ]},
+    {"name": "Ceremonial dragonkin tablet", "xp": 10889.9, "site": "Dragonkin", "level": 90, "chronotes": 733, "materials": [
+        {"name": "Orthenglass", "quantity": 79}
+    ]},
+    {"name": "Pasaha", "xp": 10888.9, "site": "Dragonkin", "level": 90, "chronotes": 726, "materials": [
+        {"name": "Felt", "quantity": 40},
+        {"name": "Goldrune", "quantity": 38}
+    ]},
+    {"name": "Ritual Bell", "xp": 10888.9, "site": "Dragonkin", "level": 90, "chronotes": 726, "materials": [
+        {"name": "Goldrune", "quantity": 40},
+        {"name": "Compass rose", "quantity": 38}
+    ]},
     {"name": "Prototype gravimeter", "xp": 11277.8, "site": "Armadyl", "level": 91, "chronotes": 742, "materials": [
         {"name": "Quintessence", "quantity": 34},
         {"name": "Leather scraps", "quantity": 20},
@@ -452,6 +466,15 @@
         {"name": "Wings of War", "quantity": 28},
         {"name": "White oak", "quantity": 20}
     ]},
+    {"name": "Kilaya", "xp": 15000, "site": "Dragonkin", "level": 96, "chronotes": 794, "materials": [
+        {"name": "Dragon metal", "quantity": 46},
+        {"name": "Compass rose", "quantity": 40}
+    ]},
+    {"name": "Vazara", "xp": 15000, "site": "Dragonkin", "level": 96, "chronotes": 794, "materials": [
+        {"name": "Dragon metal", "quantity": 30},
+        {"name": "Compass rose", "quantity": 28},
+        {"name": "Goldrune", "quantity": 28}
+    ]},
     {"name": "Garagorshuun anchor", "xp": 15833.3, "site": "Bandos", "level": 97, "chronotes": 810, "materials": [
         {"name": "Warforged bronze", "quantity": 32},
         {"name": "Mark of the Kyzaj", "quantity": 26},
@@ -494,6 +517,19 @@
         {"name": "White oak", "quantity": 26},
         {"name": "Orthenglass", "quantity": 26}
     ]},
+    {"name": "Death mask", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
+        {"name": "Orgone", "quantity": 56},
+        {"name": "Soapstone", "quantity": 34}
+    ]},
+    {"name": "Dragonkin calendar", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
+        {"name": "Orgone", "quantity": 34},
+        {"name": "Carbon black", "quantity": 28},
+        {"name": "Compass rose", "quantity": 28}
+    ]},
+    {"name": "Dragonkin staff", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
+        {"name": "Orgone", "quantity": 56},
+        {"name": "Soapstone", "quantity": 34}
+    ]},
     {"name": "Dorgeshuun spear", "xp": 18666.7, "site": "Bandos", "level": 100, "chronotes": 844, "materials": [
         {"name": "Warforged bronze", "quantity": 50},
         {"name": "White oak", "quantity": 42}
@@ -520,6 +556,22 @@
         {"name": "Imperial steel", "quantity": 54},
         {"name": "Ancient vis", "quantity": 38},
         {"name": "Molten glass", "quantity": 1}
+    ]},
+    {"name": "Dragon scalpel", "xp": 19833.3, "site": "Dragonkin", "level": 101, "chronotes": 860, "materials": [
+        {"name": "Dragon metal", "quantity": 52},
+        {"name": "Felt", "quantity": 42}
+    ]},
+    {"name": "Dragon burner", "xp": 21000, "site": "Dragonkin", "level": 101, "chronotes": 862, "materials": [
+        {"name": "Dragon metal", "quantity": 52},
+        {"name": "Orgone", "quantity": 42}
+    ]},
+    {"name": "Orthenglass flask", "xp": 21000, "site": "Dragonkin", "level": 101, "chronotes": 862, "materials": [
+        {"name": "Dragon metal", "quantity": 34},
+        {"name": "Orthenglass", "quantity": 60}
+    ]},
+    {"name": "Protective goggles", "xp": 19833.3, "site": "Dragonkin", "level": 101, "chronotes": 860, "materials": [
+        {"name": "Orthenglass", "quantity": 52},
+        {"name": "Felt", "quantity": 42}
     ]},
     {"name": "Blackfire lance", "xp": 22166.7, "site": "Armadyl", "level": 103, "chronotes": 878, "materials": [
         {"name": "Aetherium alloy", "quantity": 50},
@@ -573,6 +625,19 @@
         {"name": "Samite silk", "quantity": 16},
         {"name": "Vellum", "quantity": 16}
     ]},
+    {"name": "Meditation pipe", "xp": 25666.7, "site": "Dragonkin", "level": 106, "chronotes": 912, "materials": [
+        {"name": "Dragon metal", "quantity": 40},
+        {"name": "Orgone", "quantity": 60}
+    ]},
+    {"name": "Personal totem", "xp": 25666.7, "site": "Dragonkin", "level": 106, "chronotes": 912, "materials": [
+        {"name": "Carbon black", "quantity": 26},
+        {"name": "Orgone", "quantity": 48},
+        {"name": "Compass rose", "quantity": 26}
+    ]},
+    {"name": "Singing bowl", "xp": 25666.7, "site": "Dragonkin", "level": 106, "chronotes": 912, "materials": [
+        {"name": "Dragon metal", "quantity": 40},
+        {"name": "Orgone", "quantity": 60}
+    ]},
     {"name": "Ancient magic tablet", "xp": 27000, "site": "Zaros", "level": 107, "chronotes": 942, "materials": [
         {"name": "Ancient vis", "quantity": 40},
         {"name": "Blood of Orcus", "quantity": 64}
@@ -586,6 +651,16 @@
         {"name": "Ancient vis", "quantity": 24},
         {"name": "Blood of Orcus", "quantity": 40},
         {"name": "Vellum", "quantity": 40}
+    ]},
+    {"name": "Lingam stone", "xp": 28333.3, "site": "Dragonkin", "level": 108, "chronotes": 958, "materials": [
+        {"name": "Orgone", "quantity": 44},
+        {"name": "Carbon black", "quantity": 30},
+        {"name": "Compass rose", "quantity": 32}
+    ]},
+    {"name": "Master control", "xp": 28333.3, "site": "Dragonkin", "level": 108, "chronotes": 958, "materials": [
+        {"name": "Orgone", "quantity": 30},
+        {"name": "Carbon black", "quantity": 32},
+        {"name": "Compass rose", "quantity": 44}
     ]},
     {"name": "'The Enlightened Soul' scroll", "xp": 29666.7, "site": "Saradomin", "level": 109, "chronotes": 988, "materials": [
         {"name": "Star of Saradomin", "quantity": 50},
@@ -639,6 +714,15 @@
         {"name": "Aetherium alloy", "quantity": 50},
         {"name": "Quintessence", "quantity": 34},
         {"name": "Goldrune", "quantity": 34}
+    ]},
+    {"name": "Xolo hard hat", "xp": 35000, "site": "Dragonkin", "level": 113, "chronotes": 1066, "materials": [
+        {"name": "Goldrune", "quantity": 54},
+        {"name": "Dragon metal", "quantity": 66}
+    ]},
+    {"name": "Xolo pickaxe", "xp": 35000, "site": "Dragonkin", "level": 113, "chronotes": 1066, "materials": [
+        {"name": "Goldrune", "quantity": 36},
+        {"name": "Dragon metal", "quantity": 50},
+        {"name": "Orgone", "quantity": 34}
     ]},
     {"name": "Praetorian hood", "xp": 36666.7, "site": "Zaros", "level": 114, "chronotes": 1096, "materials": [
         {"name": "Ancient vis", "quantity": 36},
@@ -736,5 +820,23 @@
         {"name": "Yu'biusk clay", "quantity": 50},
         {"name": "Malachite green", "quantity": 44},
         {"name": "Soapstone", "quantity": 40}
+    ]},
+    {"name": "Xolo shield", "xp": 45000, "site": "Dragonkin", "level": 119, "chronotes": 1204, "materials": [
+        {"name": "Goldrune", "quantity": 52},
+        {"name": "Orgone", "quantity": 44},
+        {"name": "Felt", "quantity": 42}
+    ]},
+    {"name": "Xolo spear", "xp": 45000, "site": "Dragonkin", "level": 119, "chronotes": 1204, "materials": [
+        {"name": "Dragon metal", "quantity": 72},
+        {"name": "Orgone", "quantity": 64}
+    ]},
+    {"name": "Gold dish", "xp": 46666.7, "site": "Dragonkin", "level": 120, "chronotes": 1220, "materials": [
+        {"name": "Goldrune", "quantity": 86},
+        {"name": "Dragon metal", "quantity": 54}
+    ]},
+    {"name": "'Raksha' idol", "xp": 46666.7, "site": "Dragonkin", "level": 120, "chronotes": 1220, "materials": [
+        {"name": "Orgone", "quantity": 56},
+        {"name": "Dragon metal", "quantity": 44},
+        {"name": "Goldrune", "quantity": 40}
     ]}
 ]
