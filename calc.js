@@ -533,7 +533,7 @@ let archCalc = function(){
         output += "<br><hr>";
         output += "<b><u>Including Damaged Artefacts</u></b><br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br><br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotes*0.4)) + "<br><br>";
         output += "<b>Completed Collections</b>:<br>";
         if(!completedCollections.length){
             output += "No completed collections.<br>";
@@ -564,7 +564,7 @@ let archCalc = function(){
         output += "<br><hr>";
         output += "<b><u>Excluding Damaged Artefacts</u></b><br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotesRestored + "<br>";
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotesRestored*0.4)) + "<br><br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotesRestored*0.4)) + "<br><br>";
         output += "<b>Restored Collections</b>:<br>";
         if(!completedRestoredCollections.length){
             output += "No restored collections.<br>";
