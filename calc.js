@@ -36,7 +36,36 @@ let archCalc = function(){
 
     let listView = "ARTIFACTS";
 
+    const pylonXP = [
+        0,3,3,3,4,4,5,6,6,7,7,8,9,10,11,12,13,13,14,14,15,16,16,17,18,19,19,20,20,22,23,24,25,26,
+        27,29,30,31,33,34,36,37,39,40,42,44,46,48,50,52,55,57,60,62,65,68,71,74,77,80,84,87,91,95,100,104,108,
+        113,118,123,129,134,140,147,154,160,166,174,182,189,199,208,217,226,238,245,257,268,279,296,306,322,330,346,361,376,403,417,430
+    ];
+
+    const tomeXP = [
+        300,331.2,369.6,408,447.6,499.2,590.4,609.6,660,736.8,
+        816,902.4,986.4,1099.2,1209.6,1255.2,1315.2,1368,1430.4,1488,
+        1557.6,1617.6,1689.6,1764,1843.2,1915.2,1945.2,1987.2,2174.4,2270.4,
+        2367.6,2467.2,2572.8,2684.4,2798.4,2920.8,3048,3177.6,3319.2,3458.4,
+        3609.6,3765.6,3926.4,4096.8,4269.6,4459.2,4658.4,4860,5064,5284.8,
+        5511.6,5760,5997.6,6261.6,6537.6,3825.6,7128,7240.8,7759.2,8084.4,
+        8436,8810.4,9174,9621.6,10118.4,10423.2,11419.2,11856,12445.2,12926.4,
+        13484.4,14143.2,14793.6,15426,16029.6,16776,17504.4,18202.8,19104,19996.8,
+        20868,21704.4,22857.6,23608.8,24158.4,25802.4,26844,28428,29383.2,30968,
+        31750,33257,34733,36156,38710,40068,41290,43299,45002,46704,
+        48407,50110,51812,53515,55217,56920,58622,60325,62028,63730,
+        65432,67135,68837,70539,72242,73944,75647,77351,80261,86561
+    ];
+
     $(document).ready(function(){
+        let savedInfo = localStorage.getItem('rs3arch_info');
+        if(savedInfo){
+            savedInfo = $.parseJSON(savedInfo);
+            for(k in savedInfo){
+                $(`#ii_${k}`).val(savedInfo[k]);
+            }
+        }
+
         $.ajax({
             url: 'collections.json',
             dataType: 'JSON',
@@ -145,6 +174,22 @@ let archCalc = function(){
             calcTotals();
             generateTable();
         });
+
+        $('.infoInput').on('change', function(){
+            let info = {
+                level: 1,
+                batts: 0,
+                tomes: 0
+            }
+
+            for(k in info){
+                info[k] = $(`#ii_${k}`).val();
+            }
+
+            localStorage.setItem('rs3arch_info',JSON.stringify(info));
+
+            calcTotals();
+        });
     });
 
     function anythingInCollectionDisplayed(c){
@@ -155,6 +200,7 @@ let archCalc = function(){
             let aIndex = artifactData.indexOf(artifactData.filter(a => a.name == c.artefacts[i])[0]);
             //console.log(c.artefacts[i]);
             //console.log(aIndex);
+            if(!artifactData[aIndex]) return false;
             let displayed = !(!sitesActive[artifactData[aIndex].site] || !inSearch(artifactData[aIndex]) || forSelectedCollector(artifactData[aIndex]).collectionIndex == Infinity);
             if(displayed) return true;
         }
@@ -219,7 +265,7 @@ let archCalc = function(){
                     ${godImage(artifactData[oi].site)}&nbsp;
                     ${artifactData[oi].name}
                 </div>`;
-                table += `<div class="cell numberCell">
+                table += `<div class="cell numberCell" ${artifactData[oi].level > $('#ii_level').val()?`style="color: red;"`:``}>
                     ${artifactData[oi].level}
                 </div>`;
                     table += `<div class="cell bigNumberCell">
@@ -519,8 +565,50 @@ let archCalc = function(){
         let restoredCollections = collectionsPossible.filter(c => c.requirementsCheck.countOnlyRestored > 0);
         let completedRestoredCollections = collectionsPossible.filter(c => c.requirementsCheck.completeByRestored);
 
+        console.log(collectionsPossible);
+        let chronotesFromCompleted = {
+            restoredOnly: 0,
+            any: 0
+        }
 
-        let output = `<b>Total Experience: ${~~totals.xp}</b> from <b>${totals.count}</b> artefact${totals.count>1||totals.count==0?"s":""}. <br>`;
+        collectionsPossible.forEach(coll => {
+            const ref = collectionData[coll.index];
+            if(!ref.repeatableReward) return;
+            if(!ref.repeatableReward.chronotes) return;
+            
+            if(coll.requirementsCheck.completeByDamaged){
+                chronotesFromCompleted.any += ref.repeatableReward.chronotes;
+                console.log(coll);
+            }
+            else if(coll.requirementsCheck.completeByRestored){
+                // chronotesFromCompleted.any += ref.repeatableReward.chronotes;
+                chronotesFromCompleted.restoredOnly += ref.repeatableReward.chronotes;
+                console.log(coll);
+            }
+        });
+
+        console.log(chronotesFromCompleted);
+
+        const archLevel = parseInt($('#ii_level').val());
+        const tomes = parseInt($('#ii_tomes').val());
+        const batts = parseInt($('#ii_batts').val());
+        
+        let totalTomeXP = 0;
+        let totalBattXP = 0;
+
+        if(!isNaN(archLevel)){
+            if(!isNaN(tomes)){
+                totalTomeXP = tomes*tomeXP[Math.min(120,Math.max(archLevel,1))];
+            }
+            if(!isNaN(batts)){
+                totalBattXP = batts*pylonXP[Math.min(98,Math.max(archLevel,1))];
+            }
+        }
+
+        let output = `<b>Artefact Experience: ${~~totals.xp}</b> from <b>${totals.count}</b> artefact${totals.count>1||totals.count==0?"s":""}. <br>`;
+        if(totalTomeXP) output += `<b>Tome Experience:</b> ${~~totalTomeXP}<br>`;
+        if(totalBattXP) output += `<b>Pylon Battery Experience:</b> ${~~totalBattXP}<br>`;
+        output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP)}<br>`;
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
         output += "<br><b>Materials Required</b>:<br>";
@@ -532,7 +620,7 @@ let archCalc = function(){
         }
         output += "<br><hr>";
         output += "<b><u>Including Damaged Artefacts</u></b><br>";
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors" + ": " + totals.chronotes + "<br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotes*0.4)) + "<br><br>";
         output += "<b>Completed Collections</b>:<br>";
         if(!completedCollections.length){
@@ -563,7 +651,7 @@ let archCalc = function(){
         }
         output += "<br><hr>";
         output += "<b><u>Excluding Damaged Artefacts</u></b><br>";
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotesRestored + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors" + ": " + totals.chronotesRestored + "<br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotesRestored*0.4)) + "<br><br>";
         output += "<b>Restored Collections</b>:<br>";
         if(!completedRestoredCollections.length){
