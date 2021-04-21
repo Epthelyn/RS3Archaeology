@@ -179,7 +179,8 @@ let archCalc = function(){
             let info = {
                 level: 1,
                 batts: 0,
-                tomes: 0
+                tomes: 0,
+                outfit: 0
             }
 
             for(k in info){
@@ -190,6 +191,8 @@ let archCalc = function(){
 
             calcTotals();
         });
+
+        $('#ii_level').on('change', generateTable);
     });
 
     function anythingInCollectionDisplayed(c){
@@ -473,7 +476,13 @@ let archCalc = function(){
     }
 
     function materialImage(mat){
-        return `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
+        if(mat.indexOf('(3)')){ //Potion handling
+            return `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat.replace(/\(3\)/gm,"")}_detail.png/100px-${mat}_detail.png">`;
+        }
+        else{
+            return `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
+        }
+        
     }
     
 
@@ -592,6 +601,9 @@ let archCalc = function(){
         const archLevel = parseInt($('#ii_level').val());
         const tomes = parseInt($('#ii_tomes').val());
         const batts = parseInt($('#ii_batts').val());
+        const outfit = parseInt($('#ii_outfit').val());
+
+        const outfitBonus = 1 + (outfit < 5?0.01*outfit:0.06);
         
         let totalTomeXP = 0;
         let totalBattXP = 0;
@@ -605,10 +617,14 @@ let archCalc = function(){
             }
         }
 
+        totalBattXP*=outfitBonus;
+        totalTomeXP*=outfitBonus;
+        totals.xp*=outfitBonus;
+
         let output = `<b>Artefact Experience: ${~~totals.xp}</b> from <b>${totals.count}</b> artefact${totals.count>1||totals.count==0?"s":""}. <br>`;
         if(totalTomeXP) output += `<b>Tome Experience:</b> ${~~totalTomeXP}<br>`;
         if(totalBattXP) output += `<b>Pylon Battery Experience:</b> ${~~totalBattXP}<br>`;
-        output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP)}<br>`;
+        output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP)} ${outfitBonus>1?`(x${outfitBonus})`:``}<br>`;
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
         output += "<br><b>Materials Required</b>:<br>";
