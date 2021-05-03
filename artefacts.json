@@ -2,841 +2,1015 @@
     {"name": "Venator dagger", "xp": 305.1, "site": "Zaros", "level": 5, "chronotes": 206, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Zarosian insignia", "quantity": 12}
-    ]},
+    ],
+    "location": "Venator remains"},
     {"name": "Venator light crossbow", "xp": 305.1, "site": "Zaros", "level": 5, "chronotes": 206, "materials": [
         {"name": "Third Age iron", "quantity": 12},
         {"name": "Zarosian insignia", "quantity": 16}
-    ]},
+    ],
+    "location": "Venator remains"},
     {"name": "Legionary gladius", "xp": 430.8, "site": "Zaros", "level": 12, "chronotes": 220, "materials": [
         {"name": "Third Age iron", "quantity": 10},
         {"name": "Zarosian insignia", "quantity": 6},
         {"name": "Imperial steel", "quantity": 12}
-    ]},
+    ],
+    "location": "Legionary remains"},
     {"name": "Legionary square shield", "xp": 430.8, "site": "Zaros", "level": 12, "chronotes": 220, "materials": [
         {"name": "Third Age iron", "quantity": 8},
         {"name": "Zarosian insignia", "quantity": 8},
         {"name": "Imperial steel", "quantity": 12}
-    ]},
+    ],
+    "location": "Legionary remains"},
     {"name": "Primis Elementis standard", "xp": 430.8, "site": "Zaros", "level": 12, "chronotes": 220, "materials": [
         {"name": "Samite silk", "quantity": 16},
         {"name": "Third Age iron", "quantity": 12}
-    ]},
+    ],
+    "location": "Legionary remains"},
     {"name": "Zaros effigy", "xp": 520.5, "site": "Zaros", "level": 17, "chronotes": 244, "materials": [
         {"name": "Samite silk", "quantity": 8},
         {"name": "White oak", "quantity": 10},
         {"name": "Zarosian insignia", "quantity": 12}
-    ]},
+    ],
+    "location": "Castra debris"},
     {"name": "Zarosian training dummy", "xp": 520.5, "site": "Zaros", "level": 17, "chronotes": 244, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "White oak", "quantity": 14}
-    ]},
+    ],
+    "location": "Castra debris"},
     {"name": "Hookah pipe", "xp": 574.4, "site": "Zamorak", "level": 20, "chronotes": 250, "materials": [
         {"name": "Third Age iron", "quantity": 10},
         {"name": "Goldrune", "quantity": 12},
         {"name": "Orthenglass", "quantity": 8}
-    ]},
+    ],
+    "location": "Lodge bar storage"},
     {"name": "Opulent wine goblet", "xp": 574.4, "site": "Zamorak", "level": 20, "chronotes": 250, "materials": [
         {"name": "Third Age iron", "quantity": 14},
         {"name": "Goldrune", "quantity": 16}
-    ]},
+    ],
+    "location": "Lodge bar storage"},
     {"name": "Crest of Dagon", "xp": 646.2, "site": "Zamorak", "level": 24, "chronotes": 272, "materials": [
         {"name": "Goldrune", "quantity": 14},
         {"name": "Orthenglass", "quantity": 18}
-    ]},
+    ],
+    "location": "Lodge art storage"},
     {"name": "'Disorder' painting", "xp": 646.2, "site": "Zamorak", "level": 24, "chronotes": 272, "materials": [
         {"name": "Samite silk", "quantity": 6},
         {"name": "White oak", "quantity": 6},
         {"name": "Vellum", "quantity": 6},
         {"name": "Cadmium red", "quantity": 14}
-    ]},
+    ],
+    "location": "Lodge art storage"},
     {"name": "Legatus Maximus figurine", "xp": 664.1, "site": "Zaros", "level": 25, "chronotes": 274, "materials": [
         {"name": "Goldrune", "quantity": 8},
         {"name": "Zarosian insignia", "quantity": 14},
         {"name": "Ancient vis", "quantity": 10}
-    ]},
+    ],
+    "location": "Administratum debris"},
     {"name": "'Solem in Umbra' painting", "xp": 664.1, "site": "Zaros", "level": 25, "chronotes": 274, "materials": [
         {"name": "Samite silk", "quantity": 8},
         {"name": "White oak", "quantity": 10},
         {"name": "Tyrian purple", "quantity": 14}
-    ]},
+    ],
+    "location": "Administratum debris"},
     {"name": "Imp mask", "xp": 735.9, "site": "Zamorak", "level": 29, "chronotes": 282, "materials": [
         {"name": "Leather scraps", "quantity": 10},
         {"name": "Chaotic brimstone", "quantity": 10},
         {"name": "Demonhide", "quantity": 12}
-    ]},
+    ],
+    "location": "Cultist footlocker"},
     {"name": "Lesser demon mask", "xp": 735.9, "site": "Zamorak", "level": 29, "chronotes": 282, "materials": [
         {"name": "Leather scraps", "quantity": 6},
         {"name": "Chaotic brimstone", "quantity": 8},
         {"name": "Demonhide", "quantity": 12},
         {"name": "Cadmium red", "quantity": 6}
-    ]},
+    ],
+    "location": "Cultist footlocker"},
     {"name": "Greater demon mask", "xp": 735.9, "site": "Zamorak", "level": 29, "chronotes": 282, "materials": [
         {"name": "Leather scraps", "quantity": 6},
         {"name": "Chaotic brimstone", "quantity": 8},
         {"name": "Demonhide", "quantity": 12},
         {"name": "Third Age iron", "quantity": 6}
-    ]},
+    ],
+    "location": "Cultist footlocker"},
     {"name": "Order of Dis robes", "xp": 861.5, "site": "Zamorak", "level": 36, "chronotes": 352, "materials": [
         {"name": "Samite silk", "quantity": 16},
         {"name": "Cadmium red", "quantity": 10},
         {"name": "Eye of Dagon", "quantity": 14}
-    ]},
+    ],
+    "location": "Sacrifical altar"},
     {"name": "Ritual dagger", "xp": 861.5, "site": "Zamorak", "level": 36, "chronotes": 352, "materials": [
         {"name": "Goldrune", "quantity": 16},
         {"name": "Hellfire metal", "quantity": 24},
         {"name": "Ruby", "quantity": 1}
-    ]},
+    ],
+    "location": "Sacrificial altar"},
     {"name": "'Frying pan'", "xp": 1073.3, "site": "Saradomin", "level": 42, "chronotes": 392, "materials": [
         {"name": "Third Age iron", "quantity": 20},
         {"name": "White marble", "quantity": 24}
-    ]},
+    ],
+    "location": "Prodromoi remains"},
     {"name": "Hallowed lantern", "xp": 1073.3, "site": "Saradomin", "level": 42, "chronotes": 392, "materials": [
         {"name": "Third Age iron", "quantity": 20},
         {"name": "Keramos", "quantity": 24},
         {"name": "White candle", "quantity": 1}
-    ]},
+    ],
+    "location": "Prodromoi remains"},
     {"name": "Branding iron", "xp": 1283.3, "site": "Zamorak", "level": 45, "chronotes": 412, "materials": [
         {"name": "Third Age iron", "quantity": 14},
         {"name": "Eye of Dagon", "quantity": 12},
         {"name": "Hellfire metal", "quantity": 20}
-    ]},
+    ],
+    "location": "Dis dungeon debris"},
     {"name": "Manacles", "xp": 1283.3, "site": "Zamorak", "level": 45, "chronotes": 412, "materials": [
         {"name": "Third Age iron", "quantity": 14},
         {"name": "Chaotic brimstone", "quantity": 18},
         {"name": "Eye of Dagon", "quantity": 14}
-    ]},
+    ],
+    "location": "Dis dungeon debris"},
     {"name": "Ancient timepiece", "xp": 1423.3, "site": "Zaros", "level": 47, "chronotes": 416, "materials": [
         {"name": "Goldrune", "quantity": 12},
         {"name": "Imperial steel", "quantity": 16},
         {"name": "Ancient vis", "quantity": 18}
-    ]},
+    ],
+    "location": "Praesidio remains"},
     {"name": "Legatus pendant", "xp": 1423.3, "site": "Zaros", "level": 47, "chronotes": 415, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Goldrune", "quantity": 18},
         {"name": "Ancient vis", "quantity": 12},
         {"name": "Dragonstone", "quantity": 1}
-    ]},
+    ],
+    "location": "Praesidio remains"},
     {"name": "Ceremonial unicorn ornament", "xp": 1493.3, "site": "Saradomin", "level": 48, "chronotes": 418, "materials": [
         {"name": "Keramos", "quantity": 26},
         {"name": "Cobalt blue", "quantity": 20}
-    ]},
+    ],
+    "location": "Monoceros remains"},
     {"name": "Ceremonial unicorn saddle", "xp": 1493.3, "site": "Saradomin", "level": 48, "chronotes": 418, "materials": [
         {"name": "Leather scraps", "quantity": 24},
         {"name": "Cobalt blue", "quantity": 22}
-    ]},
+    ],
+    "location": "Monoceros remains"},
     {"name": "Everlight harp", "xp": 1703.3, "site": "Saradomin", "level": 51, "chronotes": 466, "materials": [
         {"name": "Everlight silvthril", "quantity": 30},
         {"name": "White oak", "quantity": 22}
-    ]},
+    ],
+    "location": "Amphitheatre debris"},
     {"name": "Everlight trumpet", "xp": 1703.3, "site": "Saradomin", "level": 51, "chronotes": 466, "materials": [
         {"name": "Everlight silvthril", "quantity": 28},
         {"name": "Goldrune", "quantity": 24}
-    ]},
+    ],
+    "location": "Amphitheatre debris"},
     {"name": "Everlight violin", "xp": 1703.3, "site": "Saradomin", "level": 51, "chronotes": 466, "materials": [
         {"name": "Star of Saradomin", "quantity": 16},
         {"name": "White oak", "quantity": 20},
         {"name": "Samite silk", "quantity": 16}
-    ]},
+    ],
+    "location": "Amphitheatre debris"},
     {"name": "Folded-arm figurine (male)", "xp": 2053.3, "site": "Saradomin", "level": 56, "chronotes": 490, "materials": [
         {"name": "White marble", "quantity": 30},
         {"name": "Goldrune", "quantity": 24}
-    ]},
+    ],
+    "location": "Ceramics studio debris"},
     {"name": "Folded-arm figurine (female)", "xp": 2053.3, "site": "Saradomin", "level": 56, "chronotes": 490, "materials": [
         {"name": "White marble", "quantity": 30},
         {"name": "Goldrune", "quantity": 24}
-    ]},
+    ],
+    "location": "Ceramics studio debris"},
     {"name": "Pontifex signet ring", "xp": 2193.3, "site": "Zaros", "level": 58, "chronotes": 508, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Goldrune", "quantity": 18},
         {"name": "Ancient vis", "quantity": 22},
         {"name": "Dragonstone", "quantity": 1}
-    ]},
+    ],
+    "location": "Carceram debris"},
     {"name": "'Incite Fear' spell scroll", "xp": 2193.3, "site": "Zaros", "level": 58, "chronotes": 508, "materials": [
         {"name": "Vellum", "quantity": 20},
         {"name": "Ancient vis", "quantity": 18},
         {"name": "Blood of Orcus", "quantity": 18}
-    ]},
+    ],
+    "location": "Carceram debris"},
     {"name": "Dominion discus", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
         {"name": "Keramos", "quantity": 34},
         {"name": "Star of Saradomin", "quantity": 28}
-    ]},
+    ],
+    "location": "Stadio debris"},
     {"name": "Dominion javelin", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
         {"name": "Keramos", "quantity": 32},
         {"name": "Third Age iron", "quantity": 30}
-    ]},
+    ],
+    "location": "Stadio debris"},
     {"name": "Dominion pelte shield", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
         {"name": "Star of Saradomin", "quantity": 34},
         {"name": "Samite silk", "quantity": 28}
-    ]},
+    ],
+    "location": "Stadio debris"},
     {"name": "'Lust' metal sculpture", "xp": 3500, "site": "Zamorak", "level": 65, "chronotes": 578, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Eye of Dagon", "quantity": 24},
         {"name": "Goldrune", "quantity": 24},
         {"name": "Ruby", "quantity": 1}
-    ]},
+    ],
+    "location": "Infernal art"},
     {"name": "'The Lake of Fire' painting", "xp": 3500, "site": "Zamorak", "level": 65, "chronotes": 578, "materials": [
         {"name": "Samite silk", "quantity": 10},
         {"name": "White oak", "quantity": 10},
         {"name": "Vellum", "quantity": 10},
         {"name": "Cadmium red", "quantity": 34}
-    ]},
+    ],
+    "location": "Infernal art"},
     {"name": "Chaos star", "xp": 4200, "site": "Zamorak", "level": 68, "chronotes": 584, "materials": [
         {"name": "Chaotic brimstone", "quantity": 28},
         {"name": "Hellfire metal", "quantity": 36}
-    ]},
+    ],
+    "location": "Shakroth debris"},
     {"name": "Spiked dog collar", "xp": 4200, "site": "Zamorak", "level": 68, "chronotes": 584, "materials": [
         {"name": "Third Age iron", "quantity": 24},
         {"name": "Leather scraps", "quantity": 24},
         {"name": "Chaotic brimstone", "quantity": 16}
-    ]},
+    ],
+    "location": "Shakroth debris"},
     {"name": "Bronze Dominion medal", "xp": 4433.3, "site": "Saradomin", "level": 69, "chronotes": 572, "materials": [
         {"name": "Everlight silvthril", "quantity": 36},
         {"name": "Star of Saradomin", "quantity": 26},
         {"name": "Bronze bar", "quantity": 1}
-    ]},
+    ],
+    "location": "Dominion Games podium"},
     {"name": "Silver Dominion medal", "xp": 4433.3, "site": "Saradomin", "level": 69, "chronotes": 572, "materials": [
         {"name": "Everlight silvthril", "quantity": 36},
         {"name": "Star of Saradomin", "quantity": 26},
         {"name": "Silver bar", "quantity": 1}
-    ]},
+    ],
+    "location": "Dominion Games podium"},
     {"name": "Dominion torch", "xp": 4433.3, "site": "Saradomin", "level": 69, "chronotes": 572, "materials": [
         {"name": "Goldrune", "quantity": 12},
         {"name": "Orthenglass", "quantity": 12},
         {"name": "Everlight silvthril", "quantity": 20},
         {"name": "Star of Saradomin", "quantity": 18}
-    ]},
+    ],
+    "location": "Dominion Games podium"},
     {"name": "Ikovian gerege", "xp": 4666.7, "site": "Armadyl", "level": 70, "chronotes": 602, "materials": [
         {"name": "Third Age iron", "quantity": 36},
         {"name": "Wings of War", "quantity": 30}
-    ]},
+    ],
+    "location": "Ikovian memorial"},
     {"name": "Toy glider", "xp": 4666.7, "site": "Armadyl", "level": 70, "chronotes": 602, "materials": [
         {"name": "Stormguard steel", "quantity": 36},
         {"name": "White oak", "quantity": 30}
-    ]},
+    ],
+    "location": "Ikovian memorial"},
     {"name": "Toy war golem", "xp": 4666.7, "site": "Armadyl", "level":70, "chronotes": 602, "materials": [
         {"name": "Third Age iron", "quantity": 36},
         {"name": "White oak", "quantity": 30},
         {"name": "Clockwork", "quantity": 1}
-    ]},
+    ],
+    "location": "Ikovian memorial"},
     {"name": "Ceremonial dragonkin device", "xp": 4666.7, "site": "Dragonkin", "level": 70, "chronotes": 602, "materials": [
         {"name": "Orthenglass", "quantity": 50}
-    ]},
+    ],
+    "location": "Dragonkin remains"},
     {"name": "Decorative vase", "xp": 5133.3, "site": "Saradomin", "level": 72, "chronotes": 606, "materials": [
         {"name": "White marble", "quantity": 36},
         {"name": "Cobalt blue", "quantity": 30}
-    ]},
+    ],
+    "location": "Oikos studio debris"},
     {"name": "Patera bowl", "xp": 5133.3, "site": "Saradomin", "level": 72, "chronotes": 606, "materials": [
         {"name": "Keramos", "quantity": 36},
         {"name": "Goldrune", "quantity": 30},
         {"name": "Sapphire", "quantity": 1}
-    ]},
+    ],
+    "location": "Oikos studio debris"},
     {"name": "Kantharos cup", "xp": 5133.3, "site": "Saradomin", "level": 72, "chronotes": 606, "materials": [
         {"name": "Everlight silvthril", "quantity": 30},
         {"name": "Orthenglass", "quantity": 36},
         {"name": "Sapphire", "quantity": 1}
-    ]},
+    ],
+    "location": "Oikos studio debris"},
     {"name": "Ceremonial mace", "xp": 5600, "site": "Zaros", "level": 74, "chronotes": 624, "materials": [
         {"name": "Imperial steel", "quantity": 20},
         {"name": "Third Age iron", "quantity": 20},
         {"name": "Goldrune", "quantity": 28}
-    ]},
+    ],
+    "location": "Kharid-et chapel debris"},
     {"name": "'Consensus ad Idem' painting", "xp": 5600, "site": "Zaros", "level": 74, "chronotes": 624, "materials": [
         {"name": "White oak", "quantity": 10},
         {"name": "Samite silk", "quantity": 10},
         {"name": "Tyrian purple", "quantity": 50}
-    ]},
+    ],
+    "location": "Kharid-et chapel debris"},
     {"name": "Pontifex Maximus figurine", "xp": 5600, "site": "Zaros", "level": 74, "chronotes": 624, "materials": [
         {"name": "Ancient vis", "quantity": 16},
         {"name": "Goldrune", "quantity": 28},
         {"name": "Zarosian insignia", "quantity": 24},
         {"name": "Dragonstone", "quantity": 1}
-    ]},
+    ],
+    "location": "Kharid-et chapel debris"},
     {"name": "Avian song-egg player", "xp": 6066.7, "site": "Armadyl", "level": 76, "chronotes": 628, "materials": [
         {"name": "Stormguard steel", "quantity": 36},
         {"name": "Armadylean yellow", "quantity": 32},
         {"name": "Diamond", "quantity": 1}
-    ]},
+    ],
+    "location": "Keshik ger"},
     {"name": "Keshik drum", "xp": 6066.7, "site": "Armadyl", "level": 76, "chronotes": 628, "materials": [
         {"name": "Wings of War", "quantity": 16},
         {"name": "Animal furs", "quantity": 16},
         {"name": "White oak", "quantity": 20},
         {"name": "Leather scraps", "quantity": 16}
-    ]},
+    ],
+    "location": "Keshik ger"},
     {"name": "Morin khuur", "xp": 6066.7, "site": "Armadyl", "level": 76, "chronotes": 628, "materials": [
         {"name": "Armadylean yellow", "quantity": 16},
         {"name": "White oak", "quantity": 28}
-    ]},
+    ],
+    "location": "Keshik ger"},
     {"name": "Ekeleshuun blinder mask", "xp": 6066.7, "site": "Bandos", "level": 76, "chronotes": 628, "materials": [
         {"name": "Vulcanised rubber", "quantity": 24},
         {"name": "Malachite green", "quantity": 20},
         {"name": "Vellum", "quantity": 24}
-    ]},
+    ],
+    "location": "Gladatorial goblin remains"},
     {"name": "Narogoshuun 'Hob-da-Gob' ball", "xp": 6066.7, "site": "Bandos", "level": 76, "chronotes": 628, "materials": [
         {"name": "Vulcanised rubber", "quantity": 36},
         {"name": "Mark of the Kyzaj", "quantity": 32}
-    ]},
+    ],
+    "location": "Gladatorial goblin remains"},
     {"name": "Rekeshuun war tether", "xp": 6066.7, "site": "Bandos", "level": 76, "chronotes": 628, "materials": [
         {"name": "Vulcanised rubber", "quantity": 22},
         {"name": "Warforged bronze", "quantity": 20},
         {"name": "Leather scraps", "quantity": 26}
-    ]},
+    ],
+    "location": "Gladatorial goblin remains"},
     {"name": "Aviansie dreamcoat", "xp": 7388.9, "site": "Armadyl", "level": 81, "chronotes": 666, "materials": [
         {"name": "Armadylean yellow", "quantity": 20},
         {"name": "Samite silk", "quantity": 30},
         {"name": "Animal furs", "quantity": 22}
-    ]},
+    ],
+    "location": "Tailory debris"},
     {"name": "Ceremonial plume", "xp": 7388.9, "site": "Armadyl", "level": 81, "chronotes": 666, "materials": [
         {"name": "Armadylean yellow", "quantity": 38},
         {"name": "Goldrune", "quantity": 34},
         {"name": "Phoenix feather", "quantity": 1}
-    ]},
+    ],
+    "location": "Tailory debris"},
     {"name": "Peacocking parasol", "xp": 7388.9, "site": "Armadyl", "level": 81, "chronotes": 666, "materials": [
         {"name": "Armadylean yellow", "quantity": 22},
         {"name": "Samite silk", "quantity": 30},
         {"name": "White oak", "quantity": 20}
-    ]},
+    ],
+    "location": "Tailory debris"},
     {"name": "Ogre Kyzaj axe", "xp": 7388.9, "site": "Bandos", "level": 81, "chronotes": 666, "materials": [
         {"name": "Warforged bronze", "quantity": 28},
         {"name": "Mark of the Kyzaj", "quantity": 20},
         {"name": "Fossilised bone", "quantity": 24}
-    ]},
+    ],
+    "location": "Crucible stands debris"},
     {"name": "Ork cleaver sword", "xp": 7388.9, "site": "Bandos", "level": 81, "chronotes": 666, "materials": [
         {"name": "Warforged bronze", "quantity": 36},
         {"name": "Fossilised bone", "quantity": 36}
-    ]},
+    ],
+    "location": "Crucible stands debris"},
     {"name": "Larupia trophy", "xp": 7388.9, "site": "Zamorak", "level": 81, "chronotes": 666, "materials": [
         {"name": "Cadmium red", "quantity": 18},
         {"name": "Animal furs", "quantity": 28},
         {"name": "Orthenglass", "quantity": 26}
-    ]},
+    ],
+    "location": "Animal trophies"},
     {"name": "Lion trophy", "xp": 7388.9, "site": "Zamorak", "level": 81, "chronotes": 666, "materials": [
         {"name": "Cadmium red", "quantity": 18},
         {"name": "Animal furs", "quantity": 28},
         {"name": "White oak", "quantity": 26}
-    ]},
+    ],
+    "location": "Animal trophies"},
     {"name": "She-wolf trophy", "xp": 7388.9, "site": "Zamorak", "level": 81, "chronotes": 666, "materials": [
         {"name": "Cadmium red", "quantity": 18},
         {"name": "Animal furs", "quantity": 28},
         {"name": "Chaotic brimstone", "quantity": 26}
-    ]},
+    ],
+    "location": "Animal trophies"},
     {"name": "Pontifex censer", "xp": 7388.9, "site": "Zaros", "level": 81, "chronotes": 666, "materials": [
         {"name": "Third Age iron", "quantity": 20},
         {"name": "Ancient vis", "quantity": 20},
         {"name": "Goldrune", "quantity": 32},
         {"name": "Dragonstone", "quantity": 1}
-    ]},
+    ],
+    "location": "Pontifex remains"},
     {"name": "Pontifex crozier", "xp": 7388.9, "site": "Zaros", "level": 81, "chronotes": 666, "materials": [
         {"name": "Imperial steel", "quantity": 20},
         {"name": "Zarosian insignia", "quantity": 20},
         {"name": "Goldrune", "quantity": 32}
-    ]},
+    ],
+    "location": "Pontifex remains"},
     {"name": "Pontifex mitre", "xp": 7388.9, "site": "Zaros", "level": 81, "chronotes": 666, "materials": [
         {"name": "Samite silk", "quantity": 32},
         {"name": "Ancient vis", "quantity": 20},
         {"name": "Zarosian insignia", "quantity": 20}
-    ]},
+    ],
+    "location": "Pontifex remains"},
     {"name": "Thorobshuun battle standard", "xp": 8166.7, "site": "Bandos", "level": 83, "chronotes": 684, "materials": [
         {"name": "Mark of the Kyzaj", "quantity": 16},
         {"name": "Malachite green", "quantity": 22},
         {"name": "White oak", "quantity": 16},
         {"name": "Samite silk", "quantity": 20}
-    ]},
+    ],
+    "location": "Goblin dorm debris"},
     {"name": "Yurkolgokh stink grenade", "xp": 8166.7, "site": "Bandos", "level": 83, "chronotes": 684, "materials": [
         {"name": "Yu'biusk clay", "quantity": 38},
         {"name": "Vulcanised rubber", "quantity": 36},
         {"name": "Weapon poison (3)", "quantity": 1}
-    ]},
+    ],
+    "location": "Goblin dorm debris"},
     {"name": "Dominarian device", "xp": 8555.6, "site": "Saradomin", "level": 84, "chronotes": 686, "materials": [
         {"name": "Everlight silvthril", "quantity": 30},
         {"name": "Keramos", "quantity": 22},
         {"name": "Third Age iron", "quantity": 22},
         {"name": "Clockwork", "quantity": 1}
-    ]},
+    ],
+    "location": "Oikos fishing hut remnants"},
     {"name": "Fishing trident", "xp": 8555.6, "site": "Saradomin", "level": 84, "chronotes": 686, "materials": [
         {"name": "Star of Saradomin", "quantity": 22},
         {"name": "Third Age iron", "quantity": 30},
         {"name": "Goldrune", "quantity": 22}
-    ]},
+    ],
+    "location": "Oikos fishing hut remnants"},
     {"name": "Hawkeye lens multi-vision scope", "xp": 8944.4, "site": "Armadyl", "level": 85, "chronotes": 688, "materials": [
         {"name": "Stormguard steel", "quantity": 40},
         {"name": "Orthenglass", "quantity": 34}
-    ]},
+    ],
+    "location": "Weapons research debris"},
     {"name": "Talon-3 razor wing", "xp": 8944.4, "site": "Armadyl", "level": 85, "chronotes": 688, "materials": [
         {"name": "Aetherium alloy", "quantity": 40},
         {"name": "Wings of War", "quantity": 34},
         {"name": "Rope", "quantity": 1}
-    ]},
+    ],
+    "location": "Weapons research debris"},
     {"name": "Necromantic focus", "xp": 9333.3, "site": "Zaros", "level": 86, "chronotes": 704, "materials": [
         {"name": "Imperial steel", "quantity": 40},
         {"name": "Blood of Orcus", "quantity": 34},
         {"name": "Ancient vis", "quantity": 22}
-    ]},
+    ],
+    "location": "Orcus altar"},
     {"name": "'Exsanguinate' spell scroll", "xp": 9333.3, "site": "Zaros", "level": 86, "chronotes": 704, "materials": [
         {"name": "Vellum", "quantity": 40},
         {"name": "Blood of Orcus", "quantity": 36}
-    ]},
+    ],
+    "location": "Orcus altar"},
     {"name": "High priest crozier", "xp": 10500.0, "site": "Bandos", "level": 89, "chronotes": 724, "materials": [
         {"name": "Mark of the Kyzaj", "quantity": 26},
         {"name": "Malachite green", "quantity": 24},
         {"name": "Goldrune", "quantity": 28}
-    ]},
+    ],
+    "location": "Big High War God shrine"},
     {"name": "High priest mitre", "xp": 10500.0, "site": "Bandos", "level": 89, "chronotes": 724, "materials": [
         {"name": "Mark of the Kyzaj", "quantity": 26},
         {"name": "Malachite green", "quantity": 24},
         {"name": "Samite silk", "quantity": 28}
-    ]},
+    ],
+    "location": "Big High War God shrine"},
     {"name": "High priest orb", "xp": 10500.0, "site": "Bandos", "level": 89, "chronotes": 724, "materials": [
         {"name": "Mark of the Kyzaj", "quantity": 26},
         {"name": "Malachite green", "quantity": 24},
         {"name": "Goldrune", "quantity": 28}
-    ]},
+    ],
+    "location": "Big High War God shrine"},
     {"name": "'Pandemonium' tapestry", "xp": 10500.0, "site": "Zamorak", "level": 89, "chronotes": 724, "materials": [
         {"name": "White oak", "quantity": 12},
         {"name": "Samite silk", "quantity": 12},
         {"name": "Vellum", "quantity": 12},
         {"name": "Cadmium red", "quantity": 12}
-    ]},
+    ],
+    "location": "Dis overspill"},
     {"name": "'Torment' metal sculpture", "xp": 10500.0, "site": "Zamorak", "level": 89, "chronotes": 724, "materials": [
         {"name": "Eye of Dagon", "quantity": 20},
         {"name": "Third Age iron", "quantity": 20},
         {"name": "Hellfire metal", "quantity": 38}
-    ]},
+    ],
+    "location": "Dis overspill"},
     {"name": "Ceremonial dragonkin tablet", "xp": 10889.9, "site": "Dragonkin", "level": 90, "chronotes": 733, "materials": [
         {"name": "Orthenglass", "quantity": 79}
-    ]},
+    ],
+    "location": "Orthen rubble"},
     {"name": "Pasaha", "xp": 10888.9, "site": "Dragonkin", "level": 90, "chronotes": 726, "materials": [
         {"name": "Felt", "quantity": 40},
         {"name": "Goldrune", "quantity": 38}
-    ]},
+    ],
+    "location": "Varanusaur remains"},
     {"name": "Ritual Bell", "xp": 10888.9, "site": "Dragonkin", "level": 90, "chronotes": 726, "materials": [
         {"name": "Goldrune", "quantity": 40},
         {"name": "Compass rose", "quantity": 38}
-    ]},
+    ],
+    "location": "Varanusaur remains"},
     {"name": "Prototype gravimeter", "xp": 11277.8, "site": "Armadyl", "level": 91, "chronotes": 742, "materials": [
         {"name": "Quintessence", "quantity": 34},
         {"name": "Leather scraps", "quantity": 20},
         {"name": "Third Age iron", "quantity": 26}
-    ]},
+    ],
+    "location": "Gravitron research debris"},
     {"name": "Songbird recorder", "xp": 11277.8, "site": "Armadyl", "level": 91, "chronotes": 742, "materials": [
         {"name": "Stormguard steel", "quantity": 44},
         {"name": "Orthenglass", "quantity": 36},
         {"name": "Diamond", "quantity": 1}
-    ]},
+    ],
+    "location": "Gravitron research debris"},
     {"name": "Amphora", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 742, "materials": [
         {"name": "Everlight silvthril", "quantity": 30},
         {"name": "Star of Saradomin", "quantity": 24},
         {"name": "Goldrune", "quantity": 26}
-    ]},
+    ],
+    "location": "Acropolis debris"},
     {"name": "Rod of Asclepius", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 742, "materials": [
         {"name": "White marble", "quantity": 30},
         {"name": "Star of Saradomin", "quantity": 24},
         {"name": "Goldrune", "quantity": 26}
-    ]},
+    ],
+    "location": "Acropolis debris"},
     {"name": "Zarosian ewer", "xp": 12500, "site": "Zaros", "level": 93, "chronotes": 760, "materials": [
         {"name": "Third Age iron", "quantity": 52},
         {"name": "Zarosian insignia", "quantity": 30}
-    ]},
+    ],
+    "location": "Armarium debris"},
     {"name": "Zarosian stein", "xp": 12500, "site": "Zaros", "level": 93, "chronotes": 760, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Zarosian insignia", "quantity": 30},
         {"name": "Imperial steel", "quantity": 36}
-    ]},
+    ],
+    "location": "Armarium debris"},
     {"name": "Beastkeeper helm", "xp": 13333.3, "site": "Bandos", "level": 94, "chronotes": 776, "materials": [
         {"name": "Warforged bronze", "quantity": 16},
         {"name": "Vulcanised rubber", "quantity": 24},
         {"name": "Animal furs", "quantity": 20},
         {"name": "Fossilised bone", "quantity": 24}
-    ]},
+    ],
+    "location": "Yu'biusk animal pen"},
     {"name": "Idithuun horn ring", "xp": 13333.3, "site": "Bandos", "level": 94, "chronotes": 776, "materials": [
         {"name": "Yu'biusk clay", "quantity": 40},
         {"name": "Vulcanised rubber", "quantity": 44}
-    ]},
+    ],
+    "location": "Yu'biusk animal pen"},
     {"name": "'Nosorog!' sculpture", "xp": 13333.3, "site": "Bandos", "level": 94, "chronotes": 776, "materials": [
         {"name": "Warforged bronze", "quantity": 30},
         {"name": "Malachite green", "quantity": 24},
         {"name": "Yu'biusk clay", "quantity": 30}
-    ]},
+    ],
+    "location": "Yu'biusk animal pen"},
     {"name": "Stormguard gerege", "xp": 14166.7, "site": "Armadyl", "level": 95, "chronotes": 778, "materials": [
         {"name": "Stormguard steel", "quantity": 36},
         {"name": "Wings of War", "quantity": 28},
         {"name": "Goldrune", "quantity": 20}
-    ]},
+    ],
+    "location": "Keshik tower debris"},
     {"name": "Dayguard shield", "xp": 14166.7, "site": "Armadyl", "level": 95, "chronotes": 778, "materials": [
         {"name": "Stormguard steel", "quantity": 36},
         {"name": "Wings of War", "quantity": 28},
         {"name": "White oak", "quantity": 20}
-    ]},
+    ],
+    "location": "Keshik tower debris"},
     {"name": "Kilaya", "xp": 15000, "site": "Dragonkin", "level": 96, "chronotes": 794, "materials": [
         {"name": "Dragon metal", "quantity": 46},
         {"name": "Compass rose", "quantity": 40}
-    ]},
+    ],
+    "location": "Dragonkin reliquary"},
     {"name": "Vazara", "xp": 15000, "site": "Dragonkin", "level": 96, "chronotes": 794, "materials": [
         {"name": "Dragon metal", "quantity": 30},
         {"name": "Compass rose", "quantity": 28},
         {"name": "Goldrune", "quantity": 28}
-    ]},
+    ],
+    "location": "Dragonkin reliquary"},
     {"name": "Garagorshuun anchor", "xp": 15833.3, "site": "Bandos", "level": 97, "chronotes": 810, "materials": [
         {"name": "Warforged bronze", "quantity": 32},
         {"name": "Mark of the Kyzaj", "quantity": 26},
         {"name": "Third Age iron", "quantity": 30}
-    ]},
+    ],
+    "location": "Goblin trainee remains"},
     {"name": "Ourg megahitter", "xp": 15833.3, "site": "Bandos", "level": 97, "chronotes": 810, "materials": [
         {"name": "White oak", "quantity": 20},
         {"name": "Leather scraps", "quantity": 20},
         {"name": "Orthenglass", "quantity": 20},
         {"name": "Malachite green", "quantity": 20}
-    ]},
+    ],
+    "location": "Goblin trainee remains"},
     {"name": "Ourg tower/goblin cower shield", "xp": 15833.3, "site": "Bandos", "level": 97, "chronotes": 810, "materials": [
         {"name": "Mark of the Kyzaj", "quantity": 20},
         {"name": "Third Age iron", "quantity": 26},
         {"name": "Leather scraps", "quantity": 22},
         {"name": "White oak", "quantity": 20}
-    ]},
+    ],
+    "location": "Goblin trainee remains"},
     {"name": "Golem heart", "xp": 16666.7, "site": "Armadyl", "level": 98, "chronotes": 826, "materials": [
         {"name": "Aetherium alloy", "quantity": 34},
         {"name": "Quintessence", "quantity": 24},
         {"name": "Orthenglass", "quantity": 16},
         {"name": "Soapstone", "quantity": 16}
-    ]},
+    ],
+    "location": "Destroyed golem"},
     {"name": "Golem instructions", "xp": 16666.7, "site": "Armadyl", "level": 98, "chronotes": 826, "materials": [
         {"name": "Quintessence", "quantity": 46},
         {"name": "Vellum", "quantity": 44},
         {"name": "Black mushroom ink", "quantity": 1}
-    ]},
+    ],
+    "location": "Destroyed golem"},
     {"name": "Hellfire haladie", "xp": 16666.7, "site": "Zamorak", "level": 98, "chronotes": 826, "materials": [
         {"name": "Hellfire metal", "quantity": 44},
         {"name": "Third Age iron", "quantity": 26},
         {"name": "Leather scraps", "quantity": 20}
-    ]},
+    ],
+    "location": "Byzroth remains"},
     {"name": "Hellfire katar", "xp": 16666.7, "site": "Zamorak", "level": 98, "chronotes": 826, "materials": [
         {"name": "Hellfire metal", "quantity": 50},
         {"name": "Leather scraps", "quantity": 40}
-    ]},
+    ],
+    "location": "Byzroth remains"},
     {"name": "Hellfire zaghnal", "xp": 16666.7, "site": "Zamorak", "level": 98, "chronotes": 826, "materials": [
         {"name": "Hellfire metal", "quantity": 38},
         {"name": "White oak", "quantity": 26},
         {"name": "Orthenglass", "quantity": 26}
-    ]},
+    ],
+    "location": "Byzroth remains"},
     {"name": "Death mask", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
         {"name": "Orgone", "quantity": 56},
         {"name": "Soapstone", "quantity": 34}
-    ]},
+    ],
+    "location": "Dragonkin coffer"},
     {"name": "Dragonkin calendar", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
         {"name": "Orgone", "quantity": 34},
         {"name": "Carbon black", "quantity": 28},
         {"name": "Compass rose", "quantity": 28}
-    ]},
+    ],
+    "location": "Dragonkin coffer"},
     {"name": "Dragonkin staff", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
         {"name": "Orgone", "quantity": 56},
         {"name": "Soapstone", "quantity": 34}
-    ]},
+    ],
+    "location": "Dragonkin coffer"},
     {"name": "Dorgeshuun spear", "xp": 18666.7, "site": "Bandos", "level": 100, "chronotes": 844, "materials": [
         {"name": "Warforged bronze", "quantity": 50},
         {"name": "White oak", "quantity": 42}
-    ]},
+    ],
+    "location": "Kyzaj champion's boudoir"},
     {"name": "'Forged in War' sculpture", "xp": 18666.7, "site": "Bandos", "level": 100, "chronotes": 844, "materials": [
         {"name": "Warforged bronze", "quantity": 50},
         {"name": "Yu'biusk clay", "quantity": 42},
         {"name": "Emerald", "quantity": 1}
-    ]},
+    ],
+    "location": "Kyzaj champion's boudoir"},
     {"name": "Kopis dagger", "xp": 18666.7, "site": "Saradomin", "level": 100, "chronotes": 844, "materials": [
         {"name": "Everlight silvthril", "quantity": 50},
         {"name": "Leather scraps", "quantity": 42}
-    ]},
+    ],
+    "location": "Icyene weapon rack"},
     {"name": "Xiphos short sword", "xp": 18666.7, "site": "Saradomin", "level": 100, "chronotes": 844, "materials": [
         {"name": "Everlight silvthril", "quantity": 46},
         {"name": "Leather scraps", "quantity": 46}
-    ]},
+    ],
+    "location": "Icyene weapon rack"},
     {"name": "'Smoke Cloud' spell scroll", "xp": 18666.7, "site": "Zaros", "level": 100, "chronotes": 844, "materials": [
         {"name": "Vellum", "quantity": 40},
         {"name": "Ancient vis", "quantity": 20},
         {"name": "Blood of Orcus", "quantity": 32}
-    ]},
+    ],
+    "location": "Culinarum debris"},
     {"name": "Vigorem vial", "xp": 18666.7, "site": "Zaros", "level": 100, "chronotes": 844, "materials": [
         {"name": "Imperial steel", "quantity": 54},
         {"name": "Ancient vis", "quantity": 38},
         {"name": "Molten glass", "quantity": 1}
-    ]},
+    ],
+    "location": "Culinarum debris"},
     {"name": "Dragon scalpel", "xp": 19833.3, "site": "Dragonkin", "level": 101, "chronotes": 860, "materials": [
         {"name": "Dragon metal", "quantity": 52},
         {"name": "Felt", "quantity": 42}
-    ]},
-    {"name": "Dragon burner", "xp": 21000, "site": "Dragonkin", "level": 101, "chronotes": 862, "materials": [
+    ],
+    "location": "Autopsy table"},
+    {"name": "Dragon burner", "xp": 21000, "site": "Dragonkin", "level": 102, "chronotes": 862, "materials": [
         {"name": "Dragon metal", "quantity": 52},
         {"name": "Orgone", "quantity": 42}
-    ]},
-    {"name": "Orthenglass flask", "xp": 21000, "site": "Dragonkin", "level": 101, "chronotes": 862, "materials": [
+    ],
+    "location": "Experiment workbench"},
+    {"name": "Orthenglass flask", "xp": 21000, "site": "Dragonkin", "level": 102, "chronotes": 862, "materials": [
         {"name": "Dragon metal", "quantity": 34},
         {"name": "Orthenglass", "quantity": 60}
-    ]},
+    ],
+    "location": "Experiment workbench"},
     {"name": "Protective goggles", "xp": 19833.3, "site": "Dragonkin", "level": 101, "chronotes": 860, "materials": [
         {"name": "Orthenglass", "quantity": 52},
         {"name": "Felt", "quantity": 42}
-    ]},
+    ],
+    "location": "Autopsy table"},
     {"name": "Blackfire lance", "xp": 22166.7, "site": "Armadyl", "level": 103, "chronotes": 878, "materials": [
         {"name": "Aetherium alloy", "quantity": 50},
         {"name": "Quintessence", "quantity": 46}
-    ]},
+    ],
+    "location": "Keshik weapon rack"},
     {"name": "Nightguard shield", "xp": 22166.7, "site": "Armadyl", "level": 103, "chronotes": 878, "materials": [
         {"name": "Stormguard steel", "quantity": 30},
         {"name": "Wings of War", "quantity": 36},
         {"name": "White oak", "quantity": 30}
-    ]},
+    ],
+    "location": "Keshik weapon rack"},
     {"name": "Huzamogaarb chaos crown", "xp": 23333.3, "site": "Bandos", "level": 104, "chronotes": 894, "materials": [
         {"name": "Warforged bronze", "quantity": 44},
         {"name": "Third Age iron", "quantity": 34},
         {"name": "Eye of Dagon", "quantity": 20}
-    ]},
+    ],
+    "location": "Warforge scrap pile"},
     {"name": "Saragorgak star crown", "xp": 23333.3, "site": "Bandos", "level": 104, "chronotes": 894, "materials": [
         {"name": "Warforged bronze", "quantity": 44},
         {"name": "Third Age iron", "quantity": 34},
         {"name": "Star of Saradomin", "quantity": 20}
-    ]},
+    ],
+    "location": "Warforge scrap pile"},
     {"name": "'Possession' metal sculpture", "xp": 23333.3, "site": "Zamorak", "level": 104, "chronotes": 894, "materials": [
         {"name": "Eye of Dagon", "quantity": 24},
         {"name": "Chaotic brimstone", "quantity": 30},
         {"name": "Third Age iron", "quantity": 44}
-    ]},
+    ],
+    "location": "Hellfire forge"},
     {"name": "Trishula", "xp": 23333.3, "site": "Zamorak", "level": 104, "chronotes": 894, "materials": [
         {"name": "Hellfire metal", "quantity": 48},
         {"name": "Eye of Dagon", "quantity": 30},
         {"name": "Third Age iron", "quantity": 20}
-    ]},
+    ],
+    "location": "Hellfire forge"},
     {"name": "Tsutsaroth piercing", "xp": 23333.3, "site": "Zamorak", "level": 104, "chronotes": 894, "materials": [
         {"name": "Hellfire metal", "quantity": 44},
         {"name": "Chaotic brimstone", "quantity": 30},
         {"name": "Cadmium red", "quantity": 24}
-    ]},
+    ],
+    "location": "Hellfire forge"},
     {"name": "'The Pride of Padosan' painting", "xp": 24500, "site": "Saradomin", "level": 105, "chronotes": 910, "materials": [
         {"name": "Cobalt blue", "quantity": 52},
         {"name": "White oak", "quantity": 16},
         {"name": "Samite silk", "quantity": 16},
         {"name": "Vellum", "quantity": 16}
-    ]},
+    ],
+    "location": "Stockpiled art"},
     {"name": "'Hallowed Be the Everlight' painting", "xp": 24500, "site": "Saradomin", "level": 105, "chronotes": 910, "materials": [
         {"name": "Cobalt blue", "quantity": 52},
         {"name": "White oak", "quantity": 16},
         {"name": "Samite silk", "quantity": 16},
         {"name": "Vellum", "quantity": 16}
-    ]},
+    ],
+    "location": "Stockpiled art"},
     {"name": "'The Lord of Light' painting", "xp": 24500, "site": "Saradomin", "level": 105, "chronotes": 910, "materials": [
         {"name": "Cobalt blue", "quantity": 52},
         {"name": "White oak", "quantity": 16},
         {"name": "Samite silk", "quantity": 16},
         {"name": "Vellum", "quantity": 16}
-    ]},
+    ],
+    "location": "Stockpiled art"},
     {"name": "Meditation pipe", "xp": 25666.7, "site": "Dragonkin", "level": 106, "chronotes": 912, "materials": [
         {"name": "Dragon metal", "quantity": 40},
         {"name": "Orgone", "quantity": 60}
-    ]},
+    ],
+    "location": "Aughra remains"},
     {"name": "Personal totem", "xp": 25666.7, "site": "Dragonkin", "level": 106, "chronotes": 912, "materials": [
         {"name": "Carbon black", "quantity": 26},
         {"name": "Orgone", "quantity": 48},
         {"name": "Compass rose", "quantity": 26}
-    ]},
+    ],
+    "location": "Aughra remains"},
     {"name": "Singing bowl", "xp": 25666.7, "site": "Dragonkin", "level": 106, "chronotes": 912, "materials": [
         {"name": "Dragon metal", "quantity": 40},
         {"name": "Orgone", "quantity": 60}
-    ]},
+    ],
+    "location": "Aughra remains"},
     {"name": "Ancient magic tablet", "xp": 27000, "site": "Zaros", "level": 107, "chronotes": 942, "materials": [
         {"name": "Ancient vis", "quantity": 40},
         {"name": "Blood of Orcus", "quantity": 64}
-    ]},
+    ],
+    "location": "Ancient magick munitions"},
     {"name": "Portable phylactery", "xp": 27000, "site": "Zaros", "level": 107, "chronotes": 942, "materials": [
         {"name": "Ancient vis", "quantity": 20},
         {"name": "Blood of Orcus", "quantity": 36},
         {"name": "Imperial steel", "quantity": 48}
-    ]},
+    ],
+    "location": "Ancient magick munitions"},
     {"name": "'Animate Dead' spell scroll", "xp": 27000, "site": "Zaros", "level": 107, "chronotes": 942, "materials": [
         {"name": "Ancient vis", "quantity": 24},
         {"name": "Blood of Orcus", "quantity": 40},
         {"name": "Vellum", "quantity": 40}
-    ]},
+    ],
+    "location": "Ancient magick munitions"},
     {"name": "Lingam stone", "xp": 28333.3, "site": "Dragonkin", "level": 108, "chronotes": 958, "materials": [
         {"name": "Orgone", "quantity": 44},
         {"name": "Carbon black", "quantity": 30},
         {"name": "Compass rose", "quantity": 32}
-    ]},
+    ],
+    "location": "Moksha device"},
     {"name": "Master control", "xp": 28333.3, "site": "Dragonkin", "level": 108, "chronotes": 958, "materials": [
         {"name": "Orgone", "quantity": 30},
         {"name": "Carbon black", "quantity": 32},
         {"name": "Compass rose", "quantity": 44}
-    ]},
+    ],
+    "location": "Moksha device"},
     {"name": "'The Enlightened Soul' scroll", "xp": 29666.7, "site": "Saradomin", "level": 109, "chronotes": 988, "materials": [
         {"name": "Star of Saradomin", "quantity": 50},
         {"name": "Vellum", "quantity": 60},
         {"name": "Samite silk", "quantity": 16},
         {"name": "Vellum", "quantity": 16}
-    ]},
+    ],
+    "location": "Bibliotheke debris"},
     {"name": "'The Eudoxian Elements' tablet", "xp": 29666.7, "site": "Saradomin", "level": 109, "chronotes": 988, "materials": [
         {"name": "White marble", "quantity": 60},
         {"name": "Goldrune", "quantity": 50}
-    ]},
+    ],
+    "location": "Bibliotheke debris"},
     {"name": "Drogokishuun hook sword", "xp": 31000, "site": "Bandos", "level": 110, "chronotes": 1004, "materials": [
         {"name": "Warforged bronze", "quantity": 44},
         {"name": "Malachite green", "quantity": 36},
         {"name": "Fossilised bone", "quantity": 32}
-    ]},
+    ],
+    "location": "Warforge weapon rack"},
     {"name": "Hobgoblin mansticker", "xp": 31000, "site": "Bandos", "level": 110, "chronotes": 1004, "materials": [
         {"name": "Warforged bronze", "quantity": 66},
         {"name": "Fossilised bone", "quantity": 46}
-    ]},
+    ],
+    "location": "Warforge weapon rack"},
     {"name": "Chaos Elemental trophy", "xp": 31000, "site": "Zamorak", "level": 110, "chronotes": 1004, "materials": [
         {"name": "Chaotic brimstone", "quantity": 52},
         {"name": "White oak", "quantity": 30},
         {"name": "Hellfire metal", "quantity": 30}
-    ]},
+    ],
+    "location": "Chthonian trophies"},
     {"name": "Virius trophy", "xp": 31000, "site": "Zamorak", "level": 110, "chronotes": 1004, "materials": [
         {"name": "Demonhide", "quantity": 44},
         {"name": "White oak", "quantity": 34},
         {"name": "Orthenglass", "quantity": 34}
-    ]},
+    ],
+    "location": "Chthonian trophies"},
     {"name": "Flat cap", "xp": 32333.3, "site": "Armadyl", "level": 111, "chronotes": 1004, "materials": [
         {"name": "Armadylean yellow", "quantity": 60},
         {"name": "Samite silk", "quantity": 54}
-    ]},
+    ],
+    "location": "Flight research debris"},
     {"name": "Night owl flight goggles", "xp": 32333.3, "site": "Armadyl", "level": 111, "chronotes": 1004, "materials": [
         {"name": "Armadylean yellow", "quantity": 44},
         {"name": "Leather scraps", "quantity": 40},
         {"name": "Orthenglass", "quantity": 30}
-    ]},
+    ],
+    "location": "Flight research debris"},
     {"name": "Prototype godbow", "xp": 33666.7, "site": "Armadyl", "level": 112, "chronotes": 1050, "materials": [
         {"name": "Aetherium alloy", "quantity": 50},
         {"name": "Quintessence", "quantity": 34},
         {"name": "Wings of War", "quantity": 34}
-    ]},
+    ],
+    "location": "Aetherium forge"},
     {"name": "Prototype godstaff", "xp": 33666.7, "site": "Armadyl", "level": 112, "chronotes": 1050, "materials": [
         {"name": "Aetherium alloy", "quantity": 50},
         {"name": "Quintessence", "quantity": 34},
         {"name": "Wings of War", "quantity": 34}
-    ]},
+    ],
+    "location": "Aetherium forge"},
     {"name": "Prototype godsword", "xp": 33666.7, "site": "Armadyl", "level": 112, "chronotes": 1050, "materials": [
         {"name": "Aetherium alloy", "quantity": 50},
         {"name": "Quintessence", "quantity": 34},
         {"name": "Goldrune", "quantity": 34}
-    ]},
+    ],
+    "location": "Aetherium forge"},
     {"name": "Xolo hard hat", "xp": 35000, "site": "Dragonkin", "level": 113, "chronotes": 1066, "materials": [
         {"name": "Goldrune", "quantity": 54},
         {"name": "Dragon metal", "quantity": 66}
-    ]},
+    ],
+    "location": "Xolo mine"},
     {"name": "Xolo pickaxe", "xp": 35000, "site": "Dragonkin", "level": 113, "chronotes": 1066, "materials": [
         {"name": "Goldrune", "quantity": 36},
         {"name": "Dragon metal", "quantity": 50},
         {"name": "Orgone", "quantity": 34}
-    ]},
+    ],
+    "location": "Xolo mine"},
     {"name": "Praetorian hood", "xp": 36666.7, "site": "Zaros", "level": 114, "chronotes": 1096, "materials": [
         {"name": "Ancient vis", "quantity": 36},
         {"name": "Samite silk", "quantity": 48},
         {"name": "Zarosian insignia", "quantity": 40},
         {"name": "Death rune", "quantity": 30}
-    ]},
+    ],
+    "location": "Praetorian remains"},
     {"name": "Praetorian robes", "xp": 36666.7, "site": "Zaros", "level": 114, "chronotes": 1096, "materials": [
         {"name": "Ancient vis", "quantity": 30},
         {"name": "Samite silk", "quantity": 54},
         {"name": "Zarosian insignia", "quantity": 40},
         {"name": "Death rune", "quantity": 50}
-    ]},
+    ],
+    "location": "Praetorian remains"},
     {"name": "Praetorian staff", "xp": 36666.7, "site": "Zaros", "level": 114, "chronotes": 1096, "materials": [
         {"name": "Ancient vis", "quantity": 59},
         {"name": "Imperial steel", "quantity": 36},
         {"name": "Zarosian insignia", "quantity": 30},
         {"name": "Death rune", "quantity": 100}
-    ]},
+    ],
+    "location": "Praetorian remains"},
     {"name": "Kal-i-kra chieftain crown", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
         {"name": "Yu'biusk clay", "quantity": 36},
         {"name": "Animal furs", "quantity": 48}
-    ]},
+    ],
+    "location": "Bandos's sanctum debris"},
     {"name": "Kal-i-kra mace", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
         {"name": "Vulcanised rubber", "quantity": 42},
         {"name": "Third Age iron", "quantity": 44},
         {"name": "Fossilised bone", "quantity": 40}
-    ]},
+    ],
+    "location": "Bandos's sanctum debris"},
     {"name": "Kal-i-kra warhorn", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
         {"name": "Vulcanised rubber", "quantity": 44},
         {"name": "Animal furs", "quantity": 40},
         {"name": "Fossilised bone", "quantity": 42}
-    ]},
+    ],
+    "location": "Bandos's sanctum debris"},
     {"name": "Tsutsaroth helm", "xp": 40000, "site": "Zamorak", "level": 116, "chronotes": 1142, "materials": [
         {"name": "Hellfire metal", "quantity": 50},
         {"name": "Eye of Dagon", "quantity": 40},
         {"name": "Goldrune", "quantity": 40}
-    ]},
+    ],
+    "location": "Tsutsaroth remains"},
     {"name": "Tsutsaroth pauldron", "xp": 40000, "site": "Zamorak", "level": 16, "chronotes": 1142, "materials": [
         {"name": "Hellfire metal", "quantity": 40},
         {"name": "Eye of Dagon", "quantity": 40},
         {"name": "Goldrune", "quantity": 50}
-    ]},
+    ],
+    "location": "Tsutsaroth remains"},
     {"name": "Tsutsaroth urumi", "xp": 40000, "site": "Zamorak", "level": 116, "chronotes": 1142, "materials": [
         {"name": "Hellfire metal", "quantity": 50},
         {"name": "Eye of Dagon", "quantity": 40},
         {"name": "Third Age iron", "quantity": 40}
-    ]},
+    ],
+    "location": "Tsutsaroth remains"},
     {"name": "Kontos lance", "xp": 41666.7, "site": "Saradomin", "level": 117, "chronotes": 1158, "materials": [
         {"name": "Everlight silvthril", "quantity": 70},
         {"name": "Samite silk", "quantity": 62}
-    ]},
+    ],
+    "location": "Optimatoi remains"},
     {"name": "Doru spear", "xp": 41666.7, "site": "Saradomin", "level": 117, "chronotes": 1158, "materials": [
         {"name": "Everlight silvthril", "quantity": 70},
         {"name": "White oak", "quantity": 62}
-    ]},
+    ],
+    "location": "Optimatoi remains"},
     {"name": "Chuluu stone", "xp": 43333.3, "site": "Armadyl", "level": 118, "chronotes": 1174, "materials": [
         {"name": "Aetherium alloy", "quantity": 40},
         {"name": "Quintessence", "quantity": 30},
         {"name": "Soapstone", "quantity": 40},
         {"name": "Goldrune", "quantity": 24}
-    ]},
+    ],
+    "location": "Howl's workshop debris"},
     {"name": "Quintessence counter", "xp": 43333.3, "site": "Armadyl", "level": 118, "chronotes": 1174, "materials": [
         {"name": "Stormguard steel", "quantity": 40},
         {"name": "Quintessence", "quantity": 54},
         {"name": "White oak", "quantity": 40}
-    ]},
+    ],
+    "location": "Howl's workshop debris"},
     {"name": "Spherical astrolabe", "xp": 43333.3, "site": "Armadyl", "level": 118, "chronotes": 1174, "materials": [
         {"name": "Aetherium alloy", "quantity": 46},
         {"name": "Armadylean yellow", "quantity": 40},
         {"name": "Orthenglass", "quantity": 48}
-    ]},
+    ],
+    "location": "Howl's workshop debris"},
     {"name": "Ancient globe", "xp": 43333.3, "site": "Zaros", "level": 118, "chronotes": 1174, "materials": [
         {"name": "White oak", "quantity": 20},
         {"name": "Tyrian purple", "quantity": 54},
         {"name": "Ancient vis", "quantity": 60}
-    ]},
+    ],
+    "location": "War table debris"},
     {"name": "Battle plans", "xp": 43333.3, "site": "Zaros", "level": 118, "chronotes": 1174, "materials": [
         {"name": "Vellum", "quantity": 40},
         {"name": "Tyrian purple", "quantity": 60},
         {"name": "Ancient vis", "quantity": 34}
-    ]},
+    ],
+    "location": "War table debris"},
     {"name": "'Prima Legio' painting", "xp": 43333.3, "site": "Zaros", "level": 118, "chronotes": 1174, "materials": [
         {"name": "White oak", "quantity": 20},
         {"name": "Tyrian purple", "quantity": 74},
         {"name": "Samite silk", "quantity": 20},
         {"name": "Zarosian insignia", "quantity": 20}
-    ]},
+    ],
+    "location": "War table debris"},
     {"name": "Horogothgar cooking pot", "xp": 45000, "site": "Bandos", "level": 119, "chronotes": 1204, "materials": [
         {"name": "Yu'biusk clay", "quantity": 60},
         {"name": "Malachite green", "quantity": 38},
         {"name": "Soapstone", "quantity": 40}
-    ]},
+    ],
+    "location": "Makeshift pie oven"},
     {"name": "'Da Boss Man' sculpture", "xp": 45000, "site": "Bandos", "level": 119, "chronotes": 1204, "materials": [
         {"name": "Yu'biusk clay", "quantity": 50},
         {"name": "Malachite green", "quantity": 44},
         {"name": "Soapstone", "quantity": 40}
-    ]},
+    ],
+    "location": "Makeshift pie oven"},
     {"name": "Xolo shield", "xp": 45000, "site": "Dragonkin", "level": 119, "chronotes": 1204, "materials": [
         {"name": "Goldrune", "quantity": 52},
         {"name": "Orgone", "quantity": 44},
         {"name": "Felt", "quantity": 42}
-    ]},
+    ],
+    "location": "Xolo remains"},
     {"name": "Xolo spear", "xp": 45000, "site": "Dragonkin", "level": 119, "chronotes": 1204, "materials": [
         {"name": "Dragon metal", "quantity": 72},
         {"name": "Orgone", "quantity": 64}
-    ]},
+    ],
+    "location": "Xolo remains"},
     {"name": "Gold dish", "xp": 46666.7, "site": "Dragonkin", "level": 120, "chronotes": 1220, "materials": [
         {"name": "Goldrune", "quantity": 86},
         {"name": "Dragon metal", "quantity": 54}
-    ]},
+    ],
+    "location": "Saurthen debris"},
     {"name": "'Raksha' idol", "xp": 46666.7, "site": "Dragonkin", "level": 120, "chronotes": 1220, "materials": [
         {"name": "Orgone", "quantity": 56},
         {"name": "Dragon metal", "quantity": 44},
         {"name": "Goldrune", "quantity": 40}
-    ]}
+    ],
+    "location": "Saurthen debris"}
 ]
