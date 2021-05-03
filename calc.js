@@ -238,7 +238,14 @@ let archCalc = function(){
             let rowClass = artifactData[i].site;
             let oi = tableData[i].originalIndex;
             //if($(`#art${i}`).val() > 0) rowClass += " active";
-            let rowDisplayed = !(!sitesActive[artifactData[oi].site] || !inSearch(artifactData[oi]) || forSelectedCollector(artifactData[oi]).collectionIndex == Infinity);
+
+            let displayReqs = {
+                siteActive: sitesActive[artifactData[oi].site],
+                inSearch: inSearch(artifactData[oi]),
+                forCollector: forSelectedCollector(artifactData[oi]).collectionIndex == Infinity
+            }
+
+            let rowDisplayed = !(!displayReqs.siteActive || !displayReqs.inSearch || displayReqs.forCollector);
             if(listView != "ARTIFACTS") rowDisplayed = false;
 
             if(true /*rowDisplayed*/){
@@ -254,7 +261,23 @@ let archCalc = function(){
                     if(newColl !== null && newColl !== Infinity){
                         if(anythingInCollectionDisplayed(collectionData[newColl])){
                             newColl = collectionData[newColl];
-                            table += `<div class="row subHeader">${newColl.name}</div>`;
+                            let rr = "";
+                            if(newColl.repeatableReward){
+                                let rewards = [];
+                                for(rewardKey in newColl.repeatableReward){
+                                    rewards.push({reward: rewardKey, quantity: newColl.repeatableReward[rewardKey]});
+                                }
+                                rr = rewards.map(r => r.quantity + " " + r.reward).join(", ");
+                            }
+                            table += `<div class="row subHeader">
+                                <div class="collectionHeaderName">
+                                ${newColl.name}
+                                </div>
+                                <div class="collectionHeaderRewards">
+                                    <b style="color: #D2D6DC;">${newColl.reward || ""}</b><br>
+                                    ${rr}
+                                </div>
+                            </div>`;
                         }
                     }
                 }
@@ -265,8 +288,13 @@ let archCalc = function(){
             else
                 table += `<div class="row" id="artRow${oi}" class="${rowClass}">`;
                 table += `<div class="cell nameCell">
+                    <div class="artefactName">
                     ${godImage(artifactData[oi].site)}&nbsp;
                     ${artifactData[oi].name}
+                    </div>
+                    <div class="artefactLocation">
+                        ${artifactData[oi].location || ""}
+                    </div>
                 </div>`;
                 table += `<div class="cell numberCell" ${artifactData[oi].level > $('#ii_level').val()?`style="color: red;"`:``}>
                     ${artifactData[oi].level}
@@ -636,7 +664,7 @@ let archCalc = function(){
         }
         output += "<br><hr>";
         output += "<b><u>Including Damaged Artefacts</u></b><br>";
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors" + ": " + totals.chronotes + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors (exc. completion bonus)" + ": " + totals.chronotes + "<br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotes*0.4)) + "<br><br>";
         output += "<b>Completed Collections</b>:<br>";
         if(!completedCollections.length){
@@ -667,7 +695,7 @@ let archCalc = function(){
         }
         output += "<br><hr>";
         output += "<b><u>Excluding Damaged Artefacts</u></b><br>";
-        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors" + ": " + totals.chronotesRestored + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors (exc. completion bonus)" + ": " + totals.chronotesRestored + "<br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotesRestored*0.4)) + "<br><br>";
         output += "<b>Restored Collections</b>:<br>";
         if(!completedRestoredCollections.length){
@@ -732,8 +760,11 @@ let archCalc = function(){
     function inSearch(art){
         if(!searchFilter || !searchFilter.length) return true;
         let s = searchFilter.toLowerCase();
-        if(art.name.toLowerCase().includes(s)) return true;
-        if(!isNaN(parseInt(searchFilter)) && art.level == parseInt(searchFilter)) return true;
+        if(art.name.toLowerCase().includes(s)) return {found: "name"};
+        if(!isNaN(parseInt(searchFilter)) && art.level == parseInt(searchFilter)) return {found: "level"};
+
+        const searchCollections = collectionData.filter(coll => coll.name.toLowerCase().includes(s) && coll.artefacts.includes(art.name));
+        if(searchCollections.length) return {found: "collection"};
 
         return false;
     }

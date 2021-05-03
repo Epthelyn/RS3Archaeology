@@ -94,6 +94,26 @@
     padding-left: 5px;
 }
 
+.cell.nameCell > .artefactName{
+    width: 100%;
+    height: auto;
+    display: block;
+    line-height: 30px;
+}
+
+.cell.nameCell > .artefactName > img{
+    margin-top: 3px;
+}
+
+.cell.nameCell > .artefactLocation{
+    width: 100%;
+    height: 20%;
+    display: block;
+    line-height: 10px;
+    font-size: 10px;
+    color: rgb(162, 166, 170);
+}
+
 .cell.numberCell{
     width: 8%;
 }
@@ -113,6 +133,21 @@
 .row.headRow{
     background-color: #161E2E;
     font-weight: bold;
+}
+
+.collectionHeaderName{
+    float: left;
+    display: block;
+    padding-left: 10px;
+}
+.collectionHeaderRewards{
+    line-height: 23px;
+    float: right;
+    display: block;
+    font-size: 14px;
+    padding-right: 10px;
+    text-align: right;
+    color: rgb(162, 166, 170);
 }
 
 .archInput{
