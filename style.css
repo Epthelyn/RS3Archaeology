@@ -52,6 +52,10 @@ table.archTable {
     display: none;
 }
 
+.archInput input{    
+    outline: none;
+}
+
 .archOutput::-webkit-scrollbar {
     display: none;
 }
