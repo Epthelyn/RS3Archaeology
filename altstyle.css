@@ -196,6 +196,10 @@
     background-color: #252F3F;
 }
 
+.archInput input{    
+    outline: none;
+}
+
 .archOutput{
     position: absolute;
     right: 0px;
