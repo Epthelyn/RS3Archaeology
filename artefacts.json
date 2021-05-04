@@ -493,7 +493,7 @@
         {"name": "Goldrune", "quantity": 38}
     ],
     "location": "Varanusaur remains"},
-    {"name": "Ritual Bell", "xp": 10888.9, "site": "Dragonkin", "level": 90, "chronotes": 726, "materials": [
+    {"name": "Ritual bell", "xp": 10888.9, "site": "Dragonkin", "level": 90, "chronotes": 726, "materials": [
         {"name": "Goldrune", "quantity": 40},
         {"name": "Compass rose", "quantity": 38}
     ],
@@ -918,7 +918,7 @@
         {"name": "Goldrune", "quantity": 40}
     ],
     "location": "Tsutsaroth remains"},
-    {"name": "Tsutsaroth pauldron", "xp": 40000, "site": "Zamorak", "level": 16, "chronotes": 1142, "materials": [
+    {"name": "Tsutsaroth pauldron", "xp": 40000, "site": "Zamorak", "level": 116, "chronotes": 1142, "materials": [
         {"name": "Hellfire metal", "quantity": 40},
         {"name": "Eye of Dagon", "quantity": 40},
         {"name": "Goldrune", "quantity": 50}

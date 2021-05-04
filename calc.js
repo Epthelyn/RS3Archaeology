@@ -84,7 +84,7 @@ let archCalc = function(){
             dataType: 'JSON',
             async: false,
             success: function(data){
-                data = data.filter(d => d.type != "Special");
+                //data = data.filter(d => d.type != "Special");
                 materialData = data;
                 console.log(materialData);
                 for(let i=0; i<materialData.length; i++){
@@ -175,6 +175,29 @@ let archCalc = function(){
             generateTable();
         });
 
+        $('.clearBtnMats').on('click', function(){
+            if(!confirm("All material quantities will be reset.")) return;
+            $('.matOwnedCountInput').val(0);
+
+            calcTotals();
+            generateTable();
+        });
+
+        $('.dispModeBtn').on('click', function(){
+            if(listView == "ARTIFACTS"){
+                $(this).val("Show Artefacts");
+                listView = "MATERIALS";
+            }
+            else{
+                $(this).val("Show Materials");
+                listView = "ARTIFACTS";
+            }
+
+   
+            generateTable();
+        });
+
+        
         $('.infoInput').on('change', function(){
             let info = {
                 level: 1,
@@ -232,7 +255,19 @@ let archCalc = function(){
 
         let tableMaterialData = JSON.parse(JSON.stringify(materialData));
         tableMaterialData = tableMaterialData.sort((a,b) => a.type.localeCompare(b.type));
-        console.log(tableMaterialData);
+        tableMaterialData = [...tableMaterialData.filter(a => a.type != "Special"),...tableMaterialData.filter(a => a.type == "Special")];
+        tableMaterialData = tableMaterialData.filter(material => sitesActive[material.type] || material.type == "Special" || material.type == "Agnostic");
+
+        let anyColl = anyCollectorSelected();
+        if(anyColl){
+            let collMats = collectorMaterials(anyColl.collector);
+            tableMaterialData = tableMaterialData.filter(material => collMats.has(material.name));
+        }
+        
+        if($('.searchInput').val() && $('.searchInput').val().length){
+            tableMaterialData = tableMaterialData.filter(material => material.name.toLowerCase().indexOf($('.searchInput').val().toLowerCase()) != -1);
+        }
+        // console.log(tableMaterialData);
 
         for(let i=0; i<tableData.length; i++){
             let rowClass = artifactData[i].site;
@@ -248,7 +283,7 @@ let archCalc = function(){
             let rowDisplayed = !(!displayReqs.siteActive || !displayReqs.inSearch || displayReqs.forCollector);
             if(listView != "ARTIFACTS") rowDisplayed = false;
 
-            if(true /*rowDisplayed*/){
+            if(listView == "ARTIFACTS" /*rowDisplayed*/){
                 if(anyCollectorSelected()){
                     let newColl = null;
                     if(i>0 && forSelectedCollector(tableData[i-1]).collectionIndex != forSelectedCollector(tableData[i]).collectionIndex){
@@ -370,6 +405,43 @@ let archCalc = function(){
         table += "</div>";
 
         $('#table').html(table);
+        
+        $('.matOwnedMod').on('click', function(){
+            let action = $(this).attr('action');
+            let target = $(this).attr('matTarget');
+
+            let currentValue = parseInt($(`#matowned${target}`).val());
+            if(isNaN(currentValue)) currentValue = 0;
+
+            switch(action){
+                case "plus": currentValue++; break;
+                case "minus": currentValue--; 
+            }
+
+            if(currentValue < 0){
+                currentValue = 0;
+                $(`#matRow${target}`).removeClass('active');
+            }
+            else if(currentValue == 0){
+                $(`#matRow${target}`).removeClass('active');
+            }
+            else if(currentValue == 1 && action == "plus"){
+                $(`#matRow${target}`).addClass('active');
+            }
+
+            $(`#matowned${target}`).val(currentValue);
+            calcTotals();
+        });
+
+        $('.matOwnedCountInput').on('change', function(){
+            let tar = $(this).attr('target');
+            let val = parseInt($(this).val());
+            if(!isNaN(val)){
+                if(val == 0) $(`#matRow${tar}`).removeClass('active');
+                else $(`#matRow${tar}`).addClass('active');
+            }
+            calcTotals();
+        });
 
         $('.artCountInput').on('change', function(){
             let tar = $(this).attr('target');
@@ -462,8 +534,23 @@ let archCalc = function(){
                     $(`#artRow${saveData[i].i}`).addClass('active');
                 }
             }
-            calcTotals();
+            
         }
+
+        let saveData_materials = localStorage.getItem("rs3archcalcMaterials");
+        if(saveData_materials){
+            saveData_materials = $.parseJSON(saveData_materials);
+            // console.log(saveData_materials);
+            for(let i=0; i<saveData_materials.length; i++){
+                $(`#matowned${saveData_materials[i].i}`).val(saveData_materials[i].n||0);
+                if(saveData_materials[i].n > 0){
+                    $(`#matRow${saveData_materials[i].i}`).addClass('active');
+                }
+            }
+            // calcTotals();
+        }
+
+        calcTotals();
     }
 
     function forSelectedCollector(art){
@@ -493,7 +580,9 @@ let archCalc = function(){
 
     function anyCollectorSelected(){
         for(k in collectorsActive){
-            if(collectorsActive[k]) return true;
+            if(collectorsActive[k]) return {
+                collector: k
+            };
         }
 
         return false;
@@ -525,6 +614,7 @@ let archCalc = function(){
         };
 
         let saveData = [];
+        let saveData_materials = [];
 
         let checksEnabled = false;
         for(let i=0; i<artifactData.length; i++){
@@ -581,6 +671,12 @@ let archCalc = function(){
                 totals.chronotesRestored+=artifactData[i].chronotes*artOwnedQuantity;
             }
         }
+
+        materialData.forEach((material, index) => {
+            let matOwnedQuantity = parseInt($(`#matowned${index}`).val());
+            if((isNaN(matOwnedQuantity) || matOwnedQuantity == 0)) return;
+            saveData_materials.push({i: index, n: matOwnedQuantity});
+        });
         //console.log(totals);
         //console.log(artifactsAvailable);
 
@@ -602,7 +698,7 @@ let archCalc = function(){
         let restoredCollections = collectionsPossible.filter(c => c.requirementsCheck.countOnlyRestored > 0);
         let completedRestoredCollections = collectionsPossible.filter(c => c.requirementsCheck.completeByRestored);
 
-        console.log(collectionsPossible);
+        // console.log(collectionsPossible);
         let chronotesFromCompleted = {
             restoredOnly: 0,
             any: 0
@@ -624,7 +720,7 @@ let archCalc = function(){
             }
         });
 
-        console.log(chronotesFromCompleted);
+        // console.log(chronotesFromCompleted);
 
         const archLevel = parseInt($('#ii_level').val());
         const tomes = parseInt($('#ii_tomes').val());
@@ -655,12 +751,35 @@ let archCalc = function(){
         output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP)} ${outfitBonus>1?`(x${outfitBonus})`:``}<br>`;
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
-        output += "<br><b>Materials Required</b>:<br>";
+        output += "<br><b>Materials</b>:<br>";
+        // console.log(totals.materials);
         if(!totals.materials.length){
             output += "No artefacts selected.<br>";
         }
-        for(let i=0; i<totals.materials.length; i++){
-            output += materialImage(totals.materials[i].name) + "&nbsp;" + totals.materials[i].name + ": " + totals.materials[i].quantity + "<br>";
+        else{
+            output += `<table class="materialOutputTable">`;
+            output += `<tr>
+                        <td colspan="2" class="materialOutputTableCell"><b>Material</b></td>
+                        <td class="materialOutputTableCell"><b>Required</b></td>
+                        <td class="materialOutputTableCell"><b>Owned</b></td>
+                        <td class="materialOutputTableCell"><b>To collect</b></td>
+                      </tr>`;
+            output += totals.materials.map(m => {
+                const matIndex = materialData.indexOf(materialData.filter(mat => m.name == mat.name)[0]);
+                // console.log(matIndex);
+
+                let matDiff = Math.max(m.quantity - $(`#matowned${matIndex}`).val(),0);
+                if(isNaN(matDiff)) matDiff = 0;
+                return `<tr>
+                            <td style="height: 20px; line-height: 20px">${materialImage(m.name)}</td>
+                            <td class="materialOutputTableCell">${m.name}</td>
+                            <td class="materialOutputTableCell num">${m.quantity}</td>
+                            <td class="materialOutputTableCell num">${$(`#matowned${matIndex}`).val()}</td>
+                            <td class="materialOutputTableCell num" style="color: ${matDiff==0?"lime":"red"}">${matDiff}</td>
+                        </tr>`;
+            }).join("");
+            output += "</table>";
+
         }
         output += "<br><hr>";
         output += "<b><u>Including Damaged Artefacts</u></b><br>";
@@ -728,7 +847,10 @@ let archCalc = function(){
         $('#output').html(output);
 
         saveData = JSON.stringify(saveData);
+        saveData_materials = JSON.stringify(saveData_materials);
+        // console.log(saveData_materials);
         localStorage.setItem("rs3archcalcData", saveData);
+        localStorage.setItem("rs3archcalcMaterials", saveData_materials);
 
     }
 
@@ -761,6 +883,7 @@ let archCalc = function(){
         if(!searchFilter || !searchFilter.length) return true;
         let s = searchFilter.toLowerCase();
         if(art.name.toLowerCase().includes(s)) return {found: "name"};
+        if(art.location.toLowerCase().includes(s)) return {found: "location"};
         if(!isNaN(parseInt(searchFilter)) && art.level == parseInt(searchFilter)) return {found: "level"};
 
         const searchCollections = collectionData.filter(coll => coll.name.toLowerCase().includes(s) && coll.artefacts.includes(art.name));
@@ -792,4 +915,34 @@ let archCalc = function(){
 
         return mats;
     }
+
+    function setListViewMode(mode){
+        listView = mode;
+        generateTable();
+    }
+
+    function collectorMaterials(collector){
+        const collections = collectionData.filter(collection => collection.collector == collector);
+        let artefacts = [];
+        collections.forEach(collection => {
+            artefacts.push(...collection.artefacts);
+        });
+
+        // console.log(artefacts);
+
+        let materials = [];
+        artefacts.forEach(artefact => {
+            const a = artifactData.filter(art => art.name == artefact)[0];
+
+            materials.push(...a.materials.map(mat => mat.name));
+        });
+
+        // console.log(materials);
+        return new Set(materials);
+    }
+
+    // return{
+    //     setListViewMode,
+    //     collectorMaterials
+    // }
 }();

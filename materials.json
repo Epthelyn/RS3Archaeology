@@ -172,6 +172,26 @@
        "type":"Armadyl"
     },
     {
+      "name":"Compass rose",
+      "type":"Dragonkin"
+    },
+    {
+      "name":"Felt",
+      "type":"Dragonkin"
+    },
+    {
+      "name":"Dragon metal",
+      "type":"Dragonkin"
+    },
+    {
+      "name":"Carbon black",
+      "type":"Dragonkin"
+    },
+    {
+      "name":"Orgone",
+      "type":"Dragonkin"
+    },
+    {
        "name":"Rope",
        "type":"Special"
     },
