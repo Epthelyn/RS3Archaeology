@@ -511,9 +511,8 @@
     ],
     "location": "Gravitron research debris"},
     {"name": "Amphora", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 742, "materials": [
-        {"name": "Everlight silvthril", "quantity": 30},
-        {"name": "Star of Saradomin", "quantity": 24},
-        {"name": "Goldrune", "quantity": 26}
+        {"name": "Everlight silvthril", "quantity": 34},
+        {"name": "Keramos", "quantity": 46}
     ],
     "location": "Acropolis debris"},
     {"name": "Rod of Asclepius", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 742, "materials": [
