@@ -25,6 +25,10 @@ table.archTable {
     overflow-y: scroll;
 }
 
+.archInput input{    
+    outline: none;
+}
+
 .archOutput{
     position: absolute;
     right: 0px;
