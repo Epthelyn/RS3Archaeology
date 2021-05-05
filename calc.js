@@ -418,16 +418,16 @@ let archCalc = function(){
                 case "minus": currentValue--; 
             }
 
-            if(currentValue < 0){
-                currentValue = 0;
-                $(`#matRow${target}`).removeClass('active');
-            }
-            else if(currentValue == 0){
-                $(`#matRow${target}`).removeClass('active');
-            }
-            else if(currentValue == 1 && action == "plus"){
-                $(`#matRow${target}`).addClass('active');
-            }
+            // if(currentValue < 0){
+            //     currentValue = 0;
+            //     $(`#matRow${target}`).removeClass('active');
+            // }
+            // else if(currentValue == 0){
+            //     $(`#matRow${target}`).removeClass('active');
+            // }
+            // else if(currentValue == 1 && action == "plus"){
+            //     $(`#matRow${target}`).addClass('active');
+            // }
 
             $(`#matowned${target}`).val(currentValue);
             calcTotals();
@@ -436,10 +436,10 @@ let archCalc = function(){
         $('.matOwnedCountInput').on('change', function(){
             let tar = $(this).attr('target');
             let val = parseInt($(this).val());
-            if(!isNaN(val)){
-                if(val == 0) $(`#matRow${tar}`).removeClass('active');
-                else $(`#matRow${tar}`).addClass('active');
-            }
+            // if(!isNaN(val)){
+            //     if(val == 0) $(`#matRow${tar}`).removeClass('active');
+            //     else $(`#matRow${tar}`).addClass('active');
+            // }
             calcTotals();
         });
 
@@ -672,10 +672,29 @@ let archCalc = function(){
             }
         }
 
+        console.log(totals.materials);
         materialData.forEach((material, index) => {
             let matOwnedQuantity = parseInt($(`#matowned${index}`).val());
-            if((isNaN(matOwnedQuantity) || matOwnedQuantity == 0)) return;
-            saveData_materials.push({i: index, n: matOwnedQuantity});
+            if((isNaN(matOwnedQuantity))) return;
+            if(matOwnedQuantity > 0)
+                saveData_materials.push({i: index, n: matOwnedQuantity});
+
+            let totalNeeded = totals.materials.filter(mat => mat.name == material.name)[0];
+            if(totalNeeded){
+                totalNeeded = totalNeeded.quantity;
+                if(matOwnedQuantity >= totalNeeded){
+                    $(`#matRow${index}`).addClass('active');
+                    $(`#matRow${index}`).removeClass('inactive');
+                }
+                else{
+                    $(`#matRow${index}`).addClass('inactive');
+                    $(`#matRow${index}`).removeClass('active');
+                }
+            }
+            else{
+                $(`#matRow${index}`).removeClass('active');
+                $(`#matRow${index}`).removeClass('inactive');
+            }
         });
         //console.log(totals);
         //console.log(artifactsAvailable);
