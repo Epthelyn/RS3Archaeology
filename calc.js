@@ -797,7 +797,7 @@ let archCalc = function(){
                             <td class="materialOutputTableCell num">${m.quantity}</td>
                             <td class="materialOutputTableCell num">${$(`#matowned${matIndex}`).val()}</td>
                             <td class="materialOutputTableCell num" style="color: ${matDiff==0?"lime":"red"}">${matDiff}</td>
-                            <td class="materialOutputTableCell num">${matDiff>0?(matDiff*thisMat.cacheXP):""}</td>
+                            <td class="materialOutputTableCell num">${matDiff>0&&thisMat.cacheXP?(~~(matDiff*thisMat.cacheXP)):""}</td>
                         </tr>`;
             }).join("");
             output += "</table>";
