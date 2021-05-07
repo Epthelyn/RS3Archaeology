@@ -782,9 +782,11 @@ let archCalc = function(){
                         <td class="materialOutputTableCell"><b>Required</b></td>
                         <td class="materialOutputTableCell"><b>Owned</b></td>
                         <td class="materialOutputTableCell"><b>To collect</b></td>
+                        <td class="materialOutputTableCell"><b>Collect XP</b></td>
                       </tr>`;
             output += totals.materials.map(m => {
-                const matIndex = materialData.indexOf(materialData.filter(mat => m.name == mat.name)[0]);
+                const thisMat = materialData.filter(mat => m.name == mat.name)[0];
+                const matIndex = materialData.indexOf(thisMat);
                 // console.log(matIndex);
 
                 let matDiff = Math.max(m.quantity - $(`#matowned${matIndex}`).val(),0);
@@ -795,6 +797,7 @@ let archCalc = function(){
                             <td class="materialOutputTableCell num">${m.quantity}</td>
                             <td class="materialOutputTableCell num">${$(`#matowned${matIndex}`).val()}</td>
                             <td class="materialOutputTableCell num" style="color: ${matDiff==0?"lime":"red"}">${matDiff}</td>
+                            <td class="materialOutputTableCell num">${matDiff>0?(matDiff*thisMat.cacheXP):""}</td>
                         </tr>`;
             }).join("");
             output += "</table>";
