@@ -760,14 +760,28 @@ let archCalc = function(){
             }
         }
 
-        totalBattXP*=outfitBonus;
-        totalTomeXP*=outfitBonus;
+        //totalBattXP*=outfitBonus;
+        //totalTomeXP*=outfitBonus;
         totals.xp*=outfitBonus;
+        
+        let totalCacheXP = 0;
+        if(totals.materials.length){
+            totals.materials.forEach(m => {
+                const thisMat = materialData.filter(mat => m.name == mat.name)[0];
+                const matIndex = materialData.indexOf(thisMat);
+                const matDiff = Math.max(m.quantity - $(`#matowned${matIndex}`).val(),0);
+                const xpGained = matDiff>0&&thisMat.cacheXP?(~~(matDiff*thisMat.cacheXP)):0;
+                totalCacheXP += xpGained;
+            });
+        }
+
+        totalCacheXP *= outfitBonus;
 
         let output = `<b>Artefact Experience: ${~~totals.xp}</b> from <b>${totals.count}</b> artefact${totals.count>1||totals.count==0?"s":""}. <br>`;
         if(totalTomeXP) output += `<b>Tome Experience:</b> ${~~totalTomeXP}<br>`;
         if(totalBattXP) output += `<b>Pylon Battery Experience:</b> ${~~totalBattXP}<br>`;
-        output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP)} ${outfitBonus>1?`(x${outfitBonus})`:``}<br>`;
+        if(totalCacheXP) output += `<b>Cache Excavation Experience:</b> ${~~totalCacheXP}<br>`;
+        output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP + totalCacheXP)} ${outfitBonus>1?`(x${outfitBonus})`:``}<br>`;
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
         output += "<br><b>Materials</b>:<br>";
@@ -797,7 +811,7 @@ let archCalc = function(){
                             <td class="materialOutputTableCell num">${m.quantity}</td>
                             <td class="materialOutputTableCell num">${$(`#matowned${matIndex}`).val()}</td>
                             <td class="materialOutputTableCell num" style="color: ${matDiff==0?"lime":"red"}">${matDiff}</td>
-                            <td class="materialOutputTableCell num">${matDiff>0&&thisMat.cacheXP?(~~(matDiff*thisMat.cacheXP)):""}</td>
+                            <td class="materialOutputTableCell num">${matDiff>0&&thisMat.cacheXP?(~~(matDiff*thisMat.cacheXP*outfitBonus)):""}</td>
                         </tr>`;
             }).join("");
             output += "</table>";
