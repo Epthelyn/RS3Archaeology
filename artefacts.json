@@ -475,7 +475,7 @@
         {"name": "White oak", "quantity": 12},
         {"name": "Samite silk", "quantity": 12},
         {"name": "Vellum", "quantity": 12},
-        {"name": "Cadmium red", "quantity": 12}
+        {"name": "Cadmium red", "quantity": 42}
     ],
     "location": "Dis overspill"},
     {"name": "'Torment' metal sculpture", "xp": 10500.0, "site": "Zamorak", "level": 89, "chronotes": 724, "materials": [
