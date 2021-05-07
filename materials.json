@@ -1,67 +1,83 @@
 [
     {
        "name":"Third Age iron",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 24.2
     },
     {
        "name":"Zarosian insignia",
-       "type":"Zaros"
+       "type":"Zaros",
+       "cacheXP": 24.2
     },
     {
        "name":"Imperial steel",
-       "type":"Zaros"
+       "type":"Zaros",
+       "cacheXP": 24.2
     },
     {
        "name":"Samite silk",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 24.2
     },
     {
        "name":"White oak",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 24.2
     },
     {
        "name":"Goldrune",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 24.2
     },
     {
        "name":"Orthenglass",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 24.2
     },
     {
        "name":"Vellum",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 24.2
     },
     {
        "name":"Cadmium red",
-       "type":"Zamorak"
+       "type":"Zamorak",
+       "cacheXP": 24.2
     },
     {
        "name":"Ancient vis",
-       "type":"Zaros"
+       "type":"Zaros",
+       "cacheXP": 24.2
     },
     {
        "name":"Tyrian purple",
-       "type":"Zaros"
+       "type":"Zaros",
+       "cacheXP": 24.2
     },
     {
        "name":"Leather scraps",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 24.2
     },
     {
        "name":"Chaotic brimstone",
-       "type":"Zamorak"
+       "type":"Zamorak",
+       "cacheXP": 24.2
     },
     {
        "name":"Demonhide",
-       "type":"Zamorak"
+       "type":"Zamorak",
+       "cacheXP": 24.2
     },
     {
        "name":"Eye of Dagon",
-       "type":"Zamorak"
+       "type":"Zamorak",
+       "cacheXP": 30.2
     },
     {
        "name":"Hellfire metal",
-       "type":"Zamorak"
+       "type":"Zamorak",
+       "cacheXP": 30.2
     },
     {
        "name":"Ruby",
@@ -69,11 +85,13 @@
     },
     {
        "name":"White marble",
-       "type":"Saradomin"
+       "type":"Saradomin",
+       "cacheXP": 30.2
     },
     {
        "name":"Keramos",
-       "type":"Saradomin"
+       "type":"Saradomin",
+       "cacheXP": 30.2
     },
     {
        "name":"White candle",
@@ -85,19 +103,23 @@
     },
     {
        "name":"Cobalt blue",
-       "type":"Saradomin"
+       "type":"Saradomin",
+       "cacheXP": 30.2
     },
     {
        "name":"Everlight silvthril",
-       "type":"Saradomin"
+       "type":"Saradomin",
+       "cacheXP": 30.2
     },
     {
        "name":"Star of Saradomin",
-       "type":"Saradomin"
+       "type":"Saradomin",
+       "cacheXP": 30.2
     },
     {
        "name":"Blood of Orcus",
-       "type":"Zaros"
+       "type":"Zaros",
+       "cacheXP": 30.2
     },
     {
        "name":"Bronze bar",
@@ -109,11 +131,13 @@
     },
     {
        "name":"Wings of War",
-       "type":"Armadyl"
+       "type":"Armadyl",
+       "cacheXP": 56.4
     },
     {
        "name":"Stormguard steel",
-       "type":"Armadyl"
+       "type":"Armadyl",
+       "cacheXP": 56.4
     },
     {
        "name":"Clockwork",
@@ -125,7 +149,8 @@
     },
     {
        "name":"Armadylean yellow",
-       "type":"Armadyl"
+       "type":"Armadyl",
+       "cacheXP": 56.4
     },
     {
        "name":"Diamond",
@@ -133,35 +158,42 @@
     },
     {
        "name":"Animal furs",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 56.4
     },
     {
        "name":"Vulcanised rubber",
-       "type":"Bandos"
+       "type":"Bandos",
+       "cacheXP": 56.4
     },
     {
        "name":"Malachite green",
-       "type":"Bandos"
+       "type":"Bandos",
+       "cacheXP": 56.4
     },
     {
        "name":"Mark of the Kyzaj",
-       "type":"Bandos"
+       "type":"Bandos",
+       "cacheXP": 56.4
     },
     {
        "name":"Warforged bronze",
-       "type":"Bandos"
+       "type":"Bandos",
+       "cacheXP": 56.4
     },
     {
        "name":"Phoenix feather",
-       "type":"Armadyl"
+       "type":"Special"
     },
     {
        "name":"Fossilised bone",
-       "type":"Agnostic"
+       "type":"Bandos",
+       "cacheXP": 56.4
     },
     {
        "name":"Yu'biusk clay",
-       "type":"Bandos"
+       "type":"Bandos",
+       "cacheXP": 56.4
     },
     {
        "name":"Weapon poison (3)",
@@ -169,27 +201,33 @@
     },
     {
        "name":"Aetherium alloy",
-       "type":"Armadyl"
+       "type":"Armadyl",
+       "cacheXP": 56.4
     },
     {
       "name":"Compass rose",
-      "type":"Dragonkin"
+      "type":"Dragonkin",
+      "cacheXP": 92.7
     },
     {
       "name":"Felt",
-      "type":"Dragonkin"
+      "type":"Dragonkin",
+      "cacheXP": 92.7
     },
     {
       "name":"Dragon metal",
-      "type":"Dragonkin"
+      "type":"Dragonkin",
+      "cacheXP": 92.7
     },
     {
       "name":"Carbon black",
-      "type":"Dragonkin"
+      "type":"Dragonkin",
+      "cacheXP": 92.7
     },
     {
       "name":"Orgone",
-      "type":"Dragonkin"
+      "type":"Dragonkin",
+      "cacheXP": 92.7
     },
     {
        "name":"Rope",
@@ -197,11 +235,13 @@
     },
     {
        "name":"Quintessence",
-       "type":"Armadyl"
+       "type":"Armadyl",
+       "cacheXP": 92.7
     },
     {
        "name":"Soapstone",
-       "type":"Agnostic"
+       "type":"Agnostic",
+       "cacheXP": 92.7
     },
     {
        "name":"Black mushroom ink",
