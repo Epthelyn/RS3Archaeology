@@ -36,11 +36,32 @@ let archCalc = function(){
 
     let listView = "ARTIFACTS";
 
-    const pylonXP = [
-        0,3,3,3,4,4,5,6,6,7,7,8,9,10,11,12,13,13,14,14,15,16,16,17,18,19,19,20,20,22,23,24,25,26,
-        27,29,30,31,33,34,36,37,39,40,42,44,46,48,50,52,55,57,60,62,65,68,71,74,77,80,84,87,91,95,100,104,108,
-        113,118,123,129,134,140,147,154,160,166,174,182,189,199,208,217,226,238,245,257,268,279,296,306,322,330,346,361,376,403,417,430
+    const lampXP = [
+        250, 276, 308, 340, 373, 416, 492, 508, 577, 614,						// 1 to 10
+        680, 752, 822, 916, 1008, 1046, 1096, 1140, 1192, 1240,					//11 to 20
+        1298, 1348, 1408, 1470, 1536, 1596, 1621, 1656, 1812, 1892,				//21 to 30
+        1973, 2056, 2144, 2237, 2332, 2434, 2540, 2648, 2766, 2882,				//31 to 40
+        3008, 3138, 3272, 3414, 3558, 3716, 3882, 4050, 4220, 4404, 			//41 to 50
+        4593, 4800, 4998, 5218, 5448, 5688, 5940, 6184, 6466, 6737, 			//51 to 60
+        7030, 7342, 7645, 8018, 8432, 8686, 9076, 9516, 9880, 10371,			//61 to 70
+        10772, 11237, 11786, 12328, 12855, 13358, 13980, 14587, 15169, 15920,	//71 to 80
+        16664, 17390, 18087, 19048, 19674, 20132, 21502, 22370, 23690, 24486,	//81 to 90
+        25806, 26458, 27714, 28944, 30130, 32258, 33390, 34408					//91 to 98
     ];
+
+    // const pylonXP = [
+    //     0,3,3,3,4,4,5,6,6,7,7,8,9,10,11,12,13,13,14,14,15,16,16,17,18,19,19,20,20,22,23,24,25,26,
+    //     27,29,30,31,33,34,36,37,39,40,42,44,46,48,50,52,55,57,60,62,65,68,71,74,77,80,84,87,91,95,100,104,108,
+    //     113,118,123,129,134,140,147,154,160,166,174,182,189,199,208,217,226,238,245,257,268,279,296,306,322,330,346,361,376,403,417,430
+    // ];
+
+    let pylonXP = lampXP.map((xp,index) => {
+        const level = Math.max(1,Math.min(98,index+1));
+        const xpPer = 0.1*Math.floor(0.5*lampXP[index]);
+        return Math.floor((xpPer*0.25*10)/10);
+    });
+
+    console.log(pylonXP);
 
     const tomeXP = [
         300,331.2,369.6,408,447.6,499.2,590.4,609.6,660,736.8,
@@ -743,7 +764,7 @@ let archCalc = function(){
 
         const archLevel = parseInt($('#ii_level').val());
         const tomes = parseInt($('#ii_tomes').val());
-        const batts = parseInt($('#ii_batts').val());
+        const batts = parseInt($('#ii_batts').val());// + parseInt($('#ii_rex').val());
         const outfit = parseInt($('#ii_outfit').val());
 
         const outfitBonus = 1 + (outfit < 5?0.01*outfit:0.06);
@@ -757,6 +778,14 @@ let archCalc = function(){
             }
             if(!isNaN(batts)){
                 totalBattXP = batts*pylonXP[Math.min(98,Math.max(archLevel,1))];
+                if(batts >= 100){
+                    totalBattXP*=1.2;
+                   
+                }
+                else if(batts >= 10){
+                    totalBattXP*=1.1;
+                }
+                totalBattXP = Math.floor(totalBattXP);
             }
         }
 
@@ -779,7 +808,7 @@ let archCalc = function(){
 
         let output = `<b>Artefact Experience: ${~~totals.xp}</b> from <b>${totals.count}</b> artefact${totals.count>1||totals.count==0?"s":""}. <br>`;
         if(totalTomeXP) output += `<b>Tome Experience:</b> ${~~totalTomeXP}<br>`;
-        if(totalBattXP) output += `<b>Pylon Battery Experience:</b> ${~~totalBattXP}<br>`;
+        if(totalBattXP) output += `<b>Battery/Fragment Experience:</b> ${~~totalBattXP}<br>`;
         if(totalCacheXP) output += `<b>Cache Excavation Experience:</b> ${~~totalCacheXP}<br>`;
         output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP + totalCacheXP)} ${outfitBonus>1?`(x${outfitBonus})`:``}<br>`;
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";

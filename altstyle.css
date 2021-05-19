@@ -47,10 +47,10 @@
 .infoInputLabel{
     height: 100%;
     width: 8%;
-    min-width: 75px;
+    min-width: 80px;
     border: 0px;
     color:  #D2D6DC;
-    padding-left: 5px;
+    padding-left: 3px;
     float: left;
     line-height: 46px;
     text-align: center;
