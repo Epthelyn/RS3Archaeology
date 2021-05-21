@@ -107,7 +107,7 @@
         "name": "Red Rum Relics I",
         "level": 94,
         "reward": null,
-        "collector": "General Bentzone",
+        "collector": "General Bentnoze",
         "repeatableReward": {
             "chronotes": 2884,
             "Tetracompass piece": 1
@@ -122,7 +122,7 @@
         "name": "Red Rum Relics II",
         "level": 94,
         "reward": null,
-        "collector": "General Bentzone",
+        "collector": "General Bentnoze",
         "repeatableReward": {
             "chronotes": 3468,
             "Tetracompass piece": 1
@@ -137,7 +137,7 @@
         "name": "Red Rum Relics III",
         "level": 119,
         "reward": "Helm of Terror (inside)",
-        "collector": "General Bentzone",
+        "collector": "General Bentnoze",
         "repeatableReward": {
             "chronotes": 4540,
             "Tetracompass piece": 1

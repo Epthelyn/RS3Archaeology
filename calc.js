@@ -20,7 +20,7 @@ let archCalc = function(){
     let collectorsActive = {
         "Art Critic Jacques": false,
         "Chief Tess": false,
-        "General Bentnose": false,
+        "General Bentnoze": false,
         "General Wartface": false,
         "Isaura": false,
         "Lowse": false,
@@ -35,6 +35,7 @@ let archCalc = function(){
     let searchFilter = null;
 
     let listView = "ARTIFACTS";
+    let showOnlyNeededMaterials = false;
 
     const lampXP = [
         250, 276, 308, 340, 373, 416, 492, 508, 577, 614,						// 1 to 10
@@ -163,12 +164,12 @@ let archCalc = function(){
             generateTable();
         });
 
-        $('.collectorFilterIcon').on('click', function(){
+        $('.collectorContainer').on('click', function(){
             let coll = $(this).attr('collector');
 
             let enableSelf = !collectorsActive[coll];
 
-            $('.collectorFilterIcon').addClass('inactive');
+            $('.collectorContainer').addClass('inactive');
             for(k in collectorsActive){
                 collectorsActive[k] = false;
             }
@@ -192,6 +193,11 @@ let archCalc = function(){
             $('.artCountInput').val(0);
             $('.artOwnedCountInput').val(0);
 
+            artifactData.forEach(artifact => {
+                artifact.owned = 0;
+                artifact.unrestored = 0;
+            });
+
             calcTotals();
             generateTable();
         });
@@ -200,6 +206,9 @@ let archCalc = function(){
             if(!confirm("All material quantities will be reset.")) return;
             $('.matOwnedCountInput').val(0);
 
+            materialData.forEach(material => {
+                material.owned = 0;
+            });
             calcTotals();
             generateTable();
         });
@@ -368,14 +377,14 @@ let archCalc = function(){
                 </div>`;
                 //<input type="checkbox" class="artCheck" id="artcheck${oi}">
                 table += `<div class="cell numberCell right" style="text-align: center;">
-                    <input type="text" value=0 class="artOwnedCountInput" target=${oi} id="artowned${oi}">
+                    <input type="text" value=${artifactData[oi].owned || 0} class="artOwnedCountInput" target=${oi} id="artowned${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${oi} class="artMod" action="minus" id="artminus${oi}">
                     <input type="button" value="+" artTarget=${oi} class="artMod" action="plus" id="artplus${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right" style="text-align: center;">
-                    <input type="text" value=0 class="artCountInput" target=${oi} id="art${oi}">
+                    <input type="text" value=${artifactData[oi].unrestored || 0} class="artCountInput" target=${oi} id="art${oi}">
                 </div>`;
                 // table += `<div class="cell">
                 //     <input type="button" value="+" artTarget=${i} class="artMod" action="plus" id="artplus${i}">
@@ -398,7 +407,7 @@ let archCalc = function(){
                 newMat = tableMaterialData[i].type;
             }
 
-            if(newMat !== null && newMat !== Infinity){
+            if(newMat !== null && newMat !== Infinity && !showOnlyNeededMaterials){
                 if(rowDisplayed){
                     table += `<div class="row subHeader">${newMat}</div>`;
                 }
@@ -451,16 +460,20 @@ let archCalc = function(){
             // }
 
             $(`#matowned${target}`).val(currentValue);
+
+            materialData[target].owned = currentValue;
             calcTotals();
         });
 
         $('.matOwnedCountInput').on('change', function(){
             let tar = $(this).attr('target');
             let val = parseInt($(this).val());
-            // if(!isNaN(val)){
-            //     if(val == 0) $(`#matRow${tar}`).removeClass('active');
-            //     else $(`#matRow${tar}`).addClass('active');
-            // }
+            if(!isNaN(val)){
+                // if(val == 0) $(`#matRow${tar}`).removeClass('active');
+                // else $(`#matRow${tar}`).addClass('active');
+                materialData[tar].owned = val;
+            }
+            
             calcTotals();
         });
 
@@ -470,6 +483,7 @@ let archCalc = function(){
             if(!isNaN(val)){
                 if(val == 0) $(`#artRow${tar}`).removeClass('part-active');
                 else $(`#artRow${tar}`).addClass('part-active');
+                artifactData[tar].unrestored = currentValue;
             }
             calcTotals();
         });
@@ -480,6 +494,7 @@ let archCalc = function(){
             if(!isNaN(val)){
                 if(val == 0) $(`#artRow${tar}`).removeClass('active');
                 else $(`#artRow${tar}`).addClass('active');
+                artifactData[tar].owned = currentValue;
             }
             calcTotals();
         });
@@ -512,6 +527,9 @@ let archCalc = function(){
             }
 
             $(`#art${target}`).val(currentValue);
+
+            artifactData[target].unrestored = currentValue;
+            // console.log(artifactData);
             calcTotals();
         });
 
@@ -539,6 +557,8 @@ let archCalc = function(){
             }
 
             $(`#artowned${target}`).val(currentValue);
+
+            artifactData[target].owned = currentValue;
             calcTotals();
         });
 
@@ -548,6 +568,8 @@ let archCalc = function(){
             for(let i=0; i<saveData.length; i++){
                 $(`#art${saveData[i].i}`).val(saveData[i].n||0);
                 $(`#artowned${saveData[i].i}`).val(saveData[i].nR||0);
+                artifactData[saveData[i].i].unrestored = (saveData[i].n||0);
+                artifactData[saveData[i].i].owned = (saveData[i].nR||0);
                 if(saveData[i].n > 0){
                     $(`#artRow${saveData[i].i}`).addClass('part-active');
                 }
@@ -564,6 +586,7 @@ let archCalc = function(){
             // console.log(saveData_materials);
             for(let i=0; i<saveData_materials.length; i++){
                 $(`#matowned${saveData_materials[i].i}`).val(saveData_materials[i].n||0);
+                materialData[saveData_materials[i].i].owned = (saveData_materials[i].n||0);
                 if(saveData_materials[i].n > 0){
                     $(`#matRow${saveData_materials[i].i}`).addClass('active');
                 }
@@ -693,9 +716,9 @@ let archCalc = function(){
             }
         }
 
-        console.log(totals.materials);
+        // console.log(totals.materials);
         materialData.forEach((material, index) => {
-            let matOwnedQuantity = parseInt($(`#matowned${index}`).val());
+            let matOwnedQuantity = material.owned || 0; //parseInt($(`#matowned${index}`).val());
             if((isNaN(matOwnedQuantity))) return;
             if(matOwnedQuantity > 0)
                 saveData_materials.push({i: index, n: matOwnedQuantity});
@@ -715,6 +738,8 @@ let archCalc = function(){
             else{
                 $(`#matRow${index}`).removeClass('active');
                 $(`#matRow${index}`).removeClass('inactive');
+                if(showOnlyNeededMaterials)
+                    $(`#matRow${index}`).css('display','none');
             }
         });
         //console.log(totals);
@@ -813,7 +838,8 @@ let archCalc = function(){
         output += `<b>Total Experience:</b> ${~~(totals.xp + totalTomeXP + totalBattXP + totalCacheXP)} ${outfitBonus>1?`(x${outfitBonus})`:``}<br>`;
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collections" + ": " + totals.chronotes + "<br>";
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
-        output += "<br><b>Materials</b>:<br>";
+        output += "<br><b>Material Summary</b>"
+        output += `<br><label style="display: inline-block; padding-right: 10px; white-space: nowrap; margin-left: 0px;"><span style="vertical-align: middle;">Show only required in material view:</span> <input type="checkbox" id="mats_showOnlyReq" ${showOnlyNeededMaterials?'checked':''} style="vertical-align: middle; width: 20px; height: 20px;"></label><br>`;
         // console.log(totals.materials);
         if(!totals.materials.length){
             output += "No artefacts selected.<br>";
@@ -831,14 +857,15 @@ let archCalc = function(){
                 const thisMat = materialData.filter(mat => m.name == mat.name)[0];
                 const matIndex = materialData.indexOf(thisMat);
                 // console.log(matIndex);
+                const matCount = thisMat.owned || 0;
 
-                let matDiff = Math.max(m.quantity - $(`#matowned${matIndex}`).val(),0);
+                let matDiff = Math.max(m.quantity - matCount,0);
                 if(isNaN(matDiff)) matDiff = 0;
                 return `<tr>
                             <td style="height: 20px; line-height: 20px">${materialImage(m.name)}</td>
                             <td class="materialOutputTableCell">${m.name}</td>
                             <td class="materialOutputTableCell num">${m.quantity}</td>
-                            <td class="materialOutputTableCell num">${$(`#matowned${matIndex}`).val()}</td>
+                            <td class="materialOutputTableCell num">${matCount}</td>
                             <td class="materialOutputTableCell num" style="color: ${matDiff==0?"lime":"red"}">${matDiff}</td>
                             <td class="materialOutputTableCell num">${matDiff>0&&thisMat.cacheXP?(~~(matDiff*thisMat.cacheXP*outfitBonus)):""}</td>
                         </tr>`;
@@ -916,6 +943,11 @@ let archCalc = function(){
         // console.log(saveData_materials);
         localStorage.setItem("rs3archcalcData", saveData);
         localStorage.setItem("rs3archcalcMaterials", saveData_materials);
+
+        $('#mats_showOnlyReq').on('change',function(e){
+            showOnlyNeededMaterials = $(this).is(':checked');
+            generateTable();
+        });
 
     }
 
