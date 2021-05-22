@@ -79,6 +79,8 @@ let archCalc = function(){
         65432,67135,68837,70539,72242,73944,75647,77351,80261,86561
     ];
 
+    let globalQuantityModifier = 1;
+
     $(document).ready(function(){
         let savedInfo = localStorage.getItem('rs3arch_info');
         if(savedInfo){
@@ -246,6 +248,50 @@ let archCalc = function(){
         });
 
         $('#ii_level').on('change', generateTable);
+
+        window.onkeydown = function(e){
+            let quantityModifier = getKeyModifier(e);
+            globalQuantityModifier = quantityModifier;
+            
+            let modifierButtons = document.getElementsByClassName('matOwnedMod');
+            for(let i=0; i<modifierButtons.length; i++){
+                let _t = modifierButtons[i];
+                
+                let sign = (_t.getAttribute('action')=="plus"?"+":"-");
+                let number = quantityModifier;
+                if(number > 1){
+                    if(number >= 1000){
+                        number = (number/1000) + "k";
+                    }
+                }
+                else{
+                    number = "";
+                }
+                _t.value = sign + number;
+            }
+        }
+
+        window.onkeyup = function(e){
+            let quantityModifier = getKeyModifier(e);
+            globalQuantityModifier = quantityModifier;
+            
+            let modifierButtons = document.getElementsByClassName('matOwnedMod');
+            for(let i=0; i<modifierButtons.length; i++){
+                let _t = modifierButtons[i];
+                
+                let sign = (_t.getAttribute('action')=="plus"?"+":"-");
+                let number = quantityModifier;
+                if(number > 1){
+                    if(number >= 1000){
+                        number = (number/1000) + "k";
+                    }
+                }
+                else{
+                    number = "";
+                }
+                _t.value = sign + number;
+            }
+        }
     });
 
     function anythingInCollectionDisplayed(c){
@@ -373,7 +419,6 @@ let archCalc = function(){
                 table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${oi} class="artOwnedMod" action="minus" id="artownedminus${oi}">
                     <input type="button" value="+" artTarget=${oi} class="artOwnedMod" action="plus" id="artownedplus${oi}">
-                    
                 </div>`;
                 //<input type="checkbox" class="artCheck" id="artcheck${oi}">
                 table += `<div class="cell numberCell right" style="text-align: center;">
@@ -421,11 +466,18 @@ let archCalc = function(){
             table += `
                 <div class="cell nameCell">${materialImage(tableMaterialData[i].name)}&nbsp;${tableMaterialData[i].name}</div>
                 <div class="cell numberCell">${tableMaterialData[i].type}</div>
+                <div class="cell numberCell right twoLines">
+                    <input type="button" value="Store" matTarget=${oi} class="matChangeBtn" action="store" id="matstore${oi}" style="width: 43px;">
+                    <input type="button" value="Take" matTarget=${oi} class="matChangeBtn rem" action="take" id="mattake${oi}" style="width: 43px;"><br>
+                </div>
+                <div class="cell smallNumberCell right">
+                    <input type="text" value=0 class="matChangeInput" target=${oi} id="matstorage${oi}">
+                </div>
                 <div class="cell numberCell right">
                     <input type="button" value="-" matTarget=${oi} class="matOwnedMod" action="minus" id="matownedminus${oi}">
                     <input type="button" value="+" matTarget=${oi} class="matOwnedMod" action="plus" id="matownedplus${oi}">
                 </div>
-                <div class="cell numberCell right">
+                <div class="cell smallNumberCell right">
                     <input type="text" value=0 class="matOwnedCountInput" target=${oi} id="matowned${oi}">
                 </div>
             `
@@ -435,18 +487,51 @@ let archCalc = function(){
         table += "</div>";
 
         $('#table').html(table);
-        
-        $('.matOwnedMod').on('click', function(){
+
+        $('.matChangeInput').on('keydown change', function(e){
+            let v = $(this).val();
+            if(isNaN(v)) v = 0;
+            if(v < 0) v = 0;
+
+            $(this).val(v);
+        });
+        $('.matChangeBtn').on('click', function(e){
             let action = $(this).attr('action');
             let target = $(this).attr('matTarget');
+
+            let value = parseInt($(`#matstorage${target}`).val());
 
             let currentValue = parseInt($(`#matowned${target}`).val());
             if(isNaN(currentValue)) currentValue = 0;
 
             switch(action){
-                case "plus": currentValue++; break;
-                case "minus": currentValue--; 
+                case "store": currentValue += value; break;
+                case "take": currentValue -= value; break;
             }
+
+            if(currentValue < 0) currentValue = 0;
+
+            $(`#matowned${target}`).val(currentValue);
+
+            materialData[target].owned = currentValue;
+            calcTotals();
+        });
+        
+        $('.matOwnedMod').on('click', function(e){
+            let action = $(this).attr('action');
+            let target = $(this).attr('matTarget');
+
+            let quantityModifier = getKeyModifier(e);
+
+            let currentValue = parseInt($(`#matowned${target}`).val());
+            if(isNaN(currentValue)) currentValue = 0;
+
+            switch(action){
+                case "plus": currentValue += quantityModifier; break;
+                case "minus": currentValue -= quantityModifier; 
+            }
+
+            if(currentValue < 0) currentValue = 0;
 
             // if(currentValue < 0){
             //     currentValue = 0;
@@ -1036,6 +1121,18 @@ let archCalc = function(){
 
         // console.log(materials);
         return new Set(materials);
+    }
+
+    function getKeyModifier(event){
+        //Control: 5
+        //Alt: 10
+        //Shift: 100
+
+        let mod = 1;
+        if(event.ctrlKey) mod*=5;
+        if(event.shiftKey) mod*=10;
+
+        return mod;
     }
 
     // return{
