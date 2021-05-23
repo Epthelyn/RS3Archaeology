@@ -467,7 +467,7 @@ let archCalc = function(){
                 <div class="cell nameCell">${materialImage(tableMaterialData[i].name)}&nbsp;${tableMaterialData[i].name}</div>
                 <div class="cell numberCell">${tableMaterialData[i].type}</div>
                 <div class="cell numberCell right twoLines">
-                    <input type="button" value="Store" matTarget=${oi} class="matChangeBtn" action="store" id="matstore${oi}" style="width: 43px;">
+                    <input type="button" value="Store" matTarget=${oi} class="matChangeBtn" action="store" id="matstore${oi}" style="width: 43px;"><br>
                     <input type="button" value="Take" matTarget=${oi} class="matChangeBtn rem" action="take" id="mattake${oi}" style="width: 43px;"><br>
                 </div>
                 <div class="cell smallNumberCell right">
