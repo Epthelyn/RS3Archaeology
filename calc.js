@@ -572,10 +572,11 @@ let archCalc = function(){
         $('.artCountInput').on('change', function(){
             let tar = $(this).attr('target');
             let val = parseInt($(this).val());
+            console.log(val);
             if(!isNaN(val)){
                 if(val == 0) $(`#artRow${tar}`).removeClass('part-active');
                 else $(`#artRow${tar}`).addClass('part-active');
-                artifactData[tar].unrestored = currentValue;
+                artifactData[tar].unrestored = val;
             }
             calcTotals();
         });
@@ -586,7 +587,7 @@ let archCalc = function(){
             if(!isNaN(val)){
                 if(val == 0) $(`#artRow${tar}`).removeClass('active');
                 else $(`#artRow${tar}`).addClass('active');
-                artifactData[tar].owned = currentValue;
+                artifactData[tar].owned = val;
             }
             calcTotals();
         });
