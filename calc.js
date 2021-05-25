@@ -229,6 +229,13 @@ let archCalc = function(){
             generateTable();
         });
 
+        $('.dataDumpBtn').on('click', function(){
+            let data = "";
+            data += localStorage.getItem("rs3archcalcMaterials");
+            data += " ||| ";
+            data += localStorage.getItem("rs3archcalcData");
+            alert(data);
+        });
         
         $('.infoInput').on('change', function(){
             let info = {

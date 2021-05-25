@@ -115,10 +115,25 @@
     padding-left: 5px;
 
 }
-
 .dispModeBtn:hover{
     background-color: #334258;
 }
+
+.dataDumpBtn{
+    height: 100%;
+    width: 150px;
+    border: 0px;
+    border-left: 1px solid rgb(71, 81, 94);
+    border-right: 1px solid rgb(71, 81, 94);
+    background-color: #252F3F;
+    color:  #D2D6DC;
+    padding-left: 5px;
+
+}
+.dataDumpBtn:hover{
+    background-color: #334258;
+}
+
 
 .row > .cell{
     float: left;
