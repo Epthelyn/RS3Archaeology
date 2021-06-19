@@ -2,12 +2,14 @@
     {
        "name":"Third Age iron",
        "type":"Agnostic",
-       "cacheXP": 24.2
+       "cacheXP": 24.2,
+       "cacheAsName": true
     },
     {
        "name":"Zarosian insignia",
        "type":"Zaros",
-       "cacheXP": 24.2
+       "cacheXP": 24.2,
+       "cacheAsName": true
     },
     {
        "name":"Imperial steel",
@@ -52,7 +54,8 @@
     {
        "name":"Tyrian purple",
        "type":"Zaros",
-       "cacheXP": 24.2
+       "cacheXP": 24.2,
+       "cacheAsName": true
     },
     {
        "name":"Leather scraps",
@@ -72,7 +75,8 @@
     {
        "name":"Eye of Dagon",
        "type":"Zamorak",
-       "cacheXP": 30.2
+       "cacheXP": 30.2,
+       "cacheAsName": true
     },
     {
        "name":"Hellfire metal",
@@ -109,17 +113,20 @@
     {
        "name":"Everlight silvthril",
        "type":"Saradomin",
-       "cacheXP": 30.2
+       "cacheXP": 30.2,
+       "cacheAsName": true
     },
     {
        "name":"Star of Saradomin",
        "type":"Saradomin",
-       "cacheXP": 30.2
+       "cacheXP": 30.2,
+       "cacheAsName": true
     },
     {
        "name":"Blood of Orcus",
        "type":"Zaros",
-       "cacheXP": 30.2
+       "cacheXP": 30.2,
+       "cacheAsName": true
     },
     {
        "name":"Bronze bar",
@@ -132,12 +139,14 @@
     {
        "name":"Wings of War",
        "type":"Armadyl",
-       "cacheXP": 56.4
+       "cacheXP": 56.4,
+       "cacheAsName": true
     },
     {
        "name":"Stormguard steel",
        "type":"Armadyl",
-       "cacheXP": 56.4
+       "cacheXP": 56.4,
+       "cacheAsName": true
     },
     {
        "name":"Clockwork",
@@ -150,7 +159,8 @@
     {
        "name":"Armadylean yellow",
        "type":"Armadyl",
-       "cacheXP": 56.4
+       "cacheXP": 56.4,
+       "cacheAsName": true
     },
     {
        "name":"Diamond",
@@ -174,7 +184,8 @@
     {
        "name":"Mark of the Kyzaj",
        "type":"Bandos",
-       "cacheXP": 56.4
+       "cacheXP": 56.4,
+       "cacheAsName": true
     },
     {
        "name":"Warforged bronze",
@@ -187,13 +198,14 @@
     },
     {
        "name":"Fossilised bone",
-       "type":"Bandos",
+       "type":"Agnostic",
        "cacheXP": 56.4
     },
     {
        "name":"Yu'biusk clay",
        "type":"Bandos",
-       "cacheXP": 56.4
+       "cacheXP": 56.4,
+       "cacheAsName": true
     },
     {
        "name":"Weapon poison (3)",

@@ -1,5 +1,5 @@
 let archCalc = function(){
-    let artifactData = [];
+    let artefactData = [];
     let collectionData = [];
     let materialData = [];
 
@@ -125,11 +125,11 @@ let archCalc = function(){
             dataType: 'JSON',
             async: false,
             success: function(data){
-                artifactData = data;
-                for(let i=0; i<artifactData.length; i++){
-                    artifactData[i].originalIndex = i;
+                artefactData = data;
+                for(let i=0; i<artefactData.length; i++){
+                    artefactData[i].originalIndex = i;
                 }
-                console.log(artifactData);
+                console.log(artefactData);
                 generateTable();
             },
             error: function(err){
@@ -137,7 +137,33 @@ let archCalc = function(){
             }
         });
 
-        //console.log(JSON.stringify(getMaterialsDataFromArtifactData()));
+        $.ajax({
+            url: 'hotspots.json',
+            dataType: 'JSON',
+            async: false,
+            success: function(data){
+                hotspotData = data;
+                for(let i=0; i<hotspotData.length; i++){
+                    const relevantArtefact = artefactData.filter(a => a.location == hotspotData[i].name)[0];
+                    if(relevantArtefact){
+                        hotspotData[i].level = relevantArtefact.level;
+                    }
+                    else{
+                        console.log(`No artefacts found for ${hotspotData[i].name}`);
+                    }
+                }
+                console.log(hotspotData);
+
+                $('#simExcavationList').html(hotspotData.map((hotspot,index) => {
+                    return `<option value="${hotspot.name}">${hotspot.name}</option>`;
+                }).join(""));
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+
+        //console.log(JSON.stringify(getMaterialsDataFromartefactData()));
 
 
 
@@ -195,7 +221,7 @@ let archCalc = function(){
             $('.artCountInput').val(0);
             $('.artOwnedCountInput').val(0);
 
-            artifactData.forEach(artifact => {
+            artefactData.forEach(artifact => {
                 artifact.owned = 0;
                 artifact.unrestored = 0;
             });
@@ -210,6 +236,17 @@ let archCalc = function(){
 
             materialData.forEach(material => {
                 material.owned = 0;
+            });
+            calcTotals();
+            generateTable();
+        });
+
+        $('.clearBtnCollected').on('click', function(){
+            if(!confirm("All artefacts marked as collected will be unmarked")) return;
+            
+
+            artefactData.forEach(artefact => {
+                artefact.collectedFor = [];
             });
             calcTotals();
             generateTable();
@@ -255,6 +292,64 @@ let archCalc = function(){
         });
 
         $('#ii_level').on('change', generateTable);
+
+        $('.simOpenButton').on('click', () => {
+            $('.simPanel').css('display',$('.simPanel').css('display')=="block"?"none":"block");
+        })
+
+        $('.simButton').on('click', () => {
+            let xpStart = parseFloat($('#simXPStart').val());
+            let xpEnd = parseFloat($('#simXPEnd').val());
+
+            if(isNaN(xpStart) || xpStart < 0){
+                alert("Starting experience must be a number greater than 0!");
+                return;
+            }
+
+            if(isNaN(xpEnd) || xpEnd < 0){
+                alert("Ending experience must be a number greater than 0!");
+                return;
+            }
+
+            if(xpStart > xpEnd){
+                alert("Starting experience must not be greater than ending experience!");
+                return;
+            }
+
+            let excSite = $('#simExcavationList').val();
+            let result = archCalc.excavationSim(excSite,{simType:"runUntilGoal",xpStart:xpStart,xpEnd:xpEnd});
+            console.log(result);
+
+            let matList = ``;
+            matList += `<b>Soil</b>: ${result.soil}<br>`;
+            for(k in result.materialsByType){
+                matList += `<b>${k}</b>: ${result.materialsByType[k]}<br>`;
+            }
+
+            let artList = ``;
+            for(k in result.artefactsByType){
+                artList += `<b>${k}</b>: ${result.artefactsByType[k]}<br>`;
+            }
+
+
+            let simOutputHTML = `
+                <b>Total Actions</b>: ${result.totalActions}<br>
+                <br>
+                <b><u>Experience Gained</u></b><br>
+                <b>Excavating</b>: ${result.endCondition.excavating.toFixed(0)}<br>
+                <b>Caches</b>: ${result.endCondition.caches.toFixed(0)}<br>
+                <b>Restoring</b>: ${result.endCondition.restoring.toFixed(0)}<br>
+                <b>Total</b>: ${result.endCondition.total.toFixed(0)}<br>
+                <br>
+                <b><u>Materials Excavated</u></b><br>
+                ${matList}
+                <br>
+                <b><u>Artefacts Excavated</u></b><br>
+                ${artList}
+            `;
+
+            $('.simOutput').html(simOutputHTML);
+        });
 
         window.onkeydown = function(e){
             let quantityModifier = getKeyModifier(e);
@@ -306,11 +401,11 @@ let archCalc = function(){
         if(!c.artefacts) return false;
         
         for(let i=0; i<c.artefacts.length; i++){
-            let aIndex = artifactData.indexOf(artifactData.filter(a => a.name == c.artefacts[i])[0]);
+            let aIndex = artefactData.indexOf(artefactData.filter(a => a.name == c.artefacts[i])[0]);
             //console.log(c.artefacts[i]);
             //console.log(aIndex);
-            if(!artifactData[aIndex]) return false;
-            let displayed = !(!sitesActive[artifactData[aIndex].site] || !inSearch(artifactData[aIndex]) || forSelectedCollector(artifactData[aIndex]).collectionIndex == Infinity);
+            if(!artefactData[aIndex]) return false;
+            let displayed = !(!sitesActive[artefactData[aIndex].site] || !inSearch(artefactData[aIndex]) || forSelectedCollector(artefactData[aIndex]).collectionIndex == Infinity);
             if(displayed) return true;
         }
 
@@ -329,7 +424,7 @@ let archCalc = function(){
         $('#headrow_materials').css('display', listView=="MATERIALS"?"block":"none");
         $('#headrow_artifacts').css('display', listView=="ARTIFACTS"?"block":"none");
 
-        let tableData = JSON.parse(JSON.stringify(artifactData));
+        let tableData = JSON.parse(JSON.stringify(artefactData));
         if(anyCollectorSelected){
             //tableData = tableData.filter(t => forSelectedCollector(t));
 
@@ -353,14 +448,15 @@ let archCalc = function(){
         // console.log(tableMaterialData);
 
         for(let i=0; i<tableData.length; i++){
-            let rowClass = artifactData[i].site;
+            
             let oi = tableData[i].originalIndex;
+            let rowClass = artefactData[oi].site;
             //if($(`#art${i}`).val() > 0) rowClass += " active";
 
             let displayReqs = {
-                siteActive: sitesActive[artifactData[oi].site],
-                inSearch: inSearch(artifactData[oi]),
-                forCollector: forSelectedCollector(artifactData[oi]).collectionIndex == Infinity
+                siteActive: sitesActive[artefactData[oi].site],
+                inSearch: inSearch(artefactData[oi]),
+                forCollector: forSelectedCollector(artefactData[oi]).collectionIndex == Infinity
             }
 
             let rowDisplayed = !(!displayReqs.siteActive || !displayReqs.inSearch || displayReqs.forCollector);
@@ -401,27 +497,41 @@ let archCalc = function(){
                 }
             }
 
+            // let collectorHighlight = false;
+            // // console.log(anyColl && artefactData[oi].collectedFor && artefactData[oi].collectedFor.includes(anyColl.collector));
+            // if(anyColl && artefactData[oi].collectedFor && artefactData[oi].collectedFor.includes(anyColl.collector)){
+            //     collectorHighlight = true;
+            //     // console.log(`${artefactData[oi].name} should be highlighted!`);
+            //     rowClass += " collected"
+
+            //     console.log(artefactData[oi].collectedFor);
+            //     // console.log(rowClass);
+            // }
+
+            
+
             if(!rowDisplayed)
                 table += `<div class="row" id="artRow${oi}" style="display: none;" class="${rowClass}">`;
             else
-                table += `<div class="row" id="artRow${oi}" class="${rowClass}">`;
+                table += `<div class="row artRow" id="artRow${oi}" class="${rowClass}" artRef="${oi}">`;
+               
                 table += `<div class="cell nameCell">
                     <div class="artefactName">
-                    ${godImage(artifactData[oi].site)}&nbsp;
-                    ${artifactData[oi].name}
+                    ${godImage(artefactData[oi].site)}&nbsp;
+                    ${artefactData[oi].name}
                     </div>
                     <div class="artefactLocation">
-                        ${artifactData[oi].location || ""}
+                        ${artefactData[oi].location || ""}
                     </div>
                 </div>`;
-                table += `<div class="cell numberCell" ${artifactData[oi].level > $('#ii_level').val()?`style="color: red;"`:``}>
-                    ${artifactData[oi].level}
+                table += `<div class="cell numberCell" ${artefactData[oi].level > $('#ii_level').val()?`style="color: red;"`:``}>
+                    ${artefactData[oi].level}
                 </div>`;
                     table += `<div class="cell bigNumberCell">
-                    ${artifactData[oi].xp}
+                    ${artefactData[oi].xp}
                 </div>`;
                 table += `<div class="cell bigNumberCell">
-                    ${artifactData[oi].chronotes}
+                    ${artefactData[oi].chronotes}
                 </div>`;
                 table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${oi} class="artOwnedMod" action="minus" id="artownedminus${oi}">
@@ -429,14 +539,14 @@ let archCalc = function(){
                 </div>`;
                 //<input type="checkbox" class="artCheck" id="artcheck${oi}">
                 table += `<div class="cell numberCell right" style="text-align: center;">
-                    <input type="text" value=${artifactData[oi].owned || 0} class="artOwnedCountInput" target=${oi} id="artowned${oi}">
+                    <input type="text" value=${artefactData[oi].owned || 0} class="artOwnedCountInput" target=${oi} id="artowned${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${oi} class="artMod" action="minus" id="artminus${oi}">
                     <input type="button" value="+" artTarget=${oi} class="artMod" action="plus" id="artplus${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right" style="text-align: center;">
-                    <input type="text" value=${artifactData[oi].unrestored || 0} class="artCountInput" target=${oi} id="art${oi}">
+                    <input type="text" value=${artefactData[oi].unrestored || 0} class="artCountInput" target=${oi} id="art${oi}">
                 </div>`;
                 // table += `<div class="cell">
                 //     <input type="button" value="+" artTarget=${i} class="artMod" action="plus" id="artplus${i}">
@@ -494,6 +604,35 @@ let archCalc = function(){
         table += "</div>";
 
         $('#table').html(table);
+
+        $('.artRow').on('click', function(e){
+            if($(e.target).attr('type')) return; //Ignore if clicking on buttons or text input
+            let c = anyCollectorSelected();
+            if(!c) return;
+
+            // console.log(e.target);
+            
+            const rowCollector = c.collector;
+            
+            const artRef = $(this).attr('artRef');
+            if(!artefactData[artRef].collectedFor){
+                artefactData[artRef].collectedFor = [];
+            }
+            // console.log($(this).attr('artRef'), rowCollector, artefactData[artRef].collectedFor.includes(rowCollector));
+
+            // console.log(artefactData[artRef].collectedFor);
+            if(!(artefactData[artRef].collectedFor.includes(rowCollector))){
+                // console.log(`Adding ${rowCollector}!`);
+                artefactData[artRef].collectedFor.push(rowCollector);
+            }
+            else{
+                // console.log(`Removing ${rowCollector} at index ${artefactData[artRef].collectedFor.indexOf(rowCollector)}`);
+                artefactData[artRef].collectedFor.splice(artefactData[artRef].collectedFor.indexOf(rowCollector),1);
+            }
+            // console.log(artefactData);
+            // console.log(artefactData[artRef].collectedFor);
+            calcTotals();
+        });
 
         $('.matChangeInput').on('keydown change', function(e){
             let v = $(this).val();
@@ -576,7 +715,7 @@ let archCalc = function(){
             if(!isNaN(val)){
                 if(val == 0) $(`#artRow${tar}`).removeClass('part-active');
                 else $(`#artRow${tar}`).addClass('part-active');
-                artifactData[tar].unrestored = val;
+                artefactData[tar].unrestored = val;
             }
             calcTotals();
         });
@@ -587,7 +726,7 @@ let archCalc = function(){
             if(!isNaN(val)){
                 if(val == 0) $(`#artRow${tar}`).removeClass('active');
                 else $(`#artRow${tar}`).addClass('active');
-                artifactData[tar].owned = val;
+                artefactData[tar].owned = val;
             }
             calcTotals();
         });
@@ -621,8 +760,8 @@ let archCalc = function(){
 
             $(`#art${target}`).val(currentValue);
 
-            artifactData[target].unrestored = currentValue;
-            // console.log(artifactData);
+            artefactData[target].unrestored = currentValue;
+            // console.log(artefactData);
             calcTotals();
         });
 
@@ -651,7 +790,7 @@ let archCalc = function(){
 
             $(`#artowned${target}`).val(currentValue);
 
-            artifactData[target].owned = currentValue;
+            artefactData[target].owned = currentValue;
             calcTotals();
         });
 
@@ -661,8 +800,16 @@ let archCalc = function(){
             for(let i=0; i<saveData.length; i++){
                 $(`#art${saveData[i].i}`).val(saveData[i].n||0);
                 $(`#artowned${saveData[i].i}`).val(saveData[i].nR||0);
-                artifactData[saveData[i].i].unrestored = (saveData[i].n||0);
-                artifactData[saveData[i].i].owned = (saveData[i].nR||0);
+                artefactData[saveData[i].i].unrestored = (saveData[i].n||0);
+                artefactData[saveData[i].i].owned = (saveData[i].nR||0);
+                try{
+                    const cData = $.parseJSON(saveData[i].cF);
+                    artefactData[saveData[i].i].collectedFor = cData || [];
+                }
+                catch(err){
+                    artefactData[saveData[i].i].collectedFor = [];
+                }
+                
                 if(saveData[i].n > 0){
                     $(`#artRow${saveData[i].i}`).addClass('part-active');
                 }
@@ -735,8 +882,26 @@ let archCalc = function(){
         }
         else{
             return `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
+        }   
+    }
+
+    function wikilink(mat){
+        const matCheck = materialData.filter(m => m.name == mat.name)[0];
+        if(matCheck && matCheck.type == "Special"){
+            return `<a href="https://runescape.wiki/w/${mat.name}" target="_blank"><img style="width: 20px; height: 20px;" src="https://runescape.wiki/images/2/21/RSW_news_icon.png?3591e"></img></a>`;
         }
+        else{
+            let name = mat.name.replace(/ /gm,"_");
+
+            // if(!matCheck.cacheAsName){
+            //     name = name.toLowerCase();
+            // }
+
+            let link = `https://runescape.wiki/w/Special:Search?search=Material_cache_(${name})#Locations`;
+            //return `<a href="https://runescape.wiki/w/Material_cache_(${name})#Locations" target="_blank"><img style="width: 20px; height: 20px;" src="https://runescape.wiki/images/2/21/RSW_news_icon.png?3591e"></img></a>`;
+            return `<a href="${link}" target="_blank"><img style="width: 20px; height: 20px;" src="https://runescape.wiki/images/2/21/RSW_news_icon.png?3591e"></img></a>`;
         
+        }
     }
     
 
@@ -754,7 +919,7 @@ let archCalc = function(){
         let saveData_materials = [];
 
         let checksEnabled = false;
-        for(let i=0; i<artifactData.length; i++){
+        for(let i=0; i<artefactData.length; i++){
             if($(`#artcheck${i}`).is(':checked')){
                 checksEnabled = true;
                 break;
@@ -765,29 +930,30 @@ let archCalc = function(){
 
         let artifactsAvailable = [];
         let restoredArtifactsAvailable = [];
-
-        for(let i=0; i<artifactData.length; i++){
+        // console.log(artefactData);
+        for(let i=0; i<artefactData.length; i++){
+            let _a = artefactData[i];
             let artQuantity = parseInt($(`#art${i}`).val());
             let artOwnedQuantity = parseInt($(`#artowned${i}`).val());
-            if((isNaN(artQuantity) || artQuantity == 0) && (isNaN(artOwnedQuantity) || artOwnedQuantity == 0))  continue;
-            saveData.push({i: i, n: artQuantity, nR: artOwnedQuantity});
-            if(!inSearch(artifactData[i])) continue;
-            if(forSelectedCollector(artifactData[i]).collectionIndex == Infinity) continue;
+            if((isNaN(artQuantity) || artQuantity == 0) && (isNaN(artOwnedQuantity) || artOwnedQuantity == 0) && !(_a.collectedFor && _a.collectedFor.length))  continue;
+            saveData.push({i: i, n: artQuantity, nR: artOwnedQuantity, cF: JSON.stringify(artefactData[i].collectedFor)});
+            if(!inSearch(artefactData[i])) continue;
+            if(forSelectedCollector(artefactData[i]).collectionIndex == Infinity) continue;
 
 
             if(checksEnabled && !$(`#artcheck${i}`).is(':checked')) continue;
-            if(!sitesActive[artifactData[i].site]) continue;
+            if(!sitesActive[artefactData[i].site]) continue;
 
-            totals.chronotes+=artifactData[i].chronotes*(artQuantity+artOwnedQuantity);
+            totals.chronotes+=artefactData[i].chronotes*(artQuantity+artOwnedQuantity);
 
             if(artQuantity > 0){
                 totals.count += artQuantity;
-                artifactsAvailable.push(artifactData[i].name);
-                totals.chronotesDamaged+=artifactData[i].chronotes*artQuantity;
-                let artXP = artifactData[i].xp;
+                artifactsAvailable.push(artefactData[i].name);
+                totals.chronotesDamaged+=artefactData[i].chronotes*artQuantity;
+                let artXP = artefactData[i].xp;
                 totals.xp += artXP*artQuantity;
 
-                let artMats = artifactData[i].materials;
+                let artMats = artefactData[i].materials;
                 for(let j=0; j<artMats.length; j++){
                     let mat = totals.materials.filter(m => m.name == artMats[j].name);
                     if(!mat.length){
@@ -804,8 +970,8 @@ let archCalc = function(){
             }
 
             if(artOwnedQuantity > 0){
-                restoredArtifactsAvailable.push(artifactData[i].name);
-                totals.chronotesRestored+=artifactData[i].chronotes*artOwnedQuantity;
+                restoredArtifactsAvailable.push(artefactData[i].name);
+                totals.chronotesRestored+=artefactData[i].chronotes*artOwnedQuantity;
             }
         }
 
@@ -940,7 +1106,9 @@ let archCalc = function(){
         else{
             output += `<table class="materialOutputTable">`;
             output += `<tr>
-                        <td colspan="2" class="materialOutputTableCell"><b>Material</b></td>
+                        <td></td>
+                        <td></td>
+                        <td colspanclass="materialOutputTableCell"><b>Material</b></td>
                         <td class="materialOutputTableCell"><b>Required</b></td>
                         <td class="materialOutputTableCell"><b>Owned</b></td>
                         <td class="materialOutputTableCell"><b>To collect</b></td>
@@ -955,7 +1123,8 @@ let archCalc = function(){
                 let matDiff = Math.max(m.quantity - matCount,0);
                 if(isNaN(matDiff)) matDiff = 0;
                 return `<tr>
-                            <td style="height: 20px; line-height: 20px">${materialImage(m.name)}</td>
+                            <td style="height: 20px; line-height: 20px; padding-top: 3px;">${wikilink(m)}</td>
+                            <td style="height: 20px; line-height: 20px; padding-top: 3px;">${materialImage(m.name)}</td>
                             <td class="materialOutputTableCell">${m.name}</td>
                             <td class="materialOutputTableCell num">${m.quantity}</td>
                             <td class="materialOutputTableCell num">${matCount}</td>
@@ -1037,6 +1206,15 @@ let archCalc = function(){
         localStorage.setItem("rs3archcalcData", saveData);
         localStorage.setItem("rs3archcalcMaterials", saveData_materials);
 
+        artefactData.forEach(artefact => {
+            if(artefact.collectedFor && anyCollectorSelected() && artefact.collectedFor.includes(anyCollectorSelected().collector)){
+                $(`#artRow${artefact.originalIndex}`).addClass('collected');
+            }
+            else{
+                $(`#artRow${artefact.originalIndex}`).removeClass('collected');
+            }
+        });
+
         $('#mats_showOnlyReq').on('change',function(e){
             showOnlyNeededMaterials = $(this).is(':checked');
             generateTable();
@@ -1082,11 +1260,11 @@ let archCalc = function(){
         return false;
     }
 
-    function getMaterialsDataFromArtifactData(){
+    function getMaterialsDataFromartefactData(){
         let mats = [];
         let matsRecorded = [];
-        for(let i=0; i<artifactData.length; i++){
-            let a = artifactData[i];
+        for(let i=0; i<artefactData.length; i++){
+            let a = artefactData[i];
             for(let j=0; j<a.materials.length; j++){
                 let m = a.materials[j].name;
                 if(!matsRecorded.includes(m)){
@@ -1122,7 +1300,7 @@ let archCalc = function(){
 
         let materials = [];
         artefacts.forEach(artefact => {
-            const a = artifactData.filter(art => art.name == artefact)[0];
+            const a = artefactData.filter(art => art.name == artefact)[0];
 
             materials.push(...a.materials.map(mat => mat.name));
         });
@@ -1143,8 +1321,219 @@ let archCalc = function(){
         return mod;
     }
 
+    function excavationSim(location,args){
+        //https://runescape.wiki/w/Module:Archaeology_Hotspot_Calculator_Module
+        let artefacts = artefactData.filter(a => a.location == location);
+        let hotspot = hotspotData.filter(h => h.name == location)[0];
+
+        if(!artefacts.length){
+            console.log(`Unknown location - ${location}!`);
+            return;
+        }
+        if(!hotspot){
+            console.log(`Unknown location - ${location}!`);
+            return;
+        }
+
+        const modifiers = {
+            cape120: false,
+            precision: 74,
+            successChance: 0.21,
+            soilChance: 0.14
+        }
+
+        const archLevel = parseInt($('#ii_level').val());
+        const level = hotspot.level;
+        const completeTomeChance = (archLevel + level)/250e3;
+        const tetraChance = 1/1500;
+        // console.log(`Complete Tome Chance: ${completeTomeChance} = 1/${completeTomeChance**-1}`);
+        const failXP = 1*10**(0.0000965*(level**2));
+        const successXP = failXP*9.3;
+        const findXP = 100*failXP;
+        const locationHP = ((17500/(1+(25*(1.035**(-2*(level-20))))))+3000)*(modifiers.cape120?0.9:1); 
+        
+        let currentHP = locationHP;
+        let artefactsRemaining = args.numArtefacts;
+        let result = {
+            totalActions: 0,
+            materials: 0,
+            materialsByType: {},
+            artefactsByType: {},
+            soil: 0,
+            artefacts: 0,
+            xp: 0,
+            completeTomes: {
+                rolled: 0,
+                cumulativeChance: 0
+            },
+            tetracompassPieces: {
+                rolled: 0,
+                cumulativeChance: 0
+            }
+        }
+
+        let hotspotMaterials = [];
+        let cumulativeChance = 0;
+        hotspot.materials.forEach(material => {
+            let chance = material.chance.split("/");
+            chance = parseFloat(chance[0])/parseFloat(chance[1]);
+            hotspotMaterials.push({
+                material: material.material,
+                chance: cumulativeChance + chance
+            });
+            cumulativeChance += chance;
+        });
+
+        let hotspotArtefacts = artefactData.filter(artefact => artefact.location == location);
+        let hotspotArtefactsAsKeys = {};
+        hotspotArtefacts.forEach(artefact => {
+            hotspotArtefactsAsKeys[artefact.name] = {
+                xp: artefact.xp,
+                materials: artefact.materials
+            }
+        })
+
+        console.log(hotspotMaterials,hotspotArtefacts,hotspotArtefactsAsKeys);
+
+        let endConditionMet = false;
+        let startTime = Date.now();
+        while(!endConditionMet){
+            while(currentHP >  0){
+                if(Math.random() <= modifiers.successChance){
+                    result.materials++;
+                    result.xp += successXP;
+
+                    let materialRNG = Math.random();
+                    const foundMaterial = hotspotMaterials.filter(m => materialRNG <= m.chance)[0];
+                    if(!result.materialsByType[foundMaterial.material]){
+                        result.materialsByType[foundMaterial.material] = 0;
+                    }
+                    result.materialsByType[foundMaterial.material]++;
+                }
+                else{
+                    if(Math.random() <= modifiers.soilChance){
+                        result.soil++;
+                    }
+                    else{
+
+                    }
+                    result.xp += failXP;
+                    
+                }
+                currentHP -= modifiers.precision;
+                if(Math.random() <= completeTomeChance){
+                    result.completeTomes.rolled++;
+                    // console.log("COMPLETE TOME!");
+                }
+                result.completeTomes.cumulativeChance += completeTomeChance;
+
+                if(Math.random() <= tetraChance){
+                    result.tetracompassPieces.rolled++;
+                    // console.log("COMPLETE TOME!");
+                }
+                result.tetracompassPieces.cumulativeChance += tetraChance;
+                result.totalActions++;
+            }
+            currentHP = locationHP;
+            // artefactsRemaining--;
+            result.xp += findXP;
+            result.artefacts++;
+            
+            let a = hotspotArtefacts[~~(Math.random()*hotspotArtefacts.length)];
+            // console.log(a);
+            if(!result.artefactsByType[a.name]){
+                result.artefactsByType[a.name] = 0;
+            }
+            result.artefactsByType[a.name]++;
+
+            endConditionMet = checkEndCondition();
+        }
+
+        console.log(endConditionMet);
+        result.endCondition = endConditionMet;
+        return result;
+
+        function checkEndCondition(){
+            if(Date.now() - startTime > 10000){
+                return {
+                    "timeout": true
+                }
+            }
+            if(args.simType == "artefactQuanity"){
+                artefactsRemaining--;
+                if(artefactsRemaining <= 0){
+                    return true;
+                }
+                return false;
+            }
+            else if(args.simType == "runUntilGoal"){
+                let xpRequired = args.xpEnd - args.xpStart;
+
+                let xpGained = {
+                    excavating: result.xp,
+                    restoring: 0,
+                    caches: 0,
+                    total: 0
+                }
+
+                let materialsNeeded = {};
+                for(k in result.artefactsByType){
+                    xpGained.restoring += hotspotArtefactsAsKeys[k].xp * result.artefactsByType[k];
+
+                    hotspotArtefactsAsKeys[k].materials.forEach(material => {
+                        
+                        if(!materialsNeeded[material.name]) materialsNeeded[material.name] = 0;
+                        materialsNeeded[material.name] += material.quantity * result.artefactsByType[k];
+                    });
+                }
+
+                for(k in materialsNeeded){
+                    if(result.materialsByType[k]){
+                        materialsNeeded[k] = Math.max(0,materialsNeeded[k] - result.materialsByType[k]);
+                        // console.log(`Subtracted ${result.materialsByType[k]} ${k}`);
+                    }
+                }
+
+                // console.log(materialsNeeded);
+                for(k in materialsNeeded){
+                    let _thisMat = materialData.filter(mat => mat.name == k)[0];
+                    if(_thisMat.type == "Special") continue;
+                    let materialXP = _thisMat.cacheXP;
+                    xpGained.caches += materialXP * materialsNeeded[k];
+                    if(isNaN(xpGained.caches)){
+                        return {
+                            error: "Cache error",
+                            material: k
+                        }
+                    }
+                }
+
+                xpGained.total = xpGained.excavating + xpGained.restoring + xpGained.caches;
+                
+                if(isNaN(xpGained.total)){
+                    return {
+                        error: "NaN XP Gain",
+                        xpGained: xpGained
+                    }
+                }
+                if(xpGained.total >= xpRequired){
+                    // console.log(xpGained);
+                    return xpGained;
+                }
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
+    }
     // return{
     //     setListViewMode,
     //     collectorMaterials
     // }
+
+    return{
+        excavationSim
+    }
 }();

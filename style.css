@@ -103,6 +103,21 @@
     background-color: #334258;
 }
 
+.clearBtnCollected{
+    height: 100%;
+    width: 100px;
+    border: 0px;
+    border-left: 1px solid rgb(71, 81, 94);
+    background-color: #252F3F;
+    color:  #D2D6DC;
+    padding-left: 5px;
+    float: right;
+}
+
+.clearBtnCollected:hover{
+    background-color: #334258;
+}
+
 
 .dispModeBtn{
     height: 100%;
@@ -114,11 +129,28 @@
     color:  #D2D6DC;
     padding-left: 5px;
 
-}
 
+}
 .dispModeBtn:hover{
     background-color: #334258;
 }
+
+.dataDumpBtn{
+    height: 100%;
+    width: 150px;
+    border: 0px;
+    border-left: 1px solid rgb(71, 81, 94);
+    border-right: 1px solid rgb(71, 81, 94);
+    background-color: #252F3F;
+    color:  #D2D6DC;
+    padding-left: 5px;
+    display: none;
+
+}
+.dataDumpBtn:hover{
+    background-color: #334258;
+}
+
 
 .row > .cell{
     float: left;
@@ -248,11 +280,11 @@
     background-color: #161E2E;
 }
 
-#table::-webkit-scrollbar {
+*::-webkit-scrollbar {
     display: none;
 }
 
-#table::-webkit-scrollbar {
+*::-webkit-scrollbar {
     display: none;
 }
 
@@ -292,12 +324,16 @@ tr:nth-child(even){
 }
 
 .active{
-    background-color: rgb(40, 63, 37) !important;
+    background-color: rgb(40, 63, 37);
 }
 
 
 .row.inactive{
-    background-color: rgb(63, 37, 37) !important;
+    background-color: rgb(63, 37, 37);
+}
+
+.row.collected{
+    color: rgb(19, 202, 13);
 }
 
 
@@ -489,4 +525,104 @@ th {
 .matImg{
     width: 20px;
     height: 20px;
+}
+
+.simPanel{
+    position: absolute;
+    left: calc(50% - 200px);
+    top: calc(50% - 300px);
+    width: 400px;
+    height: 600px;
+    background-color:  #252F3F;
+    display: block;
+    border: 1px solid rgb(71, 81, 94);
+    display: none;
+}
+
+.simPanel > .simHeader{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid rgb(71, 81, 94);
+    color:  #D2D6DC;
+    background-color: #161E2E;
+    font-weight: bold;
+    text-align: center;
+}
+
+.simPanel > .simItemText{
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    border: 0px;
+    border-bottom: 1px solid rgb(71, 81, 94);
+    border-right: 1px solid rgb(71, 81, 94);
+    color:  #D2D6DC;
+    background-color: #161E2E;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 10px;
+    float: left;
+    outline: none;
+}
+
+/* select.simItemText{
+    border: 0px;
+    border-bottom: 1px solid rgb(71, 81, 94);
+    border-right: 1px solid rgb(71, 81, 94);
+    background-color: #252F3F;
+} */
+
+input[type=text].simItemText{
+    background-color: #252F3F;
+    outline: none;
+}
+
+.simPanel > .simButton{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid rgb(71, 81, 94);
+    color:  #D2D6DC;
+    background-color: rgb(31, 38, 51);
+    font-weight: bold;
+    text-align: center;
+    float: left;
+}
+
+.simPanel > .simButton:hover{
+    background-color: #334258;
+}
+
+.simPanel > .simOutput{
+    width: 100%;
+    height: 300px;
+    display: block;
+    float: left;
+    overflow-y: scroll;
+    color:  #D2D6DC;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+.simOpenButton{
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    background: rgb(29, 40, 61);
+    display: block;
+    z-index: 6;
+    border: 2px solid rgb(71, 81, 94);
+    line-height: 20px;
+    text-align: center;
+    color: #D2D6DC;
+    font-size: 10px;
+    padding-top: 12px;
+}
+
+.simOpenButton:hover{
+    background-color: #334258;
 }

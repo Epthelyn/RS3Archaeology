@@ -182,13 +182,13 @@
         {"name": "Ancient vis", "quantity": 22},
         {"name": "Dragonstone", "quantity": 1}
     ],
-    "location": "Carceram debris"},
+    "location": "Carcerem debris"},
     {"name": "'Incite Fear' spell scroll", "xp": 2193.3, "site": "Zaros", "level": 58, "chronotes": 508, "materials": [
         {"name": "Vellum", "quantity": 20},
         {"name": "Ancient vis", "quantity": 18},
         {"name": "Blood of Orcus", "quantity": 18}
     ],
-    "location": "Carceram debris"},
+    "location": "Carcerem debris"},
     {"name": "Dominion discus", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
         {"name": "Keramos", "quantity": 34},
         {"name": "Star of Saradomin", "quantity": 28}
@@ -222,13 +222,13 @@
         {"name": "Chaotic brimstone", "quantity": 28},
         {"name": "Hellfire metal", "quantity": 36}
     ],
-    "location": "Shakroth debris"},
+    "location": "Shakroth remains"},
     {"name": "Spiked dog collar", "xp": 4200, "site": "Zamorak", "level": 68, "chronotes": 584, "materials": [
         {"name": "Third Age iron", "quantity": 24},
         {"name": "Leather scraps", "quantity": 24},
         {"name": "Chaotic brimstone", "quantity": 16}
     ],
-    "location": "Shakroth debris"},
+    "location": "Shakroth remains"},
     {"name": "Bronze Dominion medal", "xp": 4433.3, "site": "Saradomin", "level": 69, "chronotes": 572, "materials": [
         {"name": "Everlight silvthril", "quantity": 36},
         {"name": "Star of Saradomin", "quantity": 26},
@@ -327,18 +327,18 @@
         {"name": "Malachite green", "quantity": 20},
         {"name": "Vellum", "quantity": 24}
     ],
-    "location": "Gladatorial goblin remains"},
+    "location": "Gladiatorial goblin remains"},
     {"name": "Narogoshuun 'Hob-da-Gob' ball", "xp": 6066.7, "site": "Bandos", "level": 76, "chronotes": 628, "materials": [
         {"name": "Vulcanised rubber", "quantity": 36},
         {"name": "Mark of the Kyzaj", "quantity": 32}
     ],
-    "location": "Gladatorial goblin remains"},
+    "location": "Gladiatorial goblin remains"},
     {"name": "Rekeshuun war tether", "xp": 6066.7, "site": "Bandos", "level": 76, "chronotes": 628, "materials": [
         {"name": "Vulcanised rubber", "quantity": 22},
         {"name": "Warforged bronze", "quantity": 20},
         {"name": "Leather scraps", "quantity": 26}
     ],
-    "location": "Gladatorial goblin remains"},
+    "location": "Gladiatorial goblin remains"},
     {"name": "Aviansie dreamcoat", "xp": 7388.9, "site": "Armadyl", "level": 81, "chronotes": 666, "materials": [
         {"name": "Armadylean yellow", "quantity": 20},
         {"name": "Samite silk", "quantity": 30},
@@ -627,18 +627,18 @@
         {"name": "Orgone", "quantity": 56},
         {"name": "Soapstone", "quantity": 34}
     ],
-    "location": "Dragonkin coffer"},
+    "location": "Dragonkin coffin"},
     {"name": "Dragonkin calendar", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
         {"name": "Orgone", "quantity": 34},
         {"name": "Carbon black", "quantity": 28},
         {"name": "Compass rose", "quantity": 28}
     ],
-    "location": "Dragonkin coffer"},
+    "location": "Dragonkin coffin"},
     {"name": "Dragonkin staff", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
         {"name": "Orgone", "quantity": 56},
         {"name": "Soapstone", "quantity": 34}
     ],
-    "location": "Dragonkin coffer"},
+    "location": "Dragonkin coffin"},
     {"name": "Dorgeshuun spear", "xp": 18666.7, "site": "Bandos", "level": 100, "chronotes": 844, "materials": [
         {"name": "Warforged bronze", "quantity": 50},
         {"name": "White oak", "quantity": 42}

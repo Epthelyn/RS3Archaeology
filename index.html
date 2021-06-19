@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Archaeology Calculator</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="altstyle.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="icon" 
       type="image/png" 
       href="archlogo.png">
@@ -89,6 +89,7 @@
             <input type="button" class="dataDumpBtn" value="Alert Data">
             <input type="button" class="clearBtn" value="Clear Artefacts">
             <input type="button" class="clearBtnMats" value="Clear Materials">
+            <input type="button" class="clearBtnCollected" value="Clear Collected">
         </div>
         <div class="row headRow" id="headrow_artifacts" style="display: none;">
             <div class="cell nameCell">Artefact</div>
@@ -111,5 +112,15 @@
         </div>
         <div id="table"></div>
     </div>
+    <div class="simPanel">
+        <div class="simHeader">Excavation Simulator</div>
+        <div class="simItemText">Excavation Site</div><select class="simItemText" id="simExcavationList"></select>
+        <div class="simItemText">Mattock Precision</div><input type="text" value=1 class="simItemText" id="simMattockPrecision">
+        <div class="simItemText">Start Experience</div><input type="text" value=0 class="simItemText" id="simXPStart">
+        <div class="simItemText">End Experience</div><input type="text" value=10000 class="simItemText" id="simXPEnd">
+        <div class="simButton">Simulate</div>
+        <div class="simOutput"></div>
+    </div>
+    <div class="simOpenButton">Excavation<br>Simulator</div>
 </body>
 </html>
