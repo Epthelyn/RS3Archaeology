@@ -10,6 +10,8 @@ The "Show Materials" or "Show Artefacts" button switches between material and ar
 
 The "Take" and "Remove" buttons in the materials view can be used to add or remove a specific number of materials from storage, based on the value in the number input.
 
+With a collector selected, clicking on a row will highlight/unhighlight it to indicate than an artefact has been submitted to a collector. This has no current purpose beyond appearance, it's just easier than checking the in-game log.
+
 ## Centre - Sites and Collectors ##
 The icons in the central divider can be used to turn on and off the display and calculation of artefacts from each of the excavation sites. Greyscale icons are disabled, coloured icons enabled. Shift-clicking a god icon will select only that item and deselect all others. Selecting a collector will divide the artefact list by collection, with headers providing the collection name, the one-time reward (in bold, if applicable) and the repeatable reward.
 Using these icons also filters materials, causing the materials display to only show materials required for artefacts within the selected categories.
