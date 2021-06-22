@@ -515,7 +515,7 @@ let archCalc = function(){
             else
                 table += `<div class="row artRow" id="artRow${oi}" class="${rowClass}" artRef="${oi}">`;
                
-                table += `<div class="cell nameCell">
+                table += `<div class="cell nameCell interactive">
                     <div class="artefactName">
                     ${godImage(artefactData[oi].site)}&nbsp;
                     ${artefactData[oi].name}
@@ -524,13 +524,13 @@ let archCalc = function(){
                         ${artefactData[oi].location || ""}
                     </div>
                 </div>`;
-                table += `<div class="cell numberCell" ${artefactData[oi].level > $('#ii_level').val()?`style="color: red;"`:``}>
+                table += `<div class="cell numberCell interactive" ${artefactData[oi].level > $('#ii_level').val()?`style="color: red;"`:``}>
                     ${artefactData[oi].level}
                 </div>`;
-                    table += `<div class="cell bigNumberCell">
+                    table += `<div class="cell bigNumberCell interactive">
                     ${artefactData[oi].xp}
                 </div>`;
-                table += `<div class="cell bigNumberCell">
+                table += `<div class="cell bigNumberCell interactive">
                     ${artefactData[oi].chronotes}
                 </div>`;
                 table += `<div class="cell numberCell right">
@@ -606,7 +606,7 @@ let archCalc = function(){
         $('#table').html(table);
 
         $('.artRow').on('click', function(e){
-            if($(e.target).attr('type')) return; //Ignore if clicking on buttons or text input
+            if($(e.target).attr('type') || !$(e.target).hasClass('interactive')) return; //Ignore if clicking on buttons or text input or anything not marked interactive
             let c = anyCollectorSelected();
             if(!c) return;
 
