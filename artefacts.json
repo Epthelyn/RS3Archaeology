@@ -801,9 +801,7 @@
     "location": "Moksha device"},
     {"name": "'The Enlightened Soul' scroll", "xp": 29666.7, "site": "Saradomin", "level": 109, "chronotes": 988, "materials": [
         {"name": "Star of Saradomin", "quantity": 50},
-        {"name": "Vellum", "quantity": 60},
-        {"name": "Samite silk", "quantity": 16},
-        {"name": "Vellum", "quantity": 16}
+        {"name": "Vellum", "quantity": 60}
     ],
     "location": "Bibliotheke debris"},
     {"name": "'The Eudoxian Elements' tablet", "xp": 29666.7, "site": "Saradomin", "level": 109, "chronotes": 988, "materials": [
