@@ -270,5 +270,9 @@
     {
        "name":"Death rune",
        "type":"Special"
-    }
+    },
+    {"name": "Tetracompass piece (dial)", "type":"Special"},
+    {"name": "Tetracompass piece (left)", "type":"Special"},
+    {"name": "Tetracompass piece (right)", "type":"Special"},
+    {"name": "Tetracompass piece (needle)", "type":"Special"}
  ]

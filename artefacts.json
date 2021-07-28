@@ -150,6 +150,18 @@
         {"name": "Cobalt blue", "quantity": 22}
     ],
     "location": "Monoceros remains"},
+    {"name": "Tetracompass", "xp": 2065, "site": "Special", "level": 50, "chronotes": 0, "materials": [
+        {"name": "Tetracompass piece (dial)", "quantity": 1},
+        {"name": "Tetracompass piece (left)", "quantity": 1},
+        {"name": "Tetracompass piece (right)", "quantity": 1},
+        {"name": "Tetracompass piece (needle)", "quantity": 1},
+        {"name": "Malachite green", "quantity": 30},
+        {"name": "Cadmium red", "quantity": 30},
+        {"name": "Cobalt blue", "quantity": 30},
+        {"name": "Armadylean yellow", "quantity": 30},
+        {"name": "Tyrian purple", "quantity": 30}
+    ],
+    "location": "Anywhere"},
     {"name": "Everlight harp", "xp": 1703.3, "site": "Saradomin", "level": 51, "chronotes": 466, "materials": [
         {"name": "Everlight silvthril", "quantity": 30},
         {"name": "White oak", "quantity": 22}
@@ -318,7 +330,7 @@
     ],
     "location": "Keshik ger"},
     {"name": "Morin khuur", "xp": 6066.7, "site": "Armadyl", "level": 76, "chronotes": 628, "materials": [
-        {"name": "Armadylean yellow", "quantity": 16},
+        {"name": "Armadylean yellow", "quantity": 36},
         {"name": "White oak", "quantity": 28}
     ],
     "location": "Keshik ger"},

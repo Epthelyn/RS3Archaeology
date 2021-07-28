@@ -14,7 +14,8 @@ let archCalc = function(){
         Saradomin: true,
         Armadyl: true,
         Bandos: true,
-        Dragonkin: true
+        Dragonkin: true,
+        Special: true
     }
 
     let collectorsActive = {
@@ -873,16 +874,31 @@ let archCalc = function(){
     }
 
     function godImage(site){
-        return `<img class="rowIcon" src="https://runescape.wiki/images/thumb/1/11/${site}_symbol.png/25px-${site}_symbol.png"></img>`;
+        if(site == "Special"){
+            return `<img class="rowIcon" src="https://runescape.wiki/images/3/35/Tetracompass_%28powered%29_detail.png?ca3cb"></img>`;
+        }
+        else{
+            return `<img class="rowIcon" src="https://runescape.wiki/images/thumb/1/11/${site}_symbol.png/25px-${site}_symbol.png"></img>`;
+        }
     }
 
     function materialImage(mat){
+        console.log("MI: "+  mat + (mat == "Tetracompass piece (left)"));
+        let retImg = "";
         if(mat.indexOf('(3)')){ //Potion handling
-            return `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat.replace(/\(3\)/gm,"")}_detail.png/100px-${mat}_detail.png">`;
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat.replace(/\(3\)/gm,"")}_detail.png/100px-${mat}_detail.png">`;
+        }
+        else if(mat == "Tetracompass piece (left)"){
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/1/11/Tetracompass_piece_%28left%29_detail.png?ab53d">`;
+        }
+        else if(mat == "Tetracompass piece (dial)"){
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/b/be/Tetracompass_piece_%28dial%29_detail.png?d8df2">`;
         }
         else{
-            return `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
-        }   
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
+        }
+        
+        return retImg;
     }
 
     function wikilink(mat){
@@ -1116,6 +1132,7 @@ let archCalc = function(){
                       </tr>`;
             output += totals.materials.map(m => {
                 const thisMat = materialData.filter(mat => m.name == mat.name)[0];
+                console.log(m.name, thisMat);
                 const matIndex = materialData.indexOf(thisMat);
                 // console.log(matIndex);
                 const matCount = thisMat.owned || 0;
