@@ -481,8 +481,9 @@ th {
 }
 
 .siteFilterIcon{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 2px;
 }
 
 .siteFilterIcon.inactive{
@@ -504,8 +505,8 @@ th {
 }
 
 .collectorFilterIcon{
-    width: 25px;
-    height: 28px;
+    width: 20px;
+    height: 22.5px;
 }
 
 .collectorFilterIconText{

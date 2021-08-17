@@ -1073,5 +1073,84 @@
             "Gold dish",
             "'Raksha' idol"
         ]
+    },
+    {
+        "name": "Finery of the Inquisition",
+        "level": 64,
+        "reward": "Elder Trove (Jas, T2)",
+        "collector": "Eblis",
+        "repeatableReward": {
+            "chronotes": 1686
+        },
+        "artefacts":[
+            "Inquisitor's ceremonial armour",
+            "Inquisitor's ceremonial mask",
+            "Inquisitor's seal"
+        ]
+    },
+    {
+        "name": "Religious Iconography",
+        "level": 67,
+        "reward": "Elder Trove (Jas, T2)",
+        "collector": "Eblis",
+        "repeatableReward": {
+            "chronotes": 2240
+        },
+        "artefacts":[
+            "Apex cap",
+            "Infula robes",
+            "Loarnab rod",
+            "'The Serpent's Fall' carving"
+        ]
+    },
+    {
+        "name": "Urns of the Empire",
+        "level": 67,
+        "reward": null,
+        "collector": "Eblis",
+        "repeatableReward": {
+            "Tetracompass piece": 1
+        },
+        "artefacts":[
+            "Funerary urn of shadow",
+            "Funerary urn of smoke",
+            "Funerary urn of ice",
+            "Funerary urn of blood",
+            "Funerary urn of miasma"
+        ]
+    },
+    {
+        "name": "Entertaining the Masses",
+        "level": 67,
+        "reward": "Elder Trove (Jas, T2)",
+        "collector": "Eblis",
+        "repeatableReward": {
+            "chronotes": 2302
+        },
+        "artefacts":[
+            "Decorative amphora",
+            "Gladiator helmet",
+            "Gladiator sword",
+            "Model chariot"
+        ]
+    },
+    {
+        "name": "Imperial Sorcery",
+        "level": 67,
+        "reward": "Elder Trove (Jas, T2)",
+        "collector": "Eblis",
+        "repeatableReward": {
+            "chronotes": 5742
+        },
+        "artefacts":[
+            "'Incite Fear' spell scroll",
+            "Curse tablet",
+            "Hand of the Ancients",
+            "'Exsanguinate' spell scroll",
+            "Necromantic focus",
+            "'Smoke Cloud' spell scroll",
+            "Ancient magic tablet",
+            "'Animate Dead' spell scroll"
+        ]
     }
 ]

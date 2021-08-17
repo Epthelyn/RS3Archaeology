@@ -15,6 +15,7 @@ let archCalc = function(){
         Armadyl: true,
         Bandos: true,
         Dragonkin: true,
+        Senntisten: true,
         Special: true
     }
 
@@ -30,7 +31,8 @@ let archCalc = function(){
         "Velucia": false,
         "Wise Old Man": false,
         "Giles": false,
-        "Sharrigan": false
+        "Sharrigan": false,
+        "Eblis": false
     }
 
     let searchFilter = null;
@@ -877,13 +879,16 @@ let archCalc = function(){
         if(site == "Special"){
             return `<img class="rowIcon" src="https://runescape.wiki/images/3/35/Tetracompass_%28powered%29_detail.png?ca3cb"></img>`;
         }
+        else if(site == "Senntisten"){
+            return `<img class="rowIcon" src="https://runescape.wiki/images/4/42/Pontifex_shadow_ring.png?1348d"></img>`;
+        }
         else{
             return `<img class="rowIcon" src="https://runescape.wiki/images/thumb/1/11/${site}_symbol.png/25px-${site}_symbol.png"></img>`;
         }
     }
 
     function materialImage(mat){
-        console.log("MI: "+  mat + (mat == "Tetracompass piece (left)"));
+        // console.log("MI: "+  mat + (mat == "Tetracompass piece (left)"));
         let retImg = "";
         if(mat.indexOf('(3)')){ //Potion handling
             retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat.replace(/\(3\)/gm,"")}_detail.png/100px-${mat}_detail.png">`;
