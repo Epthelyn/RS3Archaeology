@@ -96,25 +96,24 @@
             <input type="text" class="searchInput" placeholder="Search table">
             <input type="button" class="dispModeBtn" value="Show Materials">
             <input type="button" class="dataDumpBtn" value="Alert Data">
-            <input type="button" class="clearBtn" value="Clear Artefacts">
-            <input type="button" class="clearBtnMats" value="Clear Materials">
-            <input type="button" class="clearBtnCollected" value="Clear Collected">
+            <div class="clearBtn">Clear<br>Artefacts</div>
+            <div class="clearBtnMats">Clear<br>Materials</div>
+            <div class="clearBtnCollected">Clear<br>Collected</div>
         </div>
         <div class="row headRow" id="headrow_artifacts" style="display: none;">
             <div class="cell nameCell">Artefact</div>
             <div class="cell numberCell">Level</div>
-            <div class="cell bigNumberCell">Experience</div>
-            <div class="cell bigNumberCell">Chronotes</div>
-            <div class="cell numberCell right"></div>
-            <div class="cell numberCell right">Restored</div>
-            <div class="cell numberCell right"></div>
-            <div class="cell numberCell right">Damaged</div>
+            <div class="cell numberCell">XP</div>
+            <div class="cell numberCell" style="padding-top: 5px;"><img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/chronotes_detail.png/100px-chronotes_detail.png"></div>
+            <div class="cell doubleNumberCell right centred">Restored</div>
+            <div class="cell smallNumberCell right centred">Restore</div>
+            <div class="cell doubleNumberCell right centred">Damaged</div>
         </div>
         <div class="row headRow" id="headrow_materials" style="display: none;">
             <div class="cell nameCell">Material</div>
             <div class="cell numberCell">Type</div>
-            <div class="cell numberCell right" style="text-align: left;">Storage</div>
-            <div class="cell smallNumberCell right">Modify</div>
+            <div class="cell smallPlusNormalNumberCell right" style="text-align: left;">Modify Storage</div>
+            <!-- <div class="cell smallNumberCell right">Modify</div> -->
             <div class="cell smallNumberCell right"></div>
             <div class="cell numberCell right">Stored</div>
             <div class="cell numberCell right"></div>

@@ -530,10 +530,10 @@ let archCalc = function(){
                 table += `<div class="cell numberCell interactive" ${artefactData[oi].level > $('#ii_level').val()?`style="color: red;"`:``}>
                     ${artefactData[oi].level}
                 </div>`;
-                    table += `<div class="cell bigNumberCell interactive">
+                    table += `<div class="cell numberCell interactive">
                     ${artefactData[oi].xp}
                 </div>`;
-                table += `<div class="cell bigNumberCell interactive">
+                table += `<div class="cell numberCell interactive">
                     ${artefactData[oi].chronotes}
                 </div>`;
                 table += `<div class="cell numberCell right">
@@ -543,6 +543,9 @@ let archCalc = function(){
                 //<input type="checkbox" class="artCheck" id="artcheck${oi}">
                 table += `<div class="cell numberCell right" style="text-align: center;">
                     <input type="text" value=${artefactData[oi].owned || 0} class="artOwnedCountInput" target=${oi} id="artowned${oi}">
+                </div>`;
+                table += `<div class="cell smallNumberCell right">
+                    <input type="button" value="→" artTarget=${oi} class="artRestore" action="restore" id="artrestore${oi}">
                 </div>`;
                 table += `<div class="cell numberCell right">
                     <input type="button" value="-" artTarget=${oi} class="artMod" action="minus" id="artminus${oi}">
@@ -795,6 +798,81 @@ let archCalc = function(){
 
             artefactData[target].owned = currentValue;
             calcTotals();
+        });
+
+        $('.artRestore').on('click', function(){
+            let action = $(this).attr('action'); //Why do I even have this? It's always restore
+            let target = $(this).attr('artTarget');
+
+            console.log(target);
+            console.log(artefactData[target]);
+
+            if(!artefactData[target].unrestored || artefactData[target].unrestored === 0){
+                alert("You don't have any of these artefacts to restore!");
+                return;
+            }
+
+            const materialsRequired = artefactData[target].materials;
+            const materialsRequiredByKey = {};
+            materialsRequired.forEach(m => {
+                materialsRequiredByKey[m.name] = m.quantity;
+            });
+
+            // const materialNamesRequired = materialsRequired.map(m => m.name);
+            
+            let hasAllMaterials = true;
+            let missingMaterials = [];
+            
+            materialsRequired.forEach(material => {
+                console.log(material);
+                const quantityOwned = materialData.filter(m => m.name == material.name)[0].owned || 0;
+                console.log(quantityOwned,material.quantity);
+                if(quantityOwned < material.quantity){
+                    hasAllMaterials = false;
+                    missingMaterials.push({
+                        mat: material.name,
+                        n: material.quantity,
+                        d: material.quantity - quantityOwned
+                    });
+                }
+            });
+
+            console.log(missingMaterials);
+
+            if(!hasAllMaterials){
+                alert(`You do not have enough materials in storage to restore this artefact! Materials required:\n${missingMaterials.map(m => `${m.mat}: ${m.n} (+${m.d})`).join("\n")}`);
+                return;
+            }
+            else{
+                materialsRequired.forEach(material => {
+                    console.log(materialData.filter(m => m.name == material.name)[0],material.quantity);
+                    materialData[materialData.indexOf(materialData.filter(m => m.name == material.name)[0])].owned -= material.quantity;
+                });
+
+                let currentValues = {
+                    unrestored: parseInt($(`#art${target}`).val()),
+                    owned: parseInt($(`#artowned${target}`).val())
+                }
+                artefactData[target].unrestored--;
+                artefactData[target].owned++;
+
+                $(`#art${target}`).val(currentValues.unrestored-1);
+                $(`#artowned${target}`).val(currentValues.owned+1);
+
+                if(currentValues.unrestored-1 == 0){
+                    $(`#artRow${target}`).removeClass('part-active');
+                }
+                else{
+                    $(`#artRow${target}`).addClass('part-active');
+                }
+                
+                $(`#artRow${target}`).addClass('active');
+                
+    
+    
+
+                calcTotals();
+            }
         });
 
         let saveData = localStorage.getItem("rs3archcalcData");
