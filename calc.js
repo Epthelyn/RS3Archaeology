@@ -41,7 +41,7 @@ let archCalc = function(){
     let showOnlyNeededMaterials = false;
 
     const lampXP = [
-        250, 276, 308, 340, 373, 416, 492, 508, 577, 614,						// 1 to 10
+        0,250, 276, 308, 340, 373, 416, 492, 508, 577, 614,						// 1 to 10
         680, 752, 822, 916, 1008, 1046, 1096, 1140, 1192, 1240,					//11 to 20
         1298, 1348, 1408, 1470, 1536, 1596, 1621, 1656, 1812, 1892,				//21 to 30
         1973, 2056, 2144, 2237, 2332, 2434, 2540, 2648, 2766, 2882,				//31 to 40
@@ -50,7 +50,7 @@ let archCalc = function(){
         7030, 7342, 7645, 8018, 8432, 8686, 9076, 9516, 9880, 10371,			//61 to 70
         10772, 11237, 11786, 12328, 12855, 13358, 13980, 14587, 15169, 15920,	//71 to 80
         16664, 17390, 18087, 19048, 19674, 20132, 21502, 22370, 23690, 24486,	//81 to 90
-        25806, 26458, 27714, 28944, 30130, 32258, 33390, 34408					//91 to 98
+        25806, 26458, 27714, 28944, 30130, 32258, 33390, 34408, 35488			//91 to 99
     ];
 
     // const pylonXP = [
@@ -60,15 +60,17 @@ let archCalc = function(){
     // ];
 
     let pylonXP = lampXP.map((xp,index) => {
-        const level = Math.max(1,Math.min(98,index+1));
+        const level = Math.max(1,Math.min(98,index));
         const xpPer = 0.1*Math.floor(0.5*lampXP[index]);
         return Math.floor((xpPer*0.25*10)/10);
     });
 
+    // pylonXP.unshift(0);
+
     console.log(pylonXP);
 
     const tomeXP = [
-        300,331.2,369.6,408,447.6,499.2,590.4,609.6,660,736.8,
+        0,300,331.2,369.6,408,447.6,499.2,590.4,609.6,660,736.8,
         816,902.4,986.4,1099.2,1209.6,1255.2,1315.2,1368,1430.4,1488,
         1557.6,1617.6,1689.6,1764,1843.2,1915.2,1945.2,1987.2,2174.4,2270.4,
         2367.6,2467.2,2572.8,2684.4,2798.4,2920.8,3048,3177.6,3319.2,3458.4,
@@ -81,6 +83,10 @@ let archCalc = function(){
         48407,50110,51812,53515,55217,56920,58622,60325,62028,63730,
         65432,67135,68837,70539,72242,73944,75647,77351,80261,86561
     ];
+
+    console.log(tomeXP);
+
+    console.log(tomeXP[120],pylonXP[99]);
 
     let globalQuantityModifier = 1;
 
@@ -1157,10 +1163,10 @@ let archCalc = function(){
 
         if(!isNaN(archLevel)){
             if(!isNaN(tomes)){
-                totalTomeXP = tomes*tomeXP[Math.min(120,Math.max(archLevel,1))];
+                totalTomeXP = tomes*tomeXP[Math.min(120,Math.max(archLevel-1,1))];
             }
             if(!isNaN(batts)){
-                totalBattXP = batts*pylonXP[Math.min(98,Math.max(archLevel,1))];
+                totalBattXP = batts*pylonXP[Math.min(98,Math.max(archLevel-1,1))];
                 if(batts >= 100){
                     totalBattXP*=1.2;
                    
@@ -1171,6 +1177,8 @@ let archCalc = function(){
                 totalBattXP = Math.floor(totalBattXP);
             }
         }
+
+        console.log(batts,totalBattXP,totalTomeXP);
 
         //totalBattXP*=outfitBonus;
         //totalTomeXP*=outfitBonus;
