@@ -975,19 +975,20 @@ let archCalc = function(){
     function materialImage(mat){
         // console.log("MI: "+  mat + (mat == "Tetracompass piece (left)"));
         let retImg = "";
-        if(mat.indexOf('(3)')){ //Potion handling
+        
+        if(mat.indexOf('(3)') != -1){ //Potion handling
             retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat.replace(/\(3\)/gm,"")}_detail.png/100px-${mat}_detail.png">`;
         }
         else if(mat == "Tetracompass piece (left)"){
-            retImg = `<img class="matImg" src="https://runescape.wiki/images/1/11/Tetracompass_piece_%28left%29_detail.png?ab53d">`;
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/Tetracompass_piece_%28left%29.png?b135a">`;
         }
         else if(mat == "Tetracompass piece (dial)"){
-            retImg = `<img class="matImg" src="https://runescape.wiki/images/b/be/Tetracompass_piece_%28dial%29_detail.png?d8df2">`;
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/Tetracompass_piece_%28dial%29.png?2e06f">`;
         }
         else{
             retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
         }
-        
+        console.log(`"${mat}"`,retImg);
         return retImg;
     }
 
@@ -1141,7 +1142,7 @@ let archCalc = function(){
             
             if(coll.requirementsCheck.completeByDamaged){
                 chronotesFromCompleted.any += ref.repeatableReward.chronotes;
-                console.log(coll);
+                // console.log(coll);
             }
             else if(coll.requirementsCheck.completeByRestored){
                 // chronotesFromCompleted.any += ref.repeatableReward.chronotes;
@@ -1179,7 +1180,7 @@ let archCalc = function(){
             }
         }
 
-        console.log(batts,totalBattXP,totalTomeXP);
+        // console.log(batts,totalBattXP,totalTomeXP);
 
         //totalBattXP*=outfitBonus;
         //totalTomeXP*=outfitBonus;
@@ -1240,11 +1241,16 @@ let archCalc = function(){
                             <td class="materialOutputTableCell num">${matCount}</td>
                             <td class="materialOutputTableCell num" style="color: ${matDiff==0?"lime":"red"}">${matDiff}</td>
                             <td class="materialOutputTableCell num">${matDiff>0&&thisMat.cacheXP?(~~(matDiff*thisMat.cacheXP*outfitBonus)):""}</td>
-                        </tr>`, matDiff: matDiff};
+                        </tr>`, matDiff: matDiff, name: m.name};
             });
             
             if(sortMaterialsByNeededFirst){
-                output += matTable.sort((a,b) => b.matDiff - a.matDiff).map(c => c.content).join("");
+                // output += matTable.sort((a,b) => b.matDiff - a.matDiff).map(c => c.content).join("");
+                let outputToCollect = matTable.filter((a) => a.matDiff > 0).sort((a,b) => b.matDiff - a.matDiff).sort((a,b) => a.name.localeCompare(b.name));
+                let outputCollected  = matTable.filter((a) => a.matDiff <= 0).sort((a,b) => a.name.localeCompare(b.name));
+
+                output += [...outputToCollect,...outputCollected].map(c => c.content).join("");
+
             }
             else{
                 output += matTable.map(c => c.content).join("");
