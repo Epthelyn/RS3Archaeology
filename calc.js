@@ -39,6 +39,7 @@ let archCalc = function(){
 
     let listView = "ARTIFACTS";
     let showOnlyNeededMaterials = false;
+    let sortMaterialsByNeededFirst = true;
 
     const lampXP = [
         0,250, 276, 308, 340, 373, 416, 492, 508, 577, 614,						// 1 to 10
@@ -964,7 +965,7 @@ let archCalc = function(){
             return `<img class="rowIcon" src="https://runescape.wiki/images/3/35/Tetracompass_%28powered%29_detail.png?ca3cb"></img>`;
         }
         else if(site == "Senntisten"){
-            return `<img class="rowIcon" src="https://runescape.wiki/images/4/42/Pontifex_shadow_ring.png?1348d"></img>`;
+            return `<img class="rowIcon" src="https://runescape.wiki/images/thumb/Archaeology_-_Senntisten_achievement_icon.png/25px-Archaeology_-_Senntisten_achievement_icon.png?15ca3"></img>`;
         }
         else{
             return `<img class="rowIcon" src="https://runescape.wiki/images/thumb/1/11/${site}_symbol.png/25px-${site}_symbol.png"></img>`;
@@ -1206,6 +1207,7 @@ let archCalc = function(){
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
         output += "<br><b>Material Summary</b>"
         output += `<br><label style="display: inline-block; padding-right: 10px; white-space: nowrap; margin-left: 0px;"><span style="vertical-align: middle;">Show only required in material view:</span> <input type="checkbox" id="mats_showOnlyReq" ${showOnlyNeededMaterials?'checked':''} style="vertical-align: middle; width: 20px; height: 20px;"></label><br>`;
+        output += `<label style="display: inline-block; padding-right: 10px; white-space: nowrap; margin-left: 0px;"><span style="vertical-align: middle;">Sort materials output by needed first:</span> <input type="checkbox" id="mats_sortNeededFirst" ${sortMaterialsByNeededFirst?'checked':''} style="vertical-align: middle; width: 20px; height: 20px;"></label><br>`;
         // console.log(totals.materials);
         if(!totals.materials.length){
             output += "No artefacts selected.<br>";
@@ -1221,16 +1223,16 @@ let archCalc = function(){
                         <td class="materialOutputTableCell"><b>To collect</b></td>
                         <td class="materialOutputTableCell"><b>Collect XP</b></td>
                       </tr>`;
-            output += totals.materials.map(m => {
+            let matTable = totals.materials.map(m => {
                 const thisMat = materialData.filter(mat => m.name == mat.name)[0];
-                console.log(m.name, thisMat);
+                // console.log(m.name, thisMat);
                 const matIndex = materialData.indexOf(thisMat);
                 // console.log(matIndex);
                 const matCount = thisMat.owned || 0;
 
                 let matDiff = Math.max(m.quantity - matCount,0);
                 if(isNaN(matDiff)) matDiff = 0;
-                return `<tr>
+                return {content: `<tr>
                             <td style="height: 20px; line-height: 20px; padding-top: 3px;">${wikilink(m)}</td>
                             <td style="height: 20px; line-height: 20px; padding-top: 3px;">${materialImage(m.name)}</td>
                             <td class="materialOutputTableCell">${m.name}</td>
@@ -1238,8 +1240,16 @@ let archCalc = function(){
                             <td class="materialOutputTableCell num">${matCount}</td>
                             <td class="materialOutputTableCell num" style="color: ${matDiff==0?"lime":"red"}">${matDiff}</td>
                             <td class="materialOutputTableCell num">${matDiff>0&&thisMat.cacheXP?(~~(matDiff*thisMat.cacheXP*outfitBonus)):""}</td>
-                        </tr>`;
-            }).join("");
+                        </tr>`, matDiff: matDiff};
+            });
+            
+            if(sortMaterialsByNeededFirst){
+                output += matTable.sort((a,b) => b.matDiff - a.matDiff).map(c => c.content).join("");
+            }
+            else{
+                output += matTable.map(c => c.content).join("");
+            }
+            
             output += "</table>";
 
         }
@@ -1328,7 +1338,12 @@ let archCalc = function(){
             generateTable();
         });
 
-    }
+        $('#mats_sortNeededFirst').on('change',function(e){
+            sortMaterialsByNeededFirst = $(this).is(':checked');
+            calcTotals();
+        });
+
+    }   
 
     function checkCollectionRequirements(collection, damaged, restored){
         let count = 0;
@@ -1641,7 +1656,66 @@ let archCalc = function(){
     //     collectorMaterials
     // }
 
+    function exportData(){
+        return JSON.stringify({
+            artefacts: artefactData.map(a => {
+                return {
+                    name: a.name,
+                    owned: a.owned || 0,
+                    unrestored: a.unrestored || 0,
+                    collectedFor: a.collectedFor || []
+                }
+            }).filter(a => a.owned || a.unrestored || a.collectedFor.length), //owned, unrestored, collectedFor
+            materials: materialData.map(m => {
+                return {
+                    name: m.name,
+                    owned: m.owned
+                }
+            }).filter(m => m.owned) //owned
+        });
+    }
+
+    function importData(importString){
+        importString = $.parseJSON(importString);
+
+        console.log(importString);
+
+        artefactData.forEach(artifact => {
+            artifact.owned = 0;
+            artifact.unrestored = 0;
+        });
+
+        materialData.forEach(material => {
+            material.owned = 0;
+        });
+
+        artefactData.forEach(artefact => {
+            artefact.collectedFor = [];
+        });
+
+        importString.artefacts.forEach(a => {
+            let refArt = artefactData.filter(r => r.name == a.name)[0];
+            let refIndex = artefactData.indexOf(refArt);
+
+            if(a.owned) refArt.owned = a.owned;
+            if(a.unrestored) refArt.unrestored = a.unrestored;
+            if(a.collectedFor) refArt.collectedFor = a.collectedFor;
+        });
+
+        importString.materials.forEach(m => {
+            let refMat = materialData.filter(r => r.name == m.name)[0];
+            let refIndex = materialData.indexOf(refMat);
+            console.log(m);
+            if(m.owned) refMat.owned = m.owned;
+        });
+
+        calcTotals();
+        generateTable();
+    }
+
     return{
-        excavationSim
+        excavationSim,
+        exportData,
+        importData
     }
 }();
