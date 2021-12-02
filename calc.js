@@ -1221,7 +1221,7 @@ let archCalc = function(){
                         <td colspanclass="materialOutputTableCell"><b>Material</b></td>
                         <td class="materialOutputTableCell"><b>Required</b></td>
                         <td class="materialOutputTableCell"><b>Owned</b></td>
-                        <td class="materialOutputTableCell"><b>To collect</b></td>
+                        <td class="materialOutputTableCell"><b>To collect (${totals.materials.map(m => m.quantity).reduce((p,c) => p + c)})</b></td>
                         <td class="materialOutputTableCell"><b>Collect XP</b></td>
                       </tr>`;
             let matTable = totals.materials.map(m => {
