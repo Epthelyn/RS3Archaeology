@@ -1215,15 +1215,15 @@ let archCalc = function(){
         }
         else{
             output += `<table class="materialOutputTable">`;
-            output += `<tr>
-                        <td></td>
-                        <td></td>
-                        <td colspanclass="materialOutputTableCell"><b>Material</b></td>
-                        <td class="materialOutputTableCell"><b>Required</b></td>
-                        <td class="materialOutputTableCell"><b>Owned</b></td>
-                        <td class="materialOutputTableCell"><b>To collect (${totals.materials.map(m => m.quantity).reduce((p,c) => p + c)})</b></td>
-                        <td class="materialOutputTableCell"><b>Collect XP</b></td>
-                      </tr>`;
+            // output += `<tr>
+            //             <td></td>
+            //             <td></td>
+            //             <td colspanclass="materialOutputTableCell"><b>Material</b></td>
+            //             <td class="materialOutputTableCell"><b>Required</b></td>
+            //             <td class="materialOutputTableCell"><b>Owned</b></td>
+            //             <td class="materialOutputTableCell"><b>To collect (${totals.materials.map(m => m.quantity).reduce((p,c) => p + c)})</b></td>
+            //             <td class="materialOutputTableCell"><b>Collect XP</b></td>
+            //           </tr>`;
             let matTable = totals.materials.map(m => {
                 const thisMat = materialData.filter(mat => m.name == mat.name)[0];
                 // console.log(m.name, thisMat);
@@ -1244,6 +1244,16 @@ let archCalc = function(){
                         </tr>`, matDiff: matDiff, name: m.name};
             });
             
+            output += `<tr>
+                <td></td>
+                <td></td>
+                <td colspanclass="materialOutputTableCell"><b>Material</b></td>
+                <td class="materialOutputTableCell"><b>Required</b></td>
+                <td class="materialOutputTableCell"><b>Owned</b></td>
+                <td class="materialOutputTableCell"><b>To collect (${matTable.map(m => m.matDiff).reduce((p,c) => p + c)})</b></td>
+                <td class="materialOutputTableCell"><b>Collect XP</b></td>
+                </tr>`;
+
             if(sortMaterialsByNeededFirst){
                 // output += matTable.sort((a,b) => b.matDiff - a.matDiff).map(c => c.content).join("");
                 let outputToCollect = matTable.filter((a) => a.matDiff > 0).sort((a,b) => b.matDiff - a.matDiff).sort((a,b) => a.name.localeCompare(b.name));
