@@ -762,7 +762,7 @@
     "location": "Dragonkin coffin"},
     {"name": "Dragonkin staff", "xp": 17500, "site": "Dragonkin", "level": 99, "chronotes": 828, "materials": [
         {"name": "Orgone", "quantity": 56},
-        {"name": "Soapstone", "quantity": 34}
+        {"name": "Compass rose", "quantity": 34}
     ],
     "location": "Dragonkin coffin"},
     {"name": "Dorgeshuun spear", "xp": 18666.7, "site": "Bandos", "level": 100, "chronotes": 844, "materials": [
