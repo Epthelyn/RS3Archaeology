@@ -217,7 +217,7 @@
     {"name": "Funerary urn of shadow", "xp": 2333.3, "site": "Senntisten", "level": 60, "chronotes": 540, "materials": [
         {"name": "Soapstone", "quantity": 26},
         {"name": "Tyrian purple", "quantity": 14},
-        {"name": "Ancient vis", "quantity": 14}
+        {"name": "Ancient vis", "quantity": 20}
     ],
     "location": "Ministry remains"},
     {"name": "Dominion discus", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
