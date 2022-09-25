@@ -25,7 +25,7 @@
             },
             {
                 "material": "Imperial steel",
-                "chance": "3/10"
+                "chance": "4/10"
             }
         ]
     },
@@ -84,7 +84,7 @@
             },
             {
                 "material": "Cadmium red",
-                "chance": "2/10"
+                "chance": "4/10"
             }
         ]
     },
@@ -131,7 +131,7 @@
         ]
     },
     {
-        "name": "Sacrifical altar",
+        "name": "Sacrificial altar",
         "materials": [
             {
                 "material": "Goldrune",
@@ -1194,23 +1194,6 @@
         ]
     },
     {
-        "name": "Warforge weapon rack",
-        "materials": [
-            {
-                "material": "Fossilised bone",
-                "chance": "3/10"
-            },
-            {
-                "material": "Malachite green",
-                "chance": "3/10"
-            },
-            {
-                "material": "Warforged bronze",
-                "chance": "4/10"
-            }
-        ]
-    },
-    {
         "name": "Flight research debris",
         "materials": [
             {
@@ -1443,6 +1426,132 @@
             {
                 "material": "Goldrune",
                 "chance": "4/10"
+            }
+        ]
+    },
+    {
+        "name": "Ministry remains",
+        "materials": [
+            {
+                "material": "Ancient vis",
+                "chance": "3/10"
+            },
+            {
+                "material": "Imperial steel",
+                "chance": "2/10"
+            },
+            {
+                "material": "Soapstone",
+                "chance": "2/10"
+            },
+            {
+                "material": "Tyrian purple",
+                "chance": "3/10"
+            }
+        ]
+    },
+    {
+        "name": "Cathedral debris",
+        "materials": [
+            {
+                "material": "Samite silk",
+                "chance": "4/10"
+            },
+            {
+                "material": "Blood of Orcus",
+                "chance": "2/10"
+            },
+            {
+                "material": "Goldrune",
+                "chance": "2/10"
+            },
+            {
+                "material": "White oak",
+                "chance": "2/10"
+            }
+        ]
+    },
+    {
+        "name": "Marketplace debris",
+        "materials": [
+            {
+                "material": "Ancient vis",
+                "chance": "3/10"
+            },
+            {
+                "material": "Imperial steel",
+                "chance": "3/10"
+            },
+            {
+                "material": "Vellum",
+                "chance": "2/10"
+            },
+            {
+                "material": "Tyrian purple",
+                "chance": "2/10"
+            }
+        ]
+    },
+    {
+        "name": "Inquisitor remains",
+        "materials": [
+            {
+                "material": "Blood of Orcus",
+                "chance": "3/10"
+            },
+            {
+                "material": "Zarosian insignia",
+                "chance": "2/10"
+            },
+            {
+                "material": "Samite silk",
+                "chance": "3/10"
+            },
+            {
+                "material": "Leather scraps",
+                "chance": "2/10"
+            }
+        ]
+    },
+    {
+        "name": "Gladiator remains",
+        "materials": [
+            {
+                "material": "Imperial steel",
+                "chance": "2/10"
+            },
+            {
+                "material": "Blood of Orcus",
+                "chance": "2/10"
+            },
+            {
+                "material": "Leather scraps",
+                "chance": "3/10"
+            },
+            {
+                "material": "Ancient vis",
+                "chance": "3/10"
+            }
+        ]
+    },
+    {
+        "name": "Citizen remains",
+        "materials": [
+            {
+                "material": "Vellum",
+                "chance": "3/10"
+            },
+            {
+                "material": "Tyrian purple",
+                "chance": "3/10"
+            },
+            {
+                "material": "Imperial steel",
+                "chance": "2/10"
+            },
+            {
+                "material": "Soapstone",
+                "chance": "2/10"
             }
         ]
     }

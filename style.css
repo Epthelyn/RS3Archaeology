@@ -34,6 +34,10 @@
     font-weight: 500;
 }
 
+.row.subHeader.active{
+    background-color: rgb(23, 43, 30);
+}
+
 .searchInput{
     height: 100%;
     width: 200px;
@@ -620,7 +624,7 @@ input[type=text].simItemText{
 }
 
 .simPanel > .simButton{
-    width: 100%;
+    width: 50%;
     height: 50px;
     line-height: 50px;
     border-bottom: 1px solid rgb(71, 81, 94);
@@ -629,6 +633,10 @@ input[type=text].simItemText{
     font-weight: bold;
     text-align: center;
     float: left;
+}
+
+.simButton.nc{
+    border-left: 1px solid rgb(71, 81, 94);
 }
 
 .simPanel > .simButton:hover{

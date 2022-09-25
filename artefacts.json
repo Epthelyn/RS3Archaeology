@@ -97,7 +97,7 @@
         {"name": "Cadmium red", "quantity": 10},
         {"name": "Eye of Dagon", "quantity": 14}
     ],
-    "location": "Sacrifical altar"},
+    "location": "Sacrificial altar"},
     {"name": "Ritual dagger", "xp": 861.5, "site": "Zamorak", "level": 36, "chronotes": 352, "materials": [
         {"name": "Goldrune", "quantity": 16},
         {"name": "Hellfire metal", "quantity": 24},
@@ -217,7 +217,7 @@
     {"name": "Funerary urn of shadow", "xp": 2333.3, "site": "Senntisten", "level": 60, "chronotes": 540, "materials": [
         {"name": "Soapstone", "quantity": 26},
         {"name": "Tyrian purple", "quantity": 14},
-        {"name": "Ancient vis", "quantity": 20}
+        {"name": "Ancient vis", "quantity": 14}
     ],
     "location": "Ministry remains"},
     {"name": "Dominion discus", "xp": 2566.7, "site": "Saradomin", "level": 61, "chronotes": 556, "materials": [
@@ -278,20 +278,20 @@
         {"name": "Ancient vis", "quantity": 14},
         {"name": "Zarosian insignia", "quantity": 20}
     ],
-    "location": "Inquisitor's remains"},
+    "location": "Inquisitor remains"},
     {"name": "Inquisitor's ceremonial mask", "xp": 3266.7, "site": "Senntisten", "level": 64, "chronotes": 562, "materials": [
         {"name": "Ancient vis", "quantity": 14},
         {"name": "Leather scraps", "quantity": 12},
         {"name": "Blood of Orcus", "quantity": 14},
         {"name": "Samite silk", "quantity": 22}
     ],
-    "location": "Inquisitor's remains"},
+    "location": "Inquisitor remains"},
     {"name": "Inquisitor's ceremonial armour", "xp": 3266.7, "site": "Senntisten", "level": 64, "chronotes": 562, "materials": [
         {"name": "Leather scraps", "quantity": 14},
         {"name": "Samite silk", "quantity": 30},
         {"name": "Tyrian purple", "quantity": 18}
     ],
-    "location": "Inquisitor's remains"},
+    "location": "Inquisitor remains"},
     {"name": "'Lust' metal sculpture", "xp": 3500, "site": "Zamorak", "level": 65, "chronotes": 578, "materials": [
         {"name": "Third Age iron", "quantity": 16},
         {"name": "Eye of Dagon", "quantity": 24},
@@ -316,6 +316,12 @@
         {"name": "Imperial steel", "quantity": 30},
         {"name": "Blood of Orcus", "quantity": 16},
         {"name": "Leather scraps", "quantity": 18}
+    ],
+    "location": "Gladiator remains"},
+    {"name": "Gladiator sword", "xp": 3773.3, "site": "Senntisten", "level": 66, "chronotes": 580, "materials": [
+        {"name": "Imperial steel", "quantity": 30},
+        {"name": "Goldrune", "quantity": 18},
+        {"name": "Zarosian insignia", "quantity": 16}
     ],
     "location": "Gladiator remains"},
     {"name": "Funerary urn of blood", "xp": 3773.3, "site": "Senntisten", "level": 66, "chronotes": 580, "materials": [
@@ -636,12 +642,12 @@
         {"name": "Diamond", "quantity": 1}
     ],
     "location": "Gravitron research debris"},
-    {"name": "Amphora", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 742, "materials": [
+    {"name": "Amphora", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 744, "materials": [
         {"name": "Everlight silvthril", "quantity": 34},
         {"name": "Keramos", "quantity": 46}
     ],
     "location": "Acropolis debris"},
-    {"name": "Rod of Asclepius", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 742, "materials": [
+    {"name": "Rod of Asclepius", "xp": 11666.7, "site": "Saradomin", "level": 92, "chronotes": 744, "materials": [
         {"name": "White marble", "quantity": 30},
         {"name": "Star of Saradomin", "quantity": 24},
         {"name": "Goldrune", "quantity": 26}

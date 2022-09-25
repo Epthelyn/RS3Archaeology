@@ -35,6 +35,7 @@ let archCalc = function(){
         "Eblis": false
     }
 
+    let selectedCollection = null;
     let searchFilter = null;
 
     let listView = "ARTIFACTS";
@@ -307,7 +308,7 @@ let archCalc = function(){
             $('.simPanel').css('display',$('.simPanel').css('display')=="block"?"none":"block");
         })
 
-        $('.simButton').on('click', () => {
+        $('.simButton').on('click', function(){
             let xpStart = parseFloat($('#simXPStart').val());
             let xpEnd = parseFloat($('#simXPEnd').val());
 
@@ -327,23 +328,43 @@ let archCalc = function(){
             }
 
             let excSite = $('#simExcavationList').val();
-            let result = archCalc.excavationSim(excSite,{simType:"runUntilGoal",xpStart:xpStart,xpEnd:xpEnd});
+            console.log($(this).attr('id'));
+            let simType = $(this).attr('id') == "simWithCaches"?"runUntilGoal":"runUntilGoal_nocache";
+
+            let result = archCalc.excavationSim(excSite,{simType:simType,xpStart:xpStart,xpEnd:xpEnd});
             console.log(result);
 
             let matList = ``;
+            let matTotal = 0;
             matList += `<b>Soil</b>: ${result.soil}<br>`;
             for(k in result.materialsByType){
                 matList += `<b>${k}</b>: ${result.materialsByType[k]}<br>`;
+                matTotal += result.materialsByType[k];
             }
 
             let artList = ``;
             for(k in result.artefactsByType){
-                artList += `<b>${k}</b>: ${result.artefactsByType[k]}<br>`;
+                if(simType == "runUntilGoal"){
+                    artList += `<b>${k}</b>: ${result.artefactsByType[k]}<br>`;
+                }
+                else if(simType == "runUntilGoal_nocache"){
+                    artList += `<b>${k}</b>: ${result.artefactsByType[k]} (${result.endCondition.restoredArtefacts[k] || 0} restored)<br>`;
+                }
             }
 
+            let actionTime = 2.4*result.totalActions/3600;
+            let actionXP_success = result.totalSuccessfulActions*result.actionXP.success;
+            let actionXP_fail = (result.totalActions-result.totalSuccessfulActions)*result.actionXP.fail;
+            let actionXP_artefacts = result.artefacts*result.actionXP.find;
+            let hourlyXP = (actionXP_success + actionXP_fail + actionXP_artefacts)/actionTime;
 
+            console.log(hourlyXP);
+            
             let simOutputHTML = `
-                <b>Total Actions</b>: ${result.totalActions}<br>
+                <b>Total Actions</b>: ${result.totalActions} (${(actionTime).toFixed(1)}H)<br>
+                <b>Successful Actions</b>: ${result.totalSuccessfulActions}<br>
+                <b>Porters Required</b>: ${Math.ceil(matTotal/50)}<br>
+                <b>Excavation XP/hr</b>: ${Math.floor(hourlyXP)}<br>
                 <br>
                 <b><u>Experience Gained</u></b><br>
                 <b>Excavating</b>: ${result.endCondition.excavating.toFixed(0)}<br>
@@ -356,6 +377,10 @@ let archCalc = function(){
                 <br>
                 <b><u>Artefacts Excavated</u></b><br>
                 ${artList}
+                <br>
+                <b><u>Bonus Items Gained</u></b><br>
+                <b>Complete Tomes</b>: ${result.completeTomes.rolled}<br>
+                <b>Tetra Pieces</b>: ${result.tetracompassPieces.rolled}<br>
             `;
 
             $('.simOutput').html(simOutputHTML);
@@ -482,6 +507,8 @@ let archCalc = function(){
                         newColl = forSelectedCollector(tableData[i]).collectionIndex;
                     }
 
+                    let newCollIndex = newColl;
+
                     if(newColl !== null && newColl !== Infinity){
                         if(anythingInCollectionDisplayed(collectionData[newColl])){
                             newColl = collectionData[newColl];
@@ -493,7 +520,7 @@ let archCalc = function(){
                                 }
                                 rr = rewards.map(r => r.quantity + " " + r.reward).join(", ");
                             }
-                            table += `<div class="row subHeader">
+                            table += `<div class="row subHeader collectionHeader" collectionIndex="${newCollIndex}"}>
                                 <div class="collectionHeaderName">
                                 ${newColl.name}
                                 </div>
@@ -617,6 +644,17 @@ let archCalc = function(){
         table += "</div>";
 
         $('#table').html(table);
+
+        $('.collectionHeader').on('click', function(e){
+            const colIndex = $(this).attr('collectionIndex');
+            selectedCollection = colIndex;
+            console.log(selectedCollection);
+
+            $('.collectionHeader').removeClass('active');
+            $(this).addClass('active');
+
+            calcTotals();
+        });
 
         $('.artRow').on('click', function(e){
             if($(e.target).attr('type') || !$(e.target).hasClass('interactive')) return; //Ignore if clicking on buttons or text input or anything not marked interactive
@@ -976,7 +1014,10 @@ let archCalc = function(){
         // console.log("MI: "+  mat + (mat == "Tetracompass piece (left)"));
         let retImg = "";
         
-        if(mat.indexOf('(3)') != -1){ //Potion handling
+        if(mat == "Chronotes"){
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/Chronotes_10000.png?7c080">`;
+        }
+        else if(mat.indexOf('(3)') != -1){ //Potion handling
             retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat.replace(/\(3\)/gm,"")}_detail.png/100px-${mat}_detail.png">`;
         }
         else if(mat == "Tetracompass piece (left)"){
@@ -988,7 +1029,7 @@ let archCalc = function(){
         else{
             retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
         }
-        console.log(`"${mat}"`,retImg);
+        // console.log(`"${mat}"`,retImg);
         return retImg;
     }
 
@@ -1123,6 +1164,7 @@ let archCalc = function(){
             }
         }
 
+        console.log(collectionsPossible);
    
         collectionsPossible = collectionsPossible.sort((a,b) => b.requirementsCheck.complete - a.requirementsCheck.complete);
         let completedCollections = collectionsPossible.filter(c => c.requirementsCheck.complete);
@@ -1139,19 +1181,22 @@ let archCalc = function(){
             const ref = collectionData[coll.index];
             if(!ref.repeatableReward) return;
             if(!ref.repeatableReward.chronotes) return;
+            if(coll.index != selectedCollection) return;
             
             if(coll.requirementsCheck.completeByDamaged){
-                chronotesFromCompleted.any += ref.repeatableReward.chronotes;
+                const timesCompleted = coll.requirementsCheck.minimums.restored + coll.requirementsCheck.minimums.damaged;
+                chronotesFromCompleted.any += timesCompleted*ref.repeatableReward.chronotes;
                 // console.log(coll);
             }
-            else if(coll.requirementsCheck.completeByRestored){
+            if(coll.requirementsCheck.completeByRestored){
                 // chronotesFromCompleted.any += ref.repeatableReward.chronotes;
-                chronotesFromCompleted.restoredOnly += ref.repeatableReward.chronotes;
+                const timesCompleted = coll.requirementsCheck.minimums.restored;
+                chronotesFromCompleted.restoredOnly += timesCompleted*ref.repeatableReward.chronotes;
                 console.log(coll);
             }
         });
 
-        // console.log(chronotesFromCompleted);
+        console.log(chronotesFromCompleted);
 
         const archLevel = parseInt($('#ii_level').val());
         const tomes = parseInt($('#ii_tomes').val());
@@ -1272,19 +1317,21 @@ let archCalc = function(){
         output += "<br><hr>";
         output += "<b><u>Including Damaged Artefacts</u></b><br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors (exc. completion bonus)" + ": " + totals.chronotes + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors (inc. completion bonus)" + ": " + (selectedCollection!==null?(totals.chronotes+chronotesFromCompleted.any):"No collection selected") + "<br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotes*0.4)) + "<br><br>";
         output += "<b>Completed Collections</b>:<br>";
         if(!completedCollections.length){
             output += "No completed collections.<br>";
         }
 
+        console.log(collectionsPossible);
         for(let i=0; i<collectionsPossible.length; i++){
             let p = collectionsPossible[i];
             if(!p.requirementsCheck.complete) continue;
             let c = collectionData[collectionsPossible[i].index];
 
             let spanOpacity = "100%";
-            output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
+            output += `<span style="opacity: ${spanOpacity}; ${collectionsPossible[i].index == selectedCollection?"font-weight: 500;":""}">${p.requirementsCheck.minimums.restored + p.requirementsCheck.minimums.damaged}x ${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
 
         }
 
@@ -1298,11 +1345,13 @@ let archCalc = function(){
             let c = collectionData[collectionsPossible[i].index];
          
             let spanOpacity = p.requirementsCheck.complete?"100%":"50%";
-            output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
+
+            output += `<span style="opacity: ${spanOpacity}; ${collectionsPossible[i].index == selectedCollection?"font-weight: 500;":""}">${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
         }
         output += "<br><hr>";
         output += "<b><u>Excluding Damaged Artefacts</u></b><br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors (exc. completion bonus)" + ": " + totals.chronotesRestored + "<br>";
+        output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from collectors (inc. completion bonus)" + ": " + (selectedCollection!==null?(totals.chronotesRestored):"No collection selected!") + "<br>";
         output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum bin (40%)" + ": " + (~~(totals.chronotesRestored*0.4)) + "<br><br>";
         output += "<b>Restored Collections</b>:<br>";
         if(!completedRestoredCollections.length){
@@ -1315,7 +1364,7 @@ let archCalc = function(){
             let c = collectionData[restoredCollections[i].index];
 
             let spanOpacity = "100%";
-            output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.countOnlyRestored}/${c.artefacts.length}</span><br>`;
+            output += `<span style="opacity: ${spanOpacity}; ${collectionsPossible[i].index == selectedCollection?"font-weight: 500;":""}">${p.requirementsCheck.minimums.restored}x ${p.collection} for ${c.collector}: ${p.requirementsCheck.countOnlyRestored}/${c.artefacts.length}</span><br>`;
 
         }
 
@@ -1329,7 +1378,7 @@ let archCalc = function(){
             let c = collectionData[restoredCollections[i].index];
          
             let spanOpacity = p.requirementsCheck.complete?"100%":"50%";
-            output += `<span style="opacity: ${spanOpacity}">${p.collection} for ${c.collector}: ${p.requirementsCheck.countOnlyRestored}/${c.artefacts.length}</span><br>`;
+            output += `<span style="opacity: ${spanOpacity}; ${collectionsPossible[i].index == selectedCollection?"font-weight: 500;":""}">${p.collection} for ${c.collector}: ${p.requirementsCheck.countOnlyRestored}/${c.artefacts.length}</span><br>`;
         }
 
         $('#output').html(output);
@@ -1361,18 +1410,50 @@ let archCalc = function(){
 
     }   
 
+    function numRestored(artefactName){
+        const a = artefactData.filter(art => art.name == artefactName)[0];
+        
+        if(!a) return 0;
+
+        return a.owned;
+    }
+
+    function numDamaged(artefactName){
+        const a = artefactData.filter(art => art.name == artefactName)[0];
+        
+        if(!a) return 0;
+
+        return a.unrestored;
+    }
+
     function checkCollectionRequirements(collection, damaged, restored){
         let count = 0;
         let countOnlyDamaged = 0;
         let countOnlyRestored = 0;
         let missing = [];
+
+        let min = Infinity;
+        let damagedMin = Infinity;
+        let restoredMin = Infinity;
+        
+        // console.log(collection);
         for(let i=0; i<collection.artefacts.length; i++){
             if(damaged.includes(collection.artefacts[i]) || restored.includes(collection.artefacts[i])){
                 count++;
+                min = Math.min(min,numRestored(collection.artefacts[i]),numDamaged(collection.artefacts[i]));
+                damagedMin = Math.min(damagedMin,numDamaged(collection.artefacts[i]));
+                restoredMin = Math.min(restoredMin,numRestored(collection.artefacts[i]));
+
                 if(damaged.includes(collection.artefacts[i])) countOnlyDamaged++;
                 if(restored.includes(collection.artefacts[i])) countOnlyRestored++;
             }
-            else missing.push(collection.artefacts[i]);
+            else{
+                missing.push(collection.artefacts[i]);
+                min = 0;
+                damagedMin = 0;
+                restoredMin = 0;
+            }
+
         }
 
         return {
@@ -1382,7 +1463,12 @@ let archCalc = function(){
             count: count,
             countOnlyDamaged: countOnlyDamaged,
             countOnlyRestored: countOnlyRestored,
-            missing: missing
+            missing: missing,
+            minimums: {
+                all: min,
+                damaged: damagedMin,
+                restored: restoredMin
+            }
         }
     }
 
@@ -1476,10 +1562,13 @@ let archCalc = function(){
 
         const modifiers = {
             cape120: false,
-            precision: 74,
+            precision: parseInt($('#simMattockPrecision').val()),
             successChance: 0.21,
             soilChance: 0.14
         }
+
+        const useFlowState = true;
+        if(useFlowState) modifiers.precision*=1.2;
 
         const archLevel = parseInt($('#ii_level').val());
         const level = hotspot.level;
@@ -1491,10 +1580,17 @@ let archCalc = function(){
         const findXP = 100*failXP;
         const locationHP = ((17500/(1+(25*(1.035**(-2*(level-20))))))+3000)*(modifiers.cape120?0.9:1); 
         
+        
         let currentHP = locationHP;
         let artefactsRemaining = args.numArtefacts;
         let result = {
             totalActions: 0,
+            actionXP: {
+                success: successXP,
+                fail: failXP,
+                find: 100*failXP
+            },
+            totalSuccessfulActions: 0,
             materials: 0,
             materialsByType: {},
             artefactsByType: {},
@@ -1532,7 +1628,7 @@ let archCalc = function(){
             }
         })
 
-        console.log(hotspotMaterials,hotspotArtefacts,hotspotArtefactsAsKeys);
+        // console.log(hotspotMaterials,hotspotArtefacts,hotspotArtefactsAsKeys);
 
         let endConditionMet = false;
         let startTime = Date.now();
@@ -1544,13 +1640,15 @@ let archCalc = function(){
 
                     let materialRNG = Math.random();
                     const foundMaterial = hotspotMaterials.filter(m => materialRNG <= m.chance)[0];
+                    if(!foundMaterial) console.log(hotspot, hotspotMaterials);
                     if(!result.materialsByType[foundMaterial.material]){
                         result.materialsByType[foundMaterial.material] = 0;
                     }
                     result.materialsByType[foundMaterial.material]++;
+                    result.totalSuccessfulActions++;
                 }
                 else{
-                    if(Math.random() <= modifiers.soilChance){
+                    if(!useFlowState && Math.random() <= modifiers.soilChance){
                         result.soil++;
                     }
                     else{
@@ -1588,7 +1686,7 @@ let archCalc = function(){
             endConditionMet = checkEndCondition();
         }
 
-        console.log(endConditionMet);
+        // console.log(endConditionMet);
         result.endCondition = endConditionMet;
         return result;
 
@@ -1598,12 +1696,71 @@ let archCalc = function(){
                     "timeout": true
                 }
             }
-            if(args.simType == "artefactQuanity"){
+            if(args.simType == "artefactQuantity"){
                 artefactsRemaining--;
                 if(artefactsRemaining <= 0){
                     return true;
                 }
                 return false;
+            }
+            else if(args.simType == "allArtefactsQuantity"){
+                let keys = [];
+                for(k in result.artefactsByType) keys.push(k);
+
+                if(keys.length != artefacts.length) return false;
+
+                if(args.specificArtefact){
+                    if(result.artefactsByType[k] < args.artefactsRequired) return false;
+                }
+                else{
+                    for(k in result.artefactsByType){
+
+                        if(result.artefactsByType[k] < args.artefactsRequired) return false;
+                    }
+                }
+                
+                let xpGained = {
+                    excavating: result.xp,
+                    restoring: 0,
+                    caches: 0,
+                    total: 0
+                }
+
+                let materialsNeeded = {};
+                for(k in result.artefactsByType){
+                    xpGained.restoring += hotspotArtefactsAsKeys[k].xp * args.artefactsRequired;
+
+                    hotspotArtefactsAsKeys[k].materials.forEach(material => {
+                        
+                        if(!materialsNeeded[material.name]) materialsNeeded[material.name] = 0;
+                        materialsNeeded[material.name] += material.quantity * args.artefactsRequired;
+                    });
+                }
+
+                for(k in materialsNeeded){
+                    if(result.materialsByType[k]){
+                        materialsNeeded[k] = Math.max(0,materialsNeeded[k] - result.materialsByType[k]);
+                        // console.log(`Subtracted ${result.materialsByType[k]} ${k}`);
+                    }
+                }
+
+                // console.log(materialsNeeded);
+                for(k in materialsNeeded){
+                    let _thisMat = materialData.filter(mat => mat.name == k)[0];
+                    if(_thisMat.type == "Special") continue;
+                    let materialXP = _thisMat.cacheXP;
+                    xpGained.caches += materialXP * materialsNeeded[k];
+                    if(isNaN(xpGained.caches)){
+                        return {
+                            error: "Cache error",
+                            material: k
+                        }
+                    }
+                }
+
+                xpGained.total = xpGained.excavating + xpGained.restoring + xpGained.caches;
+
+                return xpGained;
             }
             else if(args.simType == "runUntilGoal"){
                 let xpRequired = args.xpEnd - args.xpStart;
@@ -1657,6 +1814,78 @@ let archCalc = function(){
                 }
                 if(xpGained.total >= xpRequired){
                     // console.log(xpGained);
+                    return xpGained;
+                }
+                return false;
+            }
+            else if(args.simType == "runUntilGoal_nocache"){
+                let xpRequired = args.xpEnd - args.xpStart;
+
+                let xpGained = {
+                    excavating: result.xp,
+                    restoring: 0,
+                    caches: 0,
+                    total: 0
+                }
+
+                let alternatingArtefacts = [];
+                let artefactsAllocated = {};
+                for(k in result.artefactsByType){
+                    artefactsAllocated[k] = 0;
+                }
+
+                let newAlloc = true;
+                // console.log(result.artefactsByType);
+                // console.log(artefactsAllocated);
+                while(newAlloc){
+                    newAlloc = false;
+                    for(k in result.artefactsByType){
+                        if(result.artefactsByType[k] > artefactsAllocated[k]){
+                            alternatingArtefacts.push(k);
+                            newAlloc = true;
+                            artefactsAllocated[k]++;
+                        }
+                    }
+                }
+
+                // console.log(alternatingArtefacts);
+                let availableMaterials = JSON.parse(JSON.stringify(result.materialsByType));
+                let restoredArtefacts = {};
+                alternatingArtefacts.forEach(a => {
+                    const matsRequired = hotspotArtefactsAsKeys[a].materials;
+                    // console.log(matsRequired);
+                    let matsToAllocate = {};
+                    let ableToAllocateAll = true;
+
+                    matsRequired.forEach(mat => {
+                        if(materialData.filter(m => m.name == mat.name)[0].type == "Special") return;
+                        if(availableMaterials[mat.name] >= mat.quantity){
+                            matsToAllocate[mat.name] = mat.quantity;
+                        }
+                        else{
+                            ableToAllocateAll = false;
+                        }
+                    });
+
+                    if(ableToAllocateAll){
+                        for(k in matsToAllocate){
+                            availableMaterials[k] -= matsToAllocate[k];
+                        }
+
+                        xpGained.restoring += hotspotArtefactsAsKeys[a].xp;
+                        
+                        if(!restoredArtefacts[a]){
+                            restoredArtefacts[a] = 0;
+                        }
+
+                        restoredArtefacts[a]++;
+                    }
+
+                });
+
+                xpGained.total = xpGained.excavating + xpGained.restoring;
+                xpGained.restoredArtefacts = restoredArtefacts;
+                if(xpGained.total >= xpRequired){
                     return xpGained;
                 }
                 return false;
@@ -1729,9 +1958,104 @@ let archCalc = function(){
         generateTable();
     }
 
+    function simCollection(collectionName,targetChronotes){
+        const coll = collectionData.filter(c => c.name == collectionName)[0];
+
+        if(!coll) return;
+        console.log(coll);
+        const collArtefacts = coll.artefacts;
+
+        let locationsToSim = [];
+        let collChronotes = 0;
+        // let targetChronotes = 25000;
+
+        collArtefacts.forEach(a => {
+            const art = artefactData.filter(x => x.name == a)[0];
+            if(!art) return;
+            collChronotes += art.chronotes;
+            const excSpot = art.location;
+            if(!locationsToSim.includes(excSpot)){
+                locationsToSim.push(excSpot);
+            }
+        });
+
+        // console.log(locationsToSim);
+        console.log(collChronotes);
+        let useMuseumCollection = collectionName.startsWith("Museum -");
+        console.log(useMuseumCollection);
+        if(useMuseumCollection){ //Velucia
+            collChronotes += collChronotes*1.2;
+        }
+        else{
+            collChronotes = collChronotes*2;
+        }
+
+        let collectionsRequiredForChronotes = Math.ceil(targetChronotes/collChronotes);
+
+
+        console.log(`${collectionsRequiredForChronotes} ${collectionName} required for ${targetChronotes} chronotes!`);
+
+        let siteResults = [];
+        locationsToSim.forEach(loc => {
+            const artsFromLoc = artefactData.filter(x => x.location == loc).filter(x => collArtefacts.includes(x.name));
+            // console.log(a);
+            let simSite = excavationSim(loc,{
+                artefactsRequired:collectionsRequiredForChronotes,
+                simType:"allArtefactsQuantity",
+                specificArtefact: artsFromLoc.length==1?artsFromLoc[0]:null
+            });
+
+            siteResults.push(simSite);
+        });
+        
+        console.log(siteResults);
+
+        let xpTotal = siteResults[0].endCondition;
+        xpTotal.materials = 0;
+        xpTotal.totalActions = 0;
+        xpTotal.tomes = 0;
+        xpTotal.tetras = 0;
+        siteResults.slice(1).forEach(result => {
+            for(k in result.endCondition){
+                xpTotal[k] += result.endCondition[k];
+            }
+            xpTotal.materials += result.materials;
+            xpTotal.totalActions += result.totalActions;
+            xpTotal.tomes += result.completeTomes.cumulativeChance;
+            xpTotal.tetras += result.tetracompassPieces.cumulativeChance;
+        })
+
+        xpTotal.collReq = collectionsRequiredForChronotes;
+
+        if(coll.repeatableReward && coll.repeatableReward["Tetracompass piece"]){
+            xpTotal.tetras += collectionsRequiredForChronotes;
+            xpTotal.tetrasFromCollections = collectionsRequiredForChronotes;
+        }
+        return xpTotal;
+    }
+
+    function simAllCollections(){
+        let csv = [];
+
+        let numSims = 10;
+
+        csv.push(`Collection,Num Collections,Excavation,Caches,Restoration,Total,XP/Chronote`)
+        collectionData.forEach(coll => {
+            const r = simCollection(coll.name,250000*numSims);
+            console.log(r);
+
+            csv.push(`${coll.name},${r.collReq/10},${r.excavating/numSims},${r.caches/numSims},${r.restoring/numSims},${r.total/numSims},${r.total/(250000*numSims)},${r.tetras/10},${r.tomes/10},${r.materials/10},${r.totalActions/10}`)
+        });
+
+        console.log(csv.join("\n"));
+    }
+
     return{
         excavationSim,
         exportData,
-        importData
+        importData,
+        numRestored,
+        simCollection,
+        simAllCollections
     }
 }();
