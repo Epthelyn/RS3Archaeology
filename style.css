@@ -597,8 +597,8 @@ th {
 
 .simPanel > .simItemText{
     width: 50%;
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
     border: 0px;
     border-bottom: 1px solid rgb(71, 81, 94);
     border-right: 1px solid rgb(71, 81, 94);

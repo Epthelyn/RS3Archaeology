@@ -1567,7 +1567,7 @@ let archCalc = function(){
             soilChance: 0.14
         }
 
-        const useFlowState = true;
+        const useFlowState = $('#simUseFlowState').is(':checked');
         if(useFlowState) modifiers.precision*=1.2;
 
         const archLevel = parseInt($('#ii_level').val());
