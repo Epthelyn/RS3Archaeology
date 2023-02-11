@@ -41,6 +41,7 @@ let archCalc = function(){
     let listView = "ARTIFACTS";
     let showOnlyNeededMaterials = false;
     let sortMaterialsByNeededFirst = true;
+    let showOnlyDamagedRestored = false;
 
     const lampXP = [
         0,250, 276, 308, 340, 373, 416, 492, 508, 577, 614,						// 1 to 10
@@ -489,12 +490,25 @@ let archCalc = function(){
             //if($(`#art${i}`).val() > 0) rowClass += " active";
 
             let displayReqs = {
+                artefact: artefactData[oi].name,
                 siteActive: sitesActive[artefactData[oi].site],
                 inSearch: inSearch(artefactData[oi]),
-                forCollector: forSelectedCollector(artefactData[oi]).collectionIndex == Infinity
+                forCollector: forSelectedCollector(artefactData[oi]).collectionIndex != Infinity,
+                forCollectorIndex: forSelectedCollector(artefactData[oi]).collectionIndex,
+                damagedOrRestoredFilter: ((artefactData[oi].owned || artefactData[oi].unrestored) && showOnlyDamagedRestored) || !showOnlyDamagedRestored
             }
 
-            let rowDisplayed = !(!displayReqs.siteActive || !displayReqs.inSearch || displayReqs.forCollector);
+          
+
+            let rowDisplayed = !(!displayReqs.siteActive || !displayReqs.inSearch || !displayReqs.forCollector || !displayReqs.damagedOrRestoredFilter)
+            
+            if(displayReqs.artefact == "High priest mitre"){
+                console.log(displayReqs);
+                console.log(!(!displayReqs.siteActive || !displayReqs.inSearch || !displayReqs.forCollector));
+                console.log(rowDisplayed);
+                console.log(oi);
+            }
+
             if(listView != "ARTIFACTS") rowDisplayed = false;
 
             if(listView == "ARTIFACTS" /*rowDisplayed*/){
@@ -973,16 +987,33 @@ let archCalc = function(){
 
         let aName = art.name;
         let collectorCollections = collectionData.filter(c => c.collector == sel);
+        if(aName == "High priest mitre"){
+            console.log("--------------------");
+            console.log(aName);
+            console.log(collectorCollections); 
+            
+        }
         if(!collectorCollections.length) return {collectionIndex: Infinity};
 
         for(let i=0; i<collectorCollections.length; i++){
-            for(let j=0; j<collectorCollections[i].artefacts.length; j++){
-                if(aName == collectorCollections[i].artefacts[j]){
-                    let dataColl = collectionData.filter(c => c.name == collectorCollections[i].name)[0];
-                    return {collectionIndex: collectionData.indexOf(dataColl)};
-
-                }
+            if(aName == "High priest mitre"){
+                console.log(collectorCollections[i].artefacts);
+                console.log("--------------------");
             }
+
+            const cont = collectorCollections[i].artefacts.includes(aName);
+            if(cont){
+                let dataColl = collectionData.filter(c => c.name == collectorCollections[i].name)[0];
+                return {collectionIndex: collectionData.indexOf(dataColl)};
+            }
+            // for(let j=0; j<collectorCollections[i].artefacts.length; j++){
+                
+            //     if(aName == collectorCollections[i].artefacts[j]){
+            //         let dataColl = collectionData.filter(c => c.name == collectorCollections[i].name)[0];
+            //         return {collectionIndex: collectionData.indexOf(dataColl)};
+
+            //     }
+            // }
         }
 
         return {collectionIndex: Infinity};
@@ -1253,7 +1284,9 @@ let archCalc = function(){
         // output += materialImage("Chronotes") + "&nbsp;" + "Chronotes from museum" + ": " + (~~(totals.chronotes*0.4)) + "<br>";
         output += "<br><b>Material Summary</b>"
         output += `<br><label style="display: inline-block; padding-right: 10px; white-space: nowrap; margin-left: 0px;"><span style="vertical-align: middle;">Show only required in material view:</span> <input type="checkbox" id="mats_showOnlyReq" ${showOnlyNeededMaterials?'checked':''} style="vertical-align: middle; width: 20px; height: 20px;"></label><br>`;
+        output += `<label style="display: inline-block; padding-right: 10px; white-space: nowrap; margin-left: 0px;"><span style="vertical-align: middle;">Show only damaged/restored in artefact view:</span> <input type="checkbox" id="mats_showOnlyDamRes" ${showOnlyDamagedRestored?'checked':''} style="vertical-align: middle; width: 20px; height: 20px;"></label><br>`;
         output += `<label style="display: inline-block; padding-right: 10px; white-space: nowrap; margin-left: 0px;"><span style="vertical-align: middle;">Sort materials output by needed first:</span> <input type="checkbox" id="mats_sortNeededFirst" ${sortMaterialsByNeededFirst?'checked':''} style="vertical-align: middle; width: 20px; height: 20px;"></label><br>`;
+        
         // console.log(totals.materials);
         if(!totals.materials.length){
             output += "No artefacts selected.<br>";
@@ -1406,6 +1439,11 @@ let archCalc = function(){
         $('#mats_sortNeededFirst').on('change',function(e){
             sortMaterialsByNeededFirst = $(this).is(':checked');
             calcTotals();
+        });
+
+        $('#mats_showOnlyDamRes').on('change', function(e){
+            showOnlyDamagedRestored = $(this).is(':checked');
+            generateTable();
         });
 
     }   
@@ -1872,7 +1910,7 @@ let archCalc = function(){
                             availableMaterials[k] -= matsToAllocate[k];
                         }
 
-                        xpGained.restoring += hotspotArtefactsAsKeys[a].xp;
+                        // xpGained.restoring += hotspotArtefactsAsKeys[a].xp;
                         
                         if(!restoredArtefacts[a]){
                             restoredArtefacts[a] = 0;

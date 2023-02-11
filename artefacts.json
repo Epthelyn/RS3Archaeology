@@ -306,12 +306,6 @@
         {"name": "Cadmium red", "quantity": 34}
     ],
     "location": "Infernal art"},
-    {"name": "Gladiator sword", "xp": 3773.3, "site": "Senntisten", "level": 66, "chronotes": 580, "materials": [
-        {"name": "Imperial steel", "quantity": 30},
-        {"name": "Goldrune", "quantity": 18},
-        {"name": "Zarosian insignia", "quantity": 16}
-    ],
-    "location": "Gladiator remains"},
     {"name": "Gladiator helmet", "xp": 3773.3, "site": "Senntisten", "level": 66, "chronotes": 580, "materials": [
         {"name": "Imperial steel", "quantity": 30},
         {"name": "Blood of Orcus", "quantity": 16},
