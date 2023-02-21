@@ -276,7 +276,8 @@
     {"name": "Inquisitor's seal", "xp": 3266.7, "site": "Senntisten", "level": 64, "chronotes": 562, "materials": [
         {"name": "Tyrian purple", "quantity": 14},
         {"name": "Ancient vis", "quantity": 14},
-        {"name": "Zarosian insignia", "quantity": 20}
+        {"name": "Zarosian insignia", "quantity": 20},
+        {"name": "Goldrune", "quantity": 14}
     ],
     "location": "Inquisitor remains"},
     {"name": "Inquisitor's ceremonial mask", "xp": 3266.7, "site": "Senntisten", "level": 64, "chronotes": 562, "materials": [
