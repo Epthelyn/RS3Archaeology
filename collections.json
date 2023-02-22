@@ -774,6 +774,57 @@
         ]
     },
     {
+        "name": "Museum - Zarosian V",
+        "level": 62,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 4117
+        },
+        "artefacts":[
+            "Apex cap",
+            "Curse tablet",
+            "Funerary urn of shadow",
+            "Infula robes",
+            "Funerary urn of smoke",
+            "Hand of the Ancients"
+        ]
+    },
+    {
+        "name": "Museum - Zarosian VI",
+        "level": 64,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 4207
+        },
+        "artefacts":[
+            "Decorative amphora",
+            "Funerary urn of ice",
+            "Loarnab rod",
+            "Inquisitor's ceremonial armour",
+            "Inquisitor's ceremonial mask",
+            "Inquisitor's seal"
+        ]
+    },
+    {
+        "name": "Museum - Zarosian VII",
+        "level": 67,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 4357
+        },
+        "artefacts":[
+            "Gladiator helmet",
+            "Gladiator sword",
+            "Funerary urn of blood",
+            "Funerary urn of miasma",
+            "Model chariot",
+            "'The Serpent's Fall' carving"
+        ]
+    },
+    {
         "name": "Museum - Bandosian I",
         "level": 89,
         "reward": null,
