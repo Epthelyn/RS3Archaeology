@@ -1160,7 +1160,8 @@
         "reward": null,
         "collector": "Eblis",
         "repeatableReward": {
-            "Tetracompass piece": 1
+            "Tetracompass piece": 1,
+            "chronotes": 2820
         },
         "artefacts":[
             "Funerary urn of shadow",
