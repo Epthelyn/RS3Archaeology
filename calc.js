@@ -1364,7 +1364,7 @@ let archCalc = function(){
             let c = collectionData[collectionsPossible[i].index];
 
             let spanOpacity = "100%";
-            output += `<span style="opacity: ${spanOpacity}; ${collectionsPossible[i].index == selectedCollection?"font-weight: 500;":""}">${p.requirementsCheck.minimums.restored + p.requirementsCheck.minimums.damaged}x ${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
+            output += `<span style="opacity: ${spanOpacity}; ${collectionsPossible[i].index == selectedCollection?"font-weight: 500;":""}">${p.requirementsCheck.minimums.both}x ${p.collection} for ${c.collector}: ${p.requirementsCheck.count}/${c.artefacts.length}</span><br>`;
 
         }
 
@@ -1468,11 +1468,13 @@ let archCalc = function(){
         let count = 0;
         let countOnlyDamaged = 0;
         let countOnlyRestored = 0;
+        let countBoth = 0;
         let missing = [];
 
         let min = Infinity;
         let damagedMin = Infinity;
         let restoredMin = Infinity;
+        let bothMin = Infinity;
         
         // console.log(collection);
         for(let i=0; i<collection.artefacts.length; i++){
@@ -1481,9 +1483,14 @@ let archCalc = function(){
                 min = Math.min(min,numRestored(collection.artefacts[i]),numDamaged(collection.artefacts[i]));
                 damagedMin = Math.min(damagedMin,numDamaged(collection.artefacts[i]));
                 restoredMin = Math.min(restoredMin,numRestored(collection.artefacts[i]));
+                bothMin = Math.min(bothMin,numDamaged(collection.artefacts[i]) + numRestored(collection.artefacts[i]));
 
                 if(damaged.includes(collection.artefacts[i])) countOnlyDamaged++;
                 if(restored.includes(collection.artefacts[i])) countOnlyRestored++;
+                
+                if(damaged.includes(collection.artefacts[i]) || restored.includes(collection.artefacts[i])){
+                    countBoth++;
+                }
             }
             else{
                 missing.push(collection.artefacts[i]);
@@ -1501,11 +1508,13 @@ let archCalc = function(){
             count: count,
             countOnlyDamaged: countOnlyDamaged,
             countOnlyRestored: countOnlyRestored,
+            countBoth: countBoth,
             missing: missing,
             minimums: {
                 all: min,
                 damaged: damagedMin,
-                restored: restoredMin
+                restored: restoredMin,
+                both: bothMin
             }
         }
     }
