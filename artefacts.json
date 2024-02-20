@@ -1021,8 +1021,8 @@
     ],
     "location": "Praetorian remains"},
     {"name": "Kal-i-kra chieftain crown", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
-        {"name": "Yu'biusk clay", "quantity": 36},
-        {"name": "Animal furs", "quantity": 48}
+        {"name": "Yu'biusk clay", "quantity": 66},
+        {"name": "Animal furs", "quantity": 60}
     ],
     "location": "Bandos's sanctum debris"},
     {"name": "Kal-i-kra mace", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
