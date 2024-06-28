@@ -1554,5 +1554,144 @@
                 "chance": "2/10"
             }
         ]
+    },
+    {
+        "name": "Castle hall rubble",
+        "materials": [
+            {
+                "material": "Goldrune",
+                "chance": "2/10"
+            },
+            {
+                "material": "Dragon metal",
+                "chance": "3/10"
+            },
+            {
+                "material": "Orgone",
+                "chance": "3/10"
+            },
+            {
+                "material": "Orthenglass",
+                "chance": "3/10"
+            }
+        ]
+    },
+    {
+        "name": "Tunnelling equipment repository",
+        "materials": [
+            {
+                "material": "Dragon metal",
+                "chance": "2/10"
+            },
+            {
+                "material": "Orgone",
+                "chance": "3/10"
+            },
+            {
+                "material": "Compass rose",
+                "chance": "3/10"
+            },
+            {
+                "material": "Orthenglass",
+                "chance": "2/10"
+            }
+        ]
+    },
+    {
+        "name": "Botanical reserve",
+        "materials": [
+            {
+                "material": "Dragon metal",
+                "chance": "2/10"
+            },
+            {
+                "material": "Compass rose",
+                "chance": "3/10"
+            },
+            {
+                "material": "Felt",
+                "chance": "2/10"
+            },
+            {
+                "material": "Carbon black",
+                "chance": "3/10"
+            }
+        ]
+    },
+    {
+        "name": "Communal space",
+        "materials": [
+            {
+                "material": "Felt",
+                "chance": "4/10"
+            },
+            {
+                "material": "Soapstone",
+                "chance": "3/10"
+            },
+            {
+                "material": "Orgone",
+                "chance": "3/10"
+            }
+        ]
+    },
+    {
+        "name": "Projection space",
+        "materials": [
+            {
+                "material": "Dragon metal",
+                "chance": "4/10"
+            },
+            {
+                "material": "Goldrune",
+                "chance": "4/10"
+            },
+            {
+                "material": "Orthenglass",
+                "chance": "2/10"
+            }
+        ]
+    },
+    {
+        "name": "Security booth",
+        "materials": [
+            {
+                "material": "Carbon black",
+                "chance": "2/10"
+            },
+            {
+                "material": "Orgone",
+                "chance": "3/10"
+            },
+            {
+                "material": "Orthenglass",
+                "chance": "2/10"
+            },
+            {
+                "material": "Compass rose",
+                "chance": "3/10"
+            }
+        ]
+    },
+    {
+        "name": "Traveller's station",
+        "materials": [
+            {
+                "material": "Dragon metal",
+                "chance": "3/10"
+            },
+            {
+                "material": "Soapstone",
+                "chance": "2/10"
+            },
+            {
+                "material": "Orthenglass",
+                "chance": "3/10"
+            },
+            {
+                "material": "Goldrune",
+                "chance": "2/10"
+            }
+        ]
     }
 ]

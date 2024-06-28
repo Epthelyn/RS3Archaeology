@@ -1204,5 +1204,107 @@
             "Ancient magic tablet",
             "'Animate Dead' spell scroll"
         ]
+    },
+    {
+        "name": "Dragonkin V",
+        "level": 77,
+        "reward": null,
+        "collector": "Sharrigan",
+        "repeatableReward": {
+            "chronotes": 2532,
+            "Large dungeoneering token box": 2
+        },
+        "artefacts":[
+            "Castle gatestone",
+            "Engraved ring of kinship",
+            "Exploratory totem",
+            "Excavator portal mine"
+        ]
+    },
+    {
+        "name": "Museum - Dragonkin V",
+        "level": 77,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 3165
+        },
+        "artefacts":[
+            "Castle gatestone",
+            "Engraved ring of kinship",
+            "Exploratory totem",
+            "Excavator portal mine"
+        ]
+    },
+    {
+        "name": "Dragonkin VI",
+        "level": 87,
+        "reward": "Pastkeeper's tapestry & Spirit Weaver",
+        "collector": "Sharrigan",
+        "repeatableReward": {
+            "chronotes": 4056,
+            "Large dungeoneering token box": 2,
+            "Dungeoneering wildcard": 1
+        },
+        "artefacts":[
+            "Storage totem",
+            "Plant seed satchel",
+            "Snuff box",
+            "Spent summoning charm",
+            "'Friendship' bracelet",
+            "Homely totem"
+        ]
+    },
+    {
+        "name": "Museum - Dragonkin VI",
+        "level": 87,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 5070
+        },
+        "artefacts":[
+            "Storage totem",
+            "Plant seed satchel",
+            "Snuff box",
+            "Spent summoning charm",
+            "'Friendship' bracelet",
+            "Homely totem"
+        ]
+    },
+    {
+        "name": "Dragonkin VII",
+        "level": 113,
+        "reward": null,
+        "collector": "Sharrigan",
+        "repeatableReward": {
+            "chronotes": 5772,
+            "Tetracompass piece": 1
+        },
+        "artefacts":[
+            "Projection attuner",
+            "Golden projection 'needle'",
+            "Comfort gatestone",
+            "Halak's cube",
+            "Portable portal generator",
+            "Warped trinket"
+        ]
+    },
+    {
+        "name": "Museum - Dragonkin VII",
+        "level": 113,
+        "reward": null,
+        "collector": "Velucia",
+        "repeatableReward": {
+            "chronotes": 7215
+        },
+        "artefacts":[
+            "Projection attuner",
+            "Golden projection 'needle'",
+            "Comfort gatestone",
+            "Halak's cube",
+            "Portable portal generator",
+            "Warped trinket"
+        ]
     }
 ]

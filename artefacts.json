@@ -570,9 +570,9 @@
     ],
     "location": "Weapons research debris"},
     {"name": "Necromantic focus", "xp": 9333.3, "site": "Zaros", "level": 86, "chronotes": 704, "materials": [
-        {"name": "Imperial steel", "quantity": 20},
-        {"name": "Blood of Orcus", "quantity": 26},
-        {"name": "Ancient vis", "quantity": 30}
+        {"name": "Imperial steel", "quantity": 40},
+        {"name": "Blood of Orcus", "quantity": 34},
+        {"name": "Ancient vis", "quantity": 22}
     ],
     "location": "Orcus altar"},
     {"name": "'Exsanguinate' spell scroll", "xp": 9333.3, "site": "Zaros", "level": 86, "chronotes": 704, "materials": [
@@ -1021,8 +1021,8 @@
     ],
     "location": "Praetorian remains"},
     {"name": "Kal-i-kra chieftain crown", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
-        {"name": "Yu'biusk clay", "quantity": 66},
-        {"name": "Animal furs", "quantity": 60}
+        {"name": "Yu'biusk clay", "quantity": 36},
+        {"name": "Animal furs", "quantity": 48}
     ],
     "location": "Bandos's sanctum debris"},
     {"name": "Kal-i-kra mace", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
@@ -1136,5 +1136,93 @@
         {"name": "Dragon metal", "quantity": 44},
         {"name": "Goldrune", "quantity": 40}
     ],
-    "location": "Saurthen debris"}
+    "location": "Saurthen debris"},
+    {"name": "Castle gatestone", "xp": 5366.7, "site": "Daemonheim", "level": 73, "chronotes": 622, "materials": [
+        {"name": "Orgone", "quantity": 36},
+        {"name": "Orthenglass", "quantity": 32}
+    ],
+    "location": "Castle hall rubble"},
+    {"name": "Engraved ring of kinship", "xp": 5366.7, "site": "Daemonheim", "level": 73, "chronotes": 622, "materials": [
+        {"name": "Goldrune", "quantity": 28},
+        {"name": "Dragon metal", "quantity": 40}
+    ],
+    "location": "Castle hall rubble"},
+    {"name": "Exploratory totem", "xp": 6300, "site": "Daemonheim", "level": 77, "chronotes": 644, "materials": [
+        {"name": "Dragon metal", "quantity": 34},
+        {"name": "Compass rose", "quantity": 36}
+    ],
+    "location": "Tunnelling equipment repository"},
+    {"name": "Excavator portal mine", "xp": 6300, "site": "Daemonheim", "level": 77, "chronotes": 644, "materials": [
+        {"name": "Orgone", "quantity": 36},
+        {"name": "Orthenglass", "quantity": 32}
+    ],
+    "location": "Tunnelling equipment repository"},
+    {"name": "Storage totem", "xp": 6533.3, "site": "Daemonheim", "level": 78, "chronotes": 646, "materials": [
+        {"name": "Dragon metal", "quantity": 34},
+        {"name": "Compass rose", "quantity": 36}
+    ],
+    "location": "Botanical reserve"},
+    {"name": "Plant seed satchel", "xp": 6533.3, "site": "Daemonheim", "level": 78, "chronotes": 646, "materials": [
+        {"name": "Felt", "quantity": 28},
+        {"name": "Carbon black", "quantity": 28},
+        {"name": "Compass rose", "quantity": 14}
+    ],
+    "location": "Botanical reserve"},
+    {"name": "Snuff box", "xp": 6533.3, "site": "Daemonheim", "level": 78, "chronotes": 646, "materials": [
+        {"name": "Felt", "quantity": 20},
+        {"name": "Carbon black", "quantity": 30},
+        {"name": "Soapstone", "quantity": 20}
+    ],
+    "location": "Botanical reserve"},
+    {"name": "Spent summoning charm", "xp": 9722.2, "site": "Daemonheim", "level": 87, "chronotes": 706, "materials": [
+        {"name": "Orgone", "quantity": 46},
+        {"name": "Felt", "quantity": 30}
+    ],
+    "location": "Communal space"},
+    {"name": "'Friendship' bracelet", "xp": 9722.2, "site": "Daemonheim", "level": 87, "chronotes": 706, "materials": [
+        {"name": "Felt", "quantity": 46},
+        {"name": "Soapstone", "quantity": 30}
+    ],
+    "location": "Communal space"},
+    {"name": "Homely totem", "xp": 9722.2, "site": "Daemonheim", "level": 87, "chronotes": 706, "materials": [
+        {"name": "Felt", "quantity": 40},
+        {"name": "Soapstone", "quantity": 36}
+    ],
+    "location": "Communal space"},
+    {"name": "Projection attuner", "xp": 22166.7, "site": "Daemonheim", "level": 103, "chronotes": 878, "materials": [
+        {"name": "Goldrune", "quantity": 28},
+        {"name": "Dragon metal", "quantity": 40},
+        {"name": "Orthenglass", "quantity": 28}
+    ],
+    "location": "Projection space"},
+    {"name": "Golden projection 'needle'", "xp": 22166.7, "site": "Daemonheim", "level": 103, "chronotes": 878, "materials": [
+        {"name": "Goldrune", "quantity": 36},
+        {"name": "Dragon metal", "quantity": 60}
+    ],
+    "location": "Projection space"},
+    {"name": "Comfort gatestone", "xp": 27000, "site": "Daemonheim", "level": 107, "chronotes": 942, "materials": [
+        {"name": "Orgone", "quantity": 34},
+        {"name": "Compass rose", "quantity": 30},
+        {"name": "Orthenglass", "quantity": 40}
+    ],
+    "location": "Security booth"},
+    {"name": "Halak's cube", "xp": 27000, "site": "Daemonheim", "level": 107, "chronotes": 942, "materials": [
+        {"name": "Orgone", "quantity": 28},
+        {"name": "Compass rose", "quantity": 36},
+        {"name": "Carbon black", "quantity": 40}
+    ],
+    "location": "Security booth"},
+    {"name": "Portable portal generator", "xp": 35000, "site": "Daemonheim", "level": 113, "chronotes": 1066, "materials": [
+        {"name": "Goldrune", "quantity": 34},
+        {"name": "Dragon metal", "quantity": 50},
+        {"name": "Orthenglass", "quantity": 36}
+    ],
+    "location": "Traveller's station"},
+    {"name": "Warped trinket", "xp": 35000, "site": "Daemonheim", "level": 113, "chronotes": 1066, "materials": [
+        {"name": "Goldrune", "quantity": 30},
+        {"name": "Dragon metal", "quantity": 30},
+        {"name": "Soapstone", "quantity": 30},
+        {"name": "Orthenglass", "quantity": 30}
+    ],
+    "location": "Traveller's station"}
 ]

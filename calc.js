@@ -16,6 +16,7 @@ let archCalc = function(){
         Bandos: true,
         Dragonkin: true,
         Senntisten: true,
+        Daemonheim: true,
         Special: true
     }
 
@@ -1058,7 +1059,7 @@ let archCalc = function(){
             retImg = `<img class="matImg" src="https://runescape.wiki/images/Tetracompass_piece_%28dial%29.png?2e06f">`;
         }
         else{
-            retImg = `<img class="matImg" src="https://runescape.wiki/images/thumb/c/cf/${mat}_detail.png/100px-${mat}_detail.png">`;
+            retImg = `<img class="matImg" src="https://runescape.wiki/images/${mat.replace(/ /gm,"_")}_detail.png">`;
         }
         // console.log(`"${mat}"`,retImg);
         return retImg;
@@ -1453,7 +1454,7 @@ let archCalc = function(){
         
         if(!a) return 0;
 
-        return (a.owned || 0);
+        return a.owned;
     }
 
     function numDamaged(artefactName){
@@ -1461,7 +1462,7 @@ let archCalc = function(){
         
         if(!a) return 0;
 
-        return (a.unrestored || 0);
+        return a.unrestored;
     }
 
     function checkCollectionRequirements(collection, damaged, restored){
