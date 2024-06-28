@@ -675,3 +675,25 @@ input[type=text].simItemText{
 .simOpenButton:hover{
     background-color: #334258;
 }
+
+.errorOpenButton{
+    position: absolute;
+    right: 16px;
+    bottom: 96px;
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    background: rgb(143, 22, 22);
+    display: block;
+    z-index: 6;
+    border: 2px solid rgb(71, 81, 94);
+    line-height: 18px;
+    text-align: center;
+    color: #D2D6DC;
+    font-size: 10px;
+    padding-top: 12px;
+}
+
+.errorOpenButton:hover{
+    background-color: #520707;
+}

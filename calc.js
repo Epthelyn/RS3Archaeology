@@ -310,6 +310,10 @@ let archCalc = function(){
             $('.simPanel').css('display',$('.simPanel').css('display')=="block"?"none":"block");
         })
 
+        $('.errorOpenButton').on('click', () => {
+            alert("To report bugs, missing data, incorrect data, or give any other feedback, DM epthelyn#3266 on Discord. I'm not currently playing Runescape, but am updating this when changes are required!");
+        });
+
         $('.simButton').on('click', function(){
             let xpStart = parseFloat($('#simXPStart').val());
             let xpEnd = parseFloat($('#simXPEnd').val());
