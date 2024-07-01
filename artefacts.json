@@ -570,9 +570,9 @@
     ],
     "location": "Weapons research debris"},
     {"name": "Necromantic focus", "xp": 9333.3, "site": "Zaros", "level": 86, "chronotes": 704, "materials": [
-        {"name": "Imperial steel", "quantity": 40},
-        {"name": "Blood of Orcus", "quantity": 34},
-        {"name": "Ancient vis", "quantity": 22}
+        {"name": "Imperial steel", "quantity": 20},
+        {"name": "Blood of Orcus", "quantity": 26},
+        {"name": "Ancient vis", "quantity": 30}
     ],
     "location": "Orcus altar"},
     {"name": "'Exsanguinate' spell scroll", "xp": 9333.3, "site": "Zaros", "level": 86, "chronotes": 704, "materials": [
@@ -1021,8 +1021,8 @@
     ],
     "location": "Praetorian remains"},
     {"name": "Kal-i-kra chieftain crown", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
-        {"name": "Yu'biusk clay", "quantity": 36},
-        {"name": "Animal furs", "quantity": 48}
+        {"name": "Yu'biusk clay", "quantity": 66},
+        {"name": "Animal furs", "quantity": 60}
     ],
     "location": "Bandos's sanctum debris"},
     {"name": "Kal-i-kra mace", "xp": 38333.3, "site": "Bandos", "level": 115, "chronotes": 1112, "materials": [
