@@ -1458,7 +1458,7 @@ let archCalc = function(){
         
         if(!a) return 0;
 
-        return a.owned;
+        return a.owned || 0;
     }
 
     function numDamaged(artefactName){
@@ -1466,7 +1466,7 @@ let archCalc = function(){
         
         if(!a) return 0;
 
-        return a.unrestored;
+        return a.unrestored || 0;
     }
 
     function checkCollectionRequirements(collection, damaged, restored){
