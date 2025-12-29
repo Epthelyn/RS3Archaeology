@@ -1154,7 +1154,7 @@
     "location": "Tunnelling equipment repository"},
     {"name": "Excavator portal mine", "xp": 6300, "site": "Daemonheim", "level": 77, "chronotes": 644, "materials": [
         {"name": "Orgone", "quantity": 36},
-        {"name": "Orthenglass", "quantity": 32}
+        {"name": "Orthenglass", "quantity": 34}
     ],
     "location": "Tunnelling equipment repository"},
     {"name": "Storage totem", "xp": 6533.3, "site": "Daemonheim", "level": 78, "chronotes": 646, "materials": [
@@ -1226,3 +1226,4 @@
     ],
     "location": "Traveller's station"}
 ]
+
